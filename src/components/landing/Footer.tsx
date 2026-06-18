@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Twitter, Github, Linkedin } from 'lucide-react'
+import { Twitter, Github, Linkedin, Heart } from 'lucide-react'
 import { LogoText } from '@/components/ui/logo'
 import { socialLinks } from '@/constants/site'
 import { Container } from '@/components/design-system/Container'
@@ -10,33 +10,24 @@ import { useTranslation } from '@/lib/i18n/useTranslation'
 
 export function Footer() {
   const { t } = useTranslation()
+  const year = new Date().getFullYear()
 
   const footerSections = [
     {
       title: t('footer.product'),
       links: [
         { title: t('footer.features'), href: '#features' },
-        { title: t('footer.pricing'), href: '#pricing' },
-        { title: t('footer.changelog'), href: '/changelog' },
+        { title: t('footer.howItWorks'), href: '#how-it-works' },
+        { title: t('footer.faq'), href: '#faq' },
         { title: t('nav.roadmap'), href: '#roadmap' },
       ],
     },
     {
-      title: t('footer.company'),
+      title: t('footer.legal'),
       links: [
-        { title: t('footer.about'), href: '/about' },
-        { title: t('footer.careers'), href: '/careers' },
-        { title: t('footer.press'), href: '/press' },
+        { title: t('footer.privacyPolicy'), href: '/privacy' },
+        { title: t('footer.terms'), href: '/terms' },
         { title: t('footer.contact'), href: '/contact' },
-      ],
-    },
-    {
-      title: t('footer.support'),
-      links: [
-        { title: t('footer.helpCenter'), href: '/help' },
-        { title: t('footer.documentation'), href: '/docs' },
-        { title: t('footer.status'), href: '/status' },
-        { title: t('footer.privacy'), href: '/privacy' },
       ],
     },
   ]
@@ -45,9 +36,9 @@ export function Footer() {
     <footer className="border-t border-border/50 bg-muted/30">
       <Container className="py-8 md:py-12 lg:py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
           {/* Brand Section */}
-          <div className="space-y-4 sm:col-span-2 lg:col-span-1">
+          <div className="space-y-4 sm:col-span-1">
             <Link href="/" className="inline-block cursor-pointer">
               <LogoText className="hover:scale-105 transition-transform duration-300" />
             </Link>
@@ -79,14 +70,14 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Footer Links - Mobile First Grid */}
-          {footerSections.map((section) => (
-            <div key={section.title as string} className="space-y-3 md:space-y-4">
+          {/* Footer Links */}
+          {footerSections.map((sec) => (
+            <div key={sec.title as string} className="space-y-3 md:space-y-4">
               <h3 className="font-semibold text-sm md:text-base text-foreground">
-                {section.title as string}
+                {sec.title as string}
               </h3>
               <ul className="space-y-2 md:space-y-3">
-                {section.links.map((link) => (
+                {sec.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
@@ -103,24 +94,15 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="pt-6 md:pt-8 border-t border-border/50">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs md:text-sm text-muted-foreground text-center sm:text-left">
-              &copy; 2025 Pocketly. {t('footer.rights') as string}
+              &copy; {year} Luxa. {t('footer.rights') as string}
             </p>
-            <div className="flex gap-4 md:gap-6 text-xs md:text-sm">
-              <Link
-                href="/privacy"
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer"
-              >
-                {t('footer.privacyPolicy') as string}
-              </Link>
-              <Link
-                href="/terms"
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer"
-              >
-                {t('footer.terms') as string}
-              </Link>
-            </div>
+            <p className="flex items-center gap-1 text-xs md:text-sm text-muted-foreground">
+              {(t('footer.madeWith') as string).split('♥')[0]}
+              <Heart className="h-3.5 w-3.5 fill-primary text-primary" />
+              {(t('footer.madeWith') as string).split('♥')[1]}
+            </p>
           </div>
         </div>
       </Container>

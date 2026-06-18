@@ -24,12 +24,12 @@ export default function Privacy() {
                 <section>
                   <h2 className="text-2xl font-semibold mb-4">1. INTRODUCTION</h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    Pocketly (&quot;nous&quot;, &quot;notre&quot;, &quot;nos&quot;) s&apos;engage à protéger votre vie privée et vos données personnelles. 
+                    Luxa (&quot;nous&quot;, &quot;notre&quot;, &quot;nos&quot;) s&apos;engage à protéger votre vie privée et vos données personnelles. 
                     Cette politique de confidentialité explique comment nous collectons, utilisons, stockons et protégeons 
                     vos informations lorsque vous utilisez notre application mobile de gestion de budget et finances personnelles.
                   </p>
                   <p className="text-muted-foreground leading-relaxed mt-4">
-                    En utilisant Pocketly, vous acceptez les pratiques décrites dans cette politique de confidentialité.
+                    En utilisant Luxa, vous acceptez les pratiques décrites dans cette politique de confidentialité.
                   </p>
                 </section>
 
@@ -288,7 +288,7 @@ export default function Privacy() {
                 <section>
                   <h2 className="text-2xl font-semibold mb-4">10. MINEURS</h2>
                   <p className="text-muted-foreground leading-relaxed">
-                    Pocketly n&apos;est pas destiné aux mineurs de moins de 16 ans. Nous ne collectons pas sciemment de données personnelles de mineurs.
+                    Luxa n&apos;est pas destiné aux mineurs de moins de 16 ans. Nous ne collectons pas sciemment de données personnelles de mineurs.
                   </p>
                 </section>
 
@@ -306,7 +306,7 @@ export default function Privacy() {
                     <div>
                       <h3 className="text-xl font-medium mb-2">12.1 Délégué à la protection des données (DPO)</h3>
                       <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                        <li><strong>E-mail</strong> : privacy@pocketly.com</li>
+                        <li><strong>E-mail</strong> : privacy@luxa.app</li>
                         <li><strong>Adresse</strong> : 123 Rue de la Paix, 75001 Paris, France</li>
                       </ul>
                     </div>
@@ -317,7 +317,7 @@ export default function Privacy() {
                     <div>
                       <h3 className="text-xl font-medium mb-2">12.3 Support client</h3>
                       <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                        <li><strong>E-mail</strong> : support@pocketly.com</li>
+                        <li><strong>E-mail</strong> : support@luxa.app</li>
                         <li><strong>Réponse</strong> : Sous 48h ouvrées</li>
                       </ul>
                     </div>
@@ -358,7 +358,7 @@ export default function Privacy() {
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
                   <p className="text-blue-800 font-medium text-center">
-                    <strong>Pocketly s&apos;engage à protéger votre vie privée et à traiter vos données avec le plus grand respect et la plus grande sécurité.</strong>
+                    <strong>Luxa s&apos;engage à protéger votre vie privée et à traiter vos données avec le plus grand respect et la plus grande sécurité.</strong>
                   </p>
                   <p className="text-blue-600 text-center mt-2 italic">
                     Cette politique de confidentialité est effective depuis le 15 janvier 2025.

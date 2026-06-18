@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Star, Quote } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Container } from '@/components/design-system/Container'
 import { SectionTitle } from '@/components/design-system/SectionTitle'
 import { section } from '@/lib/design-tokens'
@@ -15,12 +15,12 @@ export function Testimonials() {
   const { t } = useTranslation()
 
   const testimonialsData = t('testimonials.items') as unknown as Array<{ name: string; role: string; text: string }>
+  const stats = t('testimonials.stats') as unknown as Array<{ value: string; label: string }>
 
   const testimonials = testimonialsData.map((item, index) => ({
     id: index + 1,
     name: item.name,
     role: item.role,
-    avatar: `/avatars/${item.name.split(' ')[0].toLowerCase()}.jpg`,
     initials: item.name.split(' ').map((n: string) => n[0]).join(''),
     rating: 5,
     text: item.text,
@@ -29,14 +29,31 @@ export function Testimonials() {
   return (
     <section
       id="testimonials"
-      className={cn('bg-muted/30', section.padding.combined)}
+      className={cn('relative overflow-hidden bg-muted/30', section.padding.combined)}
     >
-      <Container>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-72 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
+      <Container className="relative">
         <SectionTitle
           badge={t('testimonials.badge') as string}
           title={t('testimonials.title') as string}
           subtitle={t('testimonials.subtitle') as string}
         />
+
+        {/* Stats Row */}
+        <motion.div
+          variants={fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={viewport}
+          className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6 mb-12 md:mb-16"
+        >
+          {stats.map((stat, index) => (
+            <div key={index} className="text-center">
+              <p className="text-3xl md:text-4xl font-bold text-primary mb-1">{stat.value}</p>
+              <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>
+            </div>
+          ))}
+        </motion.div>
 
         {/* Testimonials Grid - Mobile First */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -77,10 +94,6 @@ export function Testimonials() {
                   {/* Author */}
                   <div className="flex items-center gap-3 pt-4 border-t border-border/50">
                     <Avatar className="h-12 w-12">
-                      <AvatarImage
-                        src={testimonial.avatar}
-                        alt={testimonial.name}
-                      />
                       <AvatarFallback className="bg-primary/10 text-primary font-semibold">
                         {testimonial.initials}
                       </AvatarFallback>

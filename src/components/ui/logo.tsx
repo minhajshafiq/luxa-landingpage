@@ -21,7 +21,7 @@ export function Logo({ className = "", size = "md", variant = "default" }: LogoP
     <div className={`${sizeClass} ${className}`}>
       <Image 
         src="/icon.png" 
-        alt="Pocketly Logo"
+        alt="Luxa Logo"
         width={64}
         height={64}
         className="w-full h-full rounded-lg"
@@ -37,7 +37,7 @@ export function LogoText({ className = "", variant = "default" }: { className?: 
       <span className={`text-2xl font-bold tracking-tight ${
         variant === "white" ? "text-white" : "text-foreground"
       }`}>
-        Pocketly
+        Luxa
       </span>
     </div>
   )

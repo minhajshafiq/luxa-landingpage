@@ -96,12 +96,15 @@ export function CTA() {
             </WaitlistForm>
 
             <AnimatedButton
+              asChild
               size="lg"
               variant="secondary"
               className="bg-transparent border-2 border-white text-white hover:bg-white/10 px-6 md:px-8 py-4 md:py-5 text-base md:text-lg font-semibold w-full sm:w-auto cursor-pointer"
             >
-              <Play className="h-5 w-5 mr-2" />
-              {t('cta.watchDemo') as string}
+              <a href="#screenshots">
+                <Play className="h-5 w-5 mr-2" />
+                {t('cta.watchDemo') as string}
+              </a>
             </AnimatedButton>
           </motion.div>
 

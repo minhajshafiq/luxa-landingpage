@@ -1,6 +1,6 @@
-# Pocketly Web - Landing Page
+# Luxa Web - Landing Page
 
-Une landing page moderne et responsive pour l'application mobile Pocketly, construite avec Next.js 15 et les dernières technologies de 2025.
+Une landing page moderne et responsive pour l'application mobile Luxa, construite avec Next.js 15 et les dernières technologies de 2025.
 
 ## 🚀 Technologies Utilisées
 

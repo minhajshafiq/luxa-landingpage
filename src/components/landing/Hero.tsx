@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { gsap } from 'gsap'
+import { ChevronDown, TrendingUp, Target, ShieldCheck, Globe, Languages, Gift } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import { Container } from '@/components/design-system/Container'
 import { GradientText } from '@/components/design-system/GradientText'
@@ -90,8 +91,8 @@ export function Hero() {
   return (
     <section
       className={cn(
-        'relative overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5',
-        'min-h-screen flex flex-col items-center justify-center',
+        'relative overflow-hidden bg-gradient-to-br from-primary-light/60 via-background to-secondary-light/40',
+        'min-h-screen flex flex-col items-center justify-center pt-20 md:pt-24',
         section.padding.combined
       )}
     >
@@ -159,14 +160,14 @@ export function Hero() {
             {t('hero.subtitle3') as string}
           </motion.p>
 
-          {/* Waitlist Button - Temporary */}
+          {/* Waitlist Button + Secondary CTA */}
           <motion.div
             variants={fadeInUp}
             initial="initial"
             animate="animate"
             viewport={viewport}
             transition={{ delay: 0.5 }}
-            className="flex justify-center items-center pt-2 md:pt-4"
+            className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-2 md:pt-4"
           >
             <WaitlistForm>
               <AnimatedButton
@@ -176,6 +177,77 @@ export function Hero() {
                 {t('nav.joinWaitlist') as string}
               </AnimatedButton>
             </WaitlistForm>
+
+            <a
+              href="#screenshots"
+              className="inline-flex items-center gap-1.5 px-4 h-12 md:h-14 text-base md:text-lg font-medium text-foreground hover:text-primary transition-colors cursor-pointer"
+            >
+              {t('hero.watchDemo') as string}
+              <ChevronDown className="h-4 w-4" />
+            </a>
+          </motion.div>
+
+          {/* Store Badges - Coming Soon */}
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            viewport={viewport}
+            transition={{ delay: 0.55 }}
+            className="flex flex-col items-center gap-2 pt-2"
+          >
+            <span className="text-xs text-muted-foreground">{t('hero.comingSoon') as string}</span>
+            <div className="flex items-center gap-3">
+              <WaitlistForm>
+                <button className="cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+                  <Image
+                    src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+                    alt={t('hero.downloadAppStore') as string}
+                    width={120}
+                    height={40}
+                    className="h-9 w-auto"
+                  />
+                </button>
+              </WaitlistForm>
+              <WaitlistForm>
+                <button className="cursor-pointer opacity-80 hover:opacity-100 transition-opacity">
+                  <Image
+                    src="/GetItOnGooglePlay_Badge_Web_color_English.svg"
+                    alt={t('hero.downloadPlayStore') as string}
+                    width={135}
+                    height={40}
+                    className="h-9 w-auto"
+                  />
+                </button>
+              </WaitlistForm>
+            </div>
+          </motion.div>
+
+          {/* Trust Signals */}
+          <motion.div
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            viewport={viewport}
+            transition={{ delay: 0.6 }}
+            className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 pt-3 text-xs md:text-sm text-muted-foreground"
+          >
+            <span className="inline-flex items-center gap-1.5">
+              <ShieldCheck className="h-4 w-4 text-primary" />
+              {t('hero.trust.secure') as string}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Globe className="h-4 w-4 text-primary" />
+              {t('hero.trust.currencies') as string}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Languages className="h-4 w-4 text-primary" />
+              {t('hero.trust.languages') as string}
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Gift className="h-4 w-4 text-primary" />
+              {t('hero.trust.free') as string}
+            </span>
           </motion.div>
         </div>
 
@@ -193,16 +265,62 @@ export function Hero() {
             <div className="relative w-[280px] mx-auto">
               <Image
                 src="/Group 84-portrait.png"
-                alt="Pocketly App"
+                alt="Luxa App"
                 width={280}
                 height={600}
                 className="w-full h-auto drop-shadow-2xl rounded-3xl"
               />
+              <div className="animate-luxa-float absolute -top-2 -right-4 flex items-center gap-2 bg-card border border-border/50 rounded-2xl shadow-lg px-3 py-2">
+                <div className="w-7 h-7 rounded-full bg-epargne/15 flex items-center justify-center flex-shrink-0">
+                  <TrendingUp className="w-3.5 h-3.5 text-epargne" />
+                </div>
+                <div className="leading-tight text-left">
+                  <p className="text-xs font-bold text-foreground">+247€</p>
+                  <p className="text-[10px] text-muted-foreground whitespace-nowrap">{t('hero.floatingSavings') as string}</p>
+                </div>
+              </div>
             </div>
           </div>
 
           {/* Desktop: Three phones with clean modern layout */}
           <div className="hidden md:flex relative w-full max-w-6xl gap-4 lg:gap-6 justify-center items-center px-4">
+            {/* Floating stat badge - savings */}
+            <motion.div
+              variants={fadeInUp}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: 0.9 }}
+              className="animate-luxa-float absolute left-[8%] lg:left-[14%] top-[18%] z-20 flex items-center gap-2.5 bg-card border border-border/50 rounded-2xl shadow-xl px-3.5 py-2.5"
+            >
+              <div className="w-9 h-9 rounded-full bg-epargne/15 flex items-center justify-center flex-shrink-0">
+                <TrendingUp className="w-4 h-4 text-epargne" />
+              </div>
+              <div className="leading-tight text-left">
+                <p className="text-sm font-bold text-foreground">+247€</p>
+                <p className="text-[11px] text-muted-foreground whitespace-nowrap">{t('hero.floatingSavings') as string}</p>
+              </div>
+            </motion.div>
+
+            {/* Floating stat badge - goal */}
+            <motion.div
+              variants={fadeInUp}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: 1.1 }}
+              className="animate-luxa-float absolute right-[8%] lg:right-[14%] bottom-[14%] z-20 flex items-center gap-2.5 bg-card border border-border/50 rounded-2xl shadow-xl px-3.5 py-2.5"
+              style={{ animationDelay: '1.5s' }}
+            >
+              <div className="w-9 h-9 rounded-full bg-secondary/20 flex items-center justify-center flex-shrink-0">
+                <Target className="w-4 h-4 text-secondary" />
+              </div>
+              <div className="leading-tight text-left">
+                <p className="text-sm font-bold text-foreground">{t('hero.floatingGoal') as string}</p>
+                <div className="w-20 h-1.5 rounded-full bg-muted mt-1 overflow-hidden">
+                  <div className="h-full w-4/5 rounded-full bg-secondary" />
+                </div>
+              </div>
+            </motion.div>
+
             {/* Left Phone */}
             <div
               ref={(el) => {
@@ -212,7 +330,7 @@ export function Hero() {
             >
               <Image
                 src="/Group 85-portrait.png"
-                alt="Pocketly App - Suivi des dépenses"
+                alt="Luxa App - Suivi des dépenses"
                 width={300}
                 height={640}
                 className="w-full h-auto drop-shadow-2xl rounded-[2.5rem]"
@@ -229,7 +347,7 @@ export function Hero() {
             >
               <Image
                 src="/Group 84-portrait.png"
-                alt="Pocketly App - Gestion financière"
+                alt="Luxa App - Gestion financière"
                 width={340}
                 height={720}
                 className="w-full h-auto drop-shadow-2xl rounded-[2.5rem]"
@@ -246,7 +364,7 @@ export function Hero() {
             >
               <Image
                 src="/Group 86-portrait.png"
-                alt="Pocketly App - Budget et épargne"
+                alt="Luxa App - Budget et épargne"
                 width={300}
                 height={640}
                 className="w-full h-auto drop-shadow-2xl rounded-[2.5rem]"

@@ -26,9 +26,9 @@ export function Roadmap() {
   const statusConfig = {
     completed: {
       icon: CheckCircle,
-      color: 'text-green-600',
-      bgColor: 'bg-green-50 dark:bg-green-950',
-      borderColor: 'border-green-200 dark:border-green-800',
+      color: 'text-success',
+      bgColor: 'bg-success/10',
+      borderColor: 'border-success/30',
       badge: t('roadmap.completed'),
       badgeVariant: 'default' as const,
     },

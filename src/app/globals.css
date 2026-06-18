@@ -2,10 +2,10 @@
 
 @layer base {
   :root {
-    /* Light Mode - Custom Palette */
-    /* Background: #F8FAFC */
-    --background: 210 40% 98%;
-    /* Text Primary: #1E293B */
+    /* Light Mode - "Richesse & Clarté" Palette */
+    /* Background: #F9F9FB - Blanc neige */
+    --background: 240 20% 98%;
+    /* Text: #1E293B - Ardoise foncée */
     --foreground: 217 33% 17%;
 
     /* Surface: #FFFFFF */
@@ -14,90 +14,107 @@
     --popover: 0 0% 100%;
     --popover-foreground: 217 33% 17%;
 
-    /* Primary: #6B5FF7 - Brand Purple */
-    --primary: 246 90% 67%;
+    /* Primary: #70000E - Bordeaux (marque, CTA) */
+    --primary: 353 100% 22%;
     --primary-foreground: 0 0% 100%;
+    /* Primary Light: #FBEAEB */
+    --primary-light: 356 68% 95%;
 
-    /* Secondary: Lighter variant of primary */
-    --secondary: 246 90% 85%;
+    /* Secondary: #D4AF37 - Or sablé (accents premium, badges) */
+    --secondary: 46 65% 52%;
     --secondary-foreground: 217 33% 17%;
+    /* Secondary Light: #FBF6E0 */
+    --secondary-light: 49 77% 93%;
 
-    /* Accent: Same as primary for consistency */
-    --accent: 246 90% 67%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: neutral hover surface (not brand gold, kept subtle for UI mechanics) */
+    --accent: 210 40% 96%;
+    --accent-foreground: 217 33% 17%;
 
     /* Muted: Light background variant */
     --muted: 210 40% 96%;
     /* Text Secondary: #64748B */
     --muted-foreground: 215 16% 47%;
 
-    /* Success: Green */
-    --success: 142 76% 36%;
+    /* Epargne (succès/revenus): #1B8755 */
+    --success: 152 67% 32%;
     --success-foreground: 0 0% 100%;
 
-    /* Warning: Orange */
-    --warning: 38 92% 50%;
+    /* Envies: #F97316 */
+    --warning: 25 95% 53%;
     --warning-foreground: 0 0% 100%;
 
-    /* Destructive: Red */
-    --destructive: 0 84% 60%;
+    /* Erreur/dépenses: #E15252 */
+    --destructive: 0 70% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    /* Border: rgba(0,0,0,0.06) */
-    --border: 0 0% 0% / 0.06;
-    --input: 0 0% 0% / 0.06;
+    /* Couleurs visuels financiers (graphiques, démos uniquement) */
+    --besoins: 217 91% 60%;
+    --envies: 25 95% 53%;
+    --epargne: 152 67% 32%;
+    --error: 0 70% 60%;
+
+    /* Border: #E2E8F0 */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
     /* Ring: Primary color */
-    --ring: 246 90% 67%;
+    --ring: 353 100% 22%;
     --radius: 0.75rem;
   }
 
   .dark {
-    /* Dark Mode - Custom Palette */
-    /* Background: #121212 */
-    --background: 0 0% 7%;
-    /* Text Primary: #FFFFFF */
-    --foreground: 0 0% 100%;
+    /* Dark Mode - OLED pur */
+    --background: 0 0% 0%;
+    /* Text: #CBD5E1 */
+    --foreground: 213 27% 84%;
 
-    /* Surface: #2A2A2A */
-    --card: 0 0% 16%;
-    --card-foreground: 0 0% 100%;
-    --popover: 0 0% 16%;
-    --popover-foreground: 0 0% 100%;
+    /* Surface: #1C1C1E */
+    --card: 240 3% 11%;
+    --card-foreground: 213 27% 84%;
+    --popover: 240 3% 11%;
+    --popover-foreground: 213 27% 84%;
 
-    /* Primary: #6B5FF7 - Same in dark mode */
-    --primary: 246 90% 67%;
+    /* Primary: #D9424F */
+    --primary: 355 67% 55%;
     --primary-foreground: 0 0% 100%;
+    /* Primary Light: #2A0005 */
+    --primary-light: 353 100% 8%;
 
-    /* Secondary: Darker variant for dark mode */
-    --secondary: 0 0% 20%;
-    --secondary-foreground: 0 0% 100%;
+    /* Secondary: #F0C840 */
+    --secondary: 46 85% 60%;
+    --secondary-foreground: 0 0% 7%;
+    --secondary-light: 46 60% 14%;
 
-    /* Accent: Same as primary */
-    --accent: 246 90% 67%;
-    --accent-foreground: 0 0% 100%;
+    /* Accent: subtle elevated surface */
+    --accent: 240 3% 16%;
+    --accent-foreground: 213 27% 84%;
 
     /* Muted: Slightly lighter than surface */
-    --muted: 0 0% 20%;
-    /* Text Secondary: #AAAAAA */
-    --muted-foreground: 0 0% 67%;
+    --muted: 240 3% 16%;
+    --muted-foreground: 215 16% 65%;
 
-    /* Success: Green (slightly brighter) */
-    --success: 142 76% 46%;
-    --success-foreground: 0 0% 100%;
+    /* Epargne: #34D399 */
+    --success: 158 64% 52%;
+    --success-foreground: 0 0% 7%;
 
-    /* Warning: Orange (slightly brighter) */
-    --warning: 38 92% 60%;
-    --warning-foreground: 0 0% 100%;
+    /* Envies */
+    --warning: 25 95% 58%;
+    --warning-foreground: 0 0% 7%;
 
-    /* Destructive: Red (slightly brighter) */
-    --destructive: 0 84% 70%;
-    --destructive-foreground: 0 0% 100%;
+    /* Erreur: #F87171 */
+    --destructive: 0 91% 71%;
+    --destructive-foreground: 0 0% 7%;
 
-    /* Border: rgba(255,255,255,0.08) */
-    --border: 0 0% 100% / 0.08;
-    --input: 0 0% 100% / 0.08;
+    /* Couleurs visuels financiers */
+    --besoins: 217 91% 68%;
+    --envies: 25 95% 58%;
+    --epargne: 158 64% 52%;
+    --error: 0 91% 71%;
+
+    /* Border: #2C2C2E */
+    --border: 240 2% 18%;
+    --input: 240 2% 18%;
     /* Ring: Primary color */
-    --ring: 246 90% 67%;
+    --ring: 355 67% 55%;
   }
 }
 
@@ -110,18 +127,28 @@
   --color-popover-foreground: hsl(var(--popover-foreground));
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-light: hsl(var(--primary-light));
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-light: hsl(var(--secondary-light));
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-success: hsl(var(--success));
+  --color-success-foreground: hsl(var(--success-foreground));
+  --color-warning: hsl(var(--warning));
+  --color-warning-foreground: hsl(var(--warning-foreground));
   --color-destructive: hsl(var(--destructive));
   --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-besoins: hsl(var(--besoins));
+  --color-envies: hsl(var(--envies));
+  --color-epargne: hsl(var(--epargne));
+  --color-error: hsl(var(--error));
   --color-border: hsl(var(--border));
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-jakarta);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -140,65 +167,66 @@
   max-width: 1200px;
 }
 
-/* Pocketly Brand Styles */
+/* Luxa Brand Styles */
 .bg-grid-pattern {
   background-image: radial-gradient(circle, hsl(var(--muted-foreground) / 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
-/* Pocketly Gradient Backgrounds */
-.bg-pocketly-gradient {
+/* Luxa Gradient Backgrounds */
+.bg-luxa-gradient {
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
 }
 
-.bg-pocketly-gradient-soft {
+.bg-luxa-gradient-soft {
   background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--accent) / 0.1) 100%);
 }
 
-.bg-pocketly-success {
+.bg-luxa-success {
   background: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--secondary)) 100%);
 }
 
-/* Pocketly Shadows */
-.shadow-pocketly {
+/* Luxa Shadows */
+.shadow-luxa {
   box-shadow: 0 10px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04);
 }
 
-.shadow-pocketly-lg {
+.shadow-luxa-lg {
   box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.25);
 }
 
-/* Pocketly Animations */
-@keyframes pocketly-float {
+/* Luxa Animations */
+@keyframes luxa-float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
 
-@keyframes pocketly-pulse {
+@keyframes luxa-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
 }
 
-@keyframes pocketly-glow {
+@keyframes luxa-glow {
   0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
   50% { box-shadow: 0 0 30px hsl(var(--primary) / 0.5); }
 }
 
-.animate-pocketly-float {
-  animation: pocketly-float 3s ease-in-out infinite;
+.animate-luxa-float {
+  animation: luxa-float 3s ease-in-out infinite;
 }
 
-.animate-pocketly-pulse {
-  animation: pocketly-pulse 2s ease-in-out infinite;
+.animate-luxa-pulse {
+  animation: luxa-pulse 2s ease-in-out infinite;
 }
 
-.animate-pocketly-glow {
-  animation: pocketly-glow 2s ease-in-out infinite;
+.animate-luxa-glow {
+  animation: luxa-glow 2s ease-in-out infinite;
 }
 
-/* Smooth scrolling */
+/* Smooth scrolling - offset for the floating navbar */
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
 }
 
 /* Custom scrollbar */

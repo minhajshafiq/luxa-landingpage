@@ -2,145 +2,192 @@
   "nav": {
     "home": "Home",
     "features": "Features",
-    "pricing": "Pricing",
+    "howItWorks": "How it works",
+    "faq": "FAQ",
     "roadmap": "Roadmap",
     "joinWaitlist": "Join Waitlist"
   },
   "hero": {
-    "badge": "✨ The app that transforms your relationship with money",
-    "title": "Take control of your money",
-    "titleHighlight": "in 30 seconds",
-    "subtitle": "Visualize your expenses in real-time, create smart budgets with the",
-    "subtitle2": "method, and save effortlessly.",
-    "subtitle3": "Your financial freedom starts here.",
-    "downloadAppStore": "Download on App Store",
-    "downloadPlayStore": "Get it on Google Play"
+    "badge": "✨ Budgeting, finally without the guilt",
+    "title": "Take control of your money,",
+    "titleHighlight": "without the stress",
+    "subtitle": "Track your spending in real time, let the",
+    "subtitle2": "50/30/20 method",
+    "subtitle3": " split your budget automatically, and reach your savings goals effortlessly.",
+    "comingSoon": "Coming soon on",
+    "downloadAppStore": "Download on the App Store",
+    "downloadPlayStore": "Get it on Google Play",
+    "watchDemo": "See the app in action",
+    "floatingSavings": "saved this month",
+    "floatingGoal": "Vacation goal",
+    "trust": {
+      "secure": "Secure",
+      "currencies": "26 currencies",
+      "languages": "9 languages",
+      "free": "100% free"
+    }
+  },
+  "problem": {
+    "badge": "The reality",
+    "title": "Managing your money shouldn't be a headache",
+    "subtitle": "Three everyday problems Luxa solves, without complexity or judgment.",
+    "items": [
+      {
+        "title": "Blurry budget",
+        "pain": "You never really know where your money went by the end of the month.",
+        "solution": "Luxa tracks every expense in real time and splits your budget with the 50/30/20 method."
+      },
+      {
+        "title": "Hard to save",
+        "pain": "Putting money aside stays a wish, with no tracking or clear goal.",
+        "solution": "Create savings goals and watch your progress automatically, in real time."
+      },
+      {
+        "title": "Financial stress",
+        "pain": "Classic banking apps feel cold, austere, and guilt-inducing.",
+        "solution": "Luxa is built to reassure: an elegant interface, a warm tone, zero judgment."
+      }
+    ]
   },
   "features": {
-    "title": "Everything You Need. Nothing You Don't.",
-    "subtitle": "A smarter way to manage your money, track spending and grow savings effortlessly.",
-    "smartBudget": {
-      "title": "Smart Budget Tracking",
-      "description": "Track spending automatically with categorized insights and visual graphs."
+    "title": "Everything you need to take back control",
+    "subtitle": "Features designed to simplify your financial life, never to complicate it.",
+    "budgetMethod": {
+      "title": "50/30/20 Method",
+      "description": "Your income is automatically split between needs, wants and savings, no math required."
     },
-    "transactions": {
-      "title": "Transaction History",
-      "description": "View every expense and income with filters and monthly summaries."
+    "savingsGoals": {
+      "title": "Savings Goals",
+      "description": "Create goals, track your progress in real time and stay motivated until the end."
     },
-    "savings": {
-      "title": "Savings Pockets",
-      "description": "Create saving goals, auto-fill allocations, monitor progress in real-time."
+    "multiCurrency": {
+      "title": "26 Currencies",
+      "description": "Manage your budget in the currency of your choice, wherever you are in the world."
     },
-    "subscriptions": {
-      "title": "Subscription Management",
-      "description": "Detect recurring charges, cancel unused ones and avoid leaks."
+    "multiLanguage": {
+      "title": "9 Languages",
+      "description": "Luxa adapts to you: choose your language from 9 available options."
     },
-    "notifications": {
-      "title": "Personalized Notifications",
-      "description": "Get smart alerts on your spending, budgets, and savings goals in real-time."
+    "security": {
+      "title": "Biometric Security",
+      "description": "Sign in with fingerprint, Face ID, or via Google and Apple. Your data belongs to you."
     },
-    "learnMore": "Learn more",
-    "cta": "Explore All Features"
+    "darkMode": {
+      "title": "OLED Dark Mode",
+      "description": "An elegant interface in daylight, and a deep black that's easy on your eyes at night."
+    },
+    "cta": "See the app in action"
   },
-  "pricing": {
-    "title": "Flexible Plans for Every User",
-    "subtitle": "Start free, upgrade anytime. No hidden fees, cancel whenever.",
-    "basic": {
-      "name": "Basic",
-      "price": "Free",
-      "period": "Forever",
-      "features": [
-        "Transaction tracking"
-      ],
-      "cta": "Get Started"
-    },
-    "premium": {
-      "name": "Premium",
-      "price": "€6.99",
-      "period": "per month",
-      "popular": "Most Popular",
-      "features": [
-        "Unlimited transactions",
-        "Advanced budget analytics",
-        "Unlimited saving pockets",
-        "Custom categories"
-      ],
-      "cta": "Get Started"
-    },
-    "yearly": {
-      "name": "Yearly",
-      "price": "€69.99",
-      "period": "per year",
-      "features": [
-        "Save 17% compared to monthly",
-        "Unlimited transactions",
-        "Advanced budget analytics",
-        "Unlimited saving pockets",
-        "Custom categories"
-      ],
-      "cta": "Get Started"
-    }
+  "howItWorks": {
+    "badge": "How it works",
+    "title": "Three steps, and you're set",
+    "subtitle": "Luxa fits into your routine in just a few minutes.",
+    "steps": [
+      {
+        "title": "Sign in securely",
+        "description": "Create your account with email or biometric sign-in, in just a few seconds."
+      },
+      {
+        "title": "Visualize your budget",
+        "description": "The 50/30/20 rule automatically splits your income between needs, wants and savings."
+      },
+      {
+        "title": "Reach your goals",
+        "description": "Track your progress in real time and save without even thinking about it."
+      }
+    ]
+  },
+  "screenshots": {
+    "badge": "The app",
+    "title": "An interface designed for clarity",
+    "subtitle": "See what managing your budget with Luxa looks like.",
+    "items": [
+      {
+        "title": "Dashboard",
+        "description": "Your balance, this week's spending and recent transactions, at a glance.",
+        "callout": "Real-time balance"
+      },
+      {
+        "title": "Transaction History",
+        "description": "Browse month by month and spot your spending habits with the calendar view.",
+        "callout": "Smart calendar"
+      },
+      {
+        "title": "50/30/20 Pockets",
+        "description": "Needs, wants and savings, automatically split and tracked in real time.",
+        "callout": "Automatic split"
+      }
+    ]
   },
   "testimonials": {
     "badge": "Testimonials",
     "title": "They transformed their finances",
-    "subtitle": "Discover how Pocketly helps thousands of users save more and spend better.",
+    "subtitle": "Discover how Luxa helps thousands of users save more and spend better.",
+    "stats": [
+      { "value": "4.9/5", "label": "Average rating" },
+      { "value": "5,000+", "label": "On the waitlist" },
+      { "value": "30%", "label": "More saved on average" }
+    ],
     "items": [
       {
         "name": "Sophie Martin",
         "role": "Freelance Designer",
-        "text": "Pocketly completely transformed my financial management. I saved 30% more in just 3 months thanks to the 50-30-20 method. The interface is beautiful and super intuitive."
+        "text": "Luxa completely transformed my financial management. I saved 30% more in just 3 months thanks to the 50-30-20 method. The interface is beautiful and super intuitive."
       },
       {
         "name": "Thomas Dubois",
         "role": "Software Engineer",
-        "text": "As a developer, I appreciate Pocketly's security and transparency. Automatic subscription tracking saved me €150/month by canceling ones I no longer used."
+        "text": "As a developer, I appreciate Luxa's security and transparency. Automatic subscription tracking saved me €150/month by canceling ones I no longer used."
       },
       {
         "name": "Emma Lefebvre",
         "role": "Marketing Manager",
-        "text": "The Family plan is perfect! My husband and I now manage our budget together. Shared savings goals helped us save for our vacation in 6 months."
+        "text": "I love being able to manage my budget in multiple currencies without any hassle. Shared savings goals helped us save for our vacation in 6 months."
       },
       {
         "name": "Lucas Bernard",
         "role": "Student",
-        "text": "Even with a tight student budget, Pocketly helps me stay in control. The free version is already super complete, and AI insights taught me better money management."
+        "text": "Even with a tight student budget, Luxa helps me stay in control. The free version is already super complete, and AI insights taught me better money management."
       },
       {
         "name": "Marie Rousseau",
         "role": "Entrepreneur",
-        "text": "Pocketly became essential for my business. I easily separate personal and professional finances. CSV reports are perfect for my accountant!"
+        "text": "Luxa became essential for my business. I easily separate personal and professional finances. CSV reports are perfect for my accountant!"
       },
       {
         "name": "Alexandre Petit",
         "role": "Teacher",
-        "text": "Clear interface, smart notifications, and most importantly: my data is secure. Pocketly is the budget app I recommend to all my colleagues."
+        "text": "Clear interface, smart notifications, and most importantly: my data is secure. Luxa is the budget app I recommend to all my colleagues."
       }
     ]
   },
   "faq": {
     "badge": "FAQ",
     "title": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know about Pocketly. Can't find your answer? Contact our team.",
+    "subtitle": "Everything you need to know about Luxa. Can't find your answer? Contact our team.",
     "items": [
       {
-        "question": "What's the difference between Premium and Yearly plans?",
-        "answer": "The Premium plan is billed monthly at €6.99 per month, while the Yearly plan is billed once per year at €69.99. Both plans offer exactly the same features: unlimited transactions, advanced budget analytics, unlimited saving pockets, and custom categories. The Yearly plan saves you 17% compared to monthly payments."
+        "question": "Is Luxa free?",
+        "answer": "Yes, Luxa is currently 100% free during the beta, with access to all essential features. Premium options will arrive later, without taking anything away from the current experience."
       },
       {
         "question": "Is there a mobile app available?",
-        "answer": "Pocketly is currently in beta and will be available soon on both iOS (App Store) and Android (Google Play). Join our waitlist to get early access and be notified as soon as we launch!"
+        "answer": "Luxa is currently in beta and will be available soon on both iOS (App Store) and Android (Google Play). Join our waitlist to get early access and be notified as soon as we launch!"
       },
       {
-        "question": "Can I cancel my subscription anytime?",
-        "answer": "Yes, you can cancel your subscription at any time from your account settings. No hidden fees, no penalties. Your subscription will remain active until the end of your current billing period."
+        "question": "Is my financial data secure?",
+        "answer": "Yes. Luxa protects your account with biometric authentication (Face ID, fingerprint) or secure Google/Apple sign-in. Your data is never sold or shared."
+      },
+      {
+        "question": "What languages and currencies does Luxa support?",
+        "answer": "Luxa is available in 9 languages and supports 26 different currencies, so it fits your life wherever you are in the world."
       }
     ]
   },
   "roadmap": {
     "badge": "Roadmap",
     "title": "Our Vision for the Future",
-    "subtitle": "Discover Pocketly's development stages and upcoming features.",
+    "subtitle": "Discover Luxa's development stages and upcoming features.",
     "completed": "Completed",
     "current": "In Progress",
     "upcoming": "Coming Soon",
@@ -151,7 +198,7 @@
       },
       {
         "title": "Published App",
-        "description": "Official release on App Store and Google Play with all premium features. Access advanced analytics, unlimited saving pockets, and much more."
+        "description": "Official release on App Store and Google Play with all premium features. Access advanced analytics, unlimited savings goals, and much more."
       },
       {
         "title": "Web Version",
@@ -164,45 +211,39 @@
     ]
   },
   "cta": {
-    "badge": "Join +5k users on waitlist",
+    "badge": "Join +5,000 users already signed up",
     "title": "It's time to take control of your finances.",
-    "subtitle": "Pocketly helps you save more, spend better and reach your goals faster.",
+    "subtitle": "Luxa helps you save more, spend better and reach your goals faster — without stress, without judgment.",
     "joinWaitlist": "Join Waitlist",
-    "watchDemo": "Watch Demo",
-    "freeToStart": "Free to start",
+    "watchDemo": "See the app in action",
+    "freeToStart": "Free during beta",
     "realTimeTracking": "Real-time tracking",
-    "guaranteedSavings": "Guaranteed savings"
+    "guaranteedSavings": "Built-in 50/30/20 method"
   },
   "footer": {
-    "description": "The mobile app that revolutionizes your daily life.",
+    "description": "The app that helps you take control of your money, without the stress.",
     "product": "Product",
     "features": "Features",
-    "pricing": "Pricing",
-    "changelog": "Changelog",
-    "company": "Company",
-    "about": "About",
-    "careers": "Careers",
-    "press": "Press",
+    "howItWorks": "How it works",
+    "faq": "FAQ",
+    "legal": "Legal",
     "contact": "Contact",
-    "support": "Support",
-    "helpCenter": "Help Center",
-    "documentation": "Documentation",
-    "status": "Status",
     "privacy": "Privacy",
     "rights": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
     "terms": "Terms of Use",
-    "privacyPolicy": "Privacy Policy"
+    "madeWith": "Made with ♥ by Minhaj"
   },
   "waitlist": {
     "title": "Join the Waitlist",
     "successTitle": "You're in!",
-    "description": "Be among the first to discover Pocketly and be notified as soon as we launch.",
-    "successDescription": "Thank you! You'll receive an email as soon as Pocketly is available.",
+    "description": "Be among the first to discover Luxa and be notified as soon as we launch.",
+    "successDescription": "Thank you! You'll receive an email as soon as Luxa is available.",
     "emailPlaceholder": "your.email@example.com",
     "submit": "Join Waitlist",
     "submitting": "Joining...",
     "checkEmail": "Check your inbox!",
-    "disclaimer": "By signing up, you agree to receive emails from Pocketly. You can unsubscribe at any time.",
+    "disclaimer": "By signing up, you agree to receive emails from Luxa. You can unsubscribe at any time.",
     "usersCount": "5,000+ signed up",
     "free": "100% free"
   }

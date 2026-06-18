@@ -1,13 +1,13 @@
 import { NavItem, SocialLink, Feature, PricingPlan, RoadmapItem } from "@/types"
 
 export const siteConfig = {
-  name: "Pocketly",
+  name: "Luxa",
   description: "L'application mobile qui révolutionne votre quotidien",
-  url: "https://pocketly.app",
-  ogImage: "https://pocketly.app/og.jpg",
+  url: "https://luxa.app",
+  ogImage: "https://luxa.app/og.jpg",
   links: {
-    twitter: "https://twitter.com/pocketly",
-    github: "https://github.com/pocketly",
+    twitter: "https://twitter.com/luxa",
+    github: "https://github.com/luxa",
   },
 }
 
@@ -33,17 +33,17 @@ export const navItems: NavItem[] = [
 export const socialLinks: SocialLink[] = [
   {
     name: "Twitter",
-    href: "https://twitter.com/pocketly",
+    href: "https://twitter.com/luxa",
     icon: "twitter",
   },
   {
     name: "GitHub",
-    href: "https://github.com/pocketly",
+    href: "https://github.com/luxa",
     icon: "github",
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/company/pocketly",
+    href: "https://linkedin.com/company/luxa",
     icon: "linkedin",
   },
 ]

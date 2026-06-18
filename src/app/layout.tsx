@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
 });
 
@@ -15,11 +15,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pocketly - L'application mobile qui révolutionne votre quotidien",
-  description: "Découvrez Pocketly, l'application mobile nouvelle génération qui simplifie votre vie avec des fonctionnalités intelligentes et une interface intuitive.",
-  keywords: ["application mobile", "productivité", "organisation", "pocketly"],
-  authors: [{ name: "Pocketly Team" }],
-  creator: "Pocketly",
+  title: "Luxa - Prenez le contrôle de votre argent, sans stress",
+  description: "Luxa est l'application de gestion de budget personnel qui applique la méthode 50/30/20, suit vos dépenses en temps réel et vous aide à atteindre vos objectifs d'épargne. Multi-devises, multi-langues, sécurisée.",
+  keywords: ["budget", "gestion financière", "épargne", "méthode 50 30 20", "finances personnelles", "luxa"],
+  authors: [{ name: "Luxa Team" }],
+  creator: "Luxa",
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
@@ -27,16 +27,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://pocketly.app",
-    title: "Pocketly - L'application mobile qui révolutionne votre quotidien",
-    description: "Découvrez Pocketly, l'application mobile nouvelle génération qui simplifie votre vie avec des fonctionnalités intelligentes et une interface intuitive.",
-    siteName: "Pocketly",
+    url: "https://luxa.app",
+    title: "Luxa - Prenez le contrôle de votre argent, sans stress",
+    description: "L'application de gestion de budget qui applique la méthode 50/30/20, suit vos dépenses en temps réel et vous aide à épargner sans effort.",
+    siteName: "Luxa",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pocketly - L'application mobile qui révolutionne votre quotidien",
-    description: "Découvrez Pocketly, l'application mobile nouvelle génération qui simplifie votre vie avec des fonctionnalités intelligentes et une interface intuitive.",
-    creator: "@pocketly",
+    title: "Luxa - Prenez le contrôle de votre argent, sans stress",
+    description: "L'application de gestion de budget qui applique la méthode 50/30/20, suit vos dépenses en temps réel et vous aide à épargner sans effort.",
+    creator: "@luxa",
   },
   robots: {
     index: true,
@@ -59,7 +59,7 @@ export default function RootLayout({
   return (
     <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-background font-sans`}
+        className={`${jakarta.variable} ${geistMono.variable} antialiased min-h-screen bg-background font-sans`}
       >
         <LanguageProvider>
           <ThemeProvider

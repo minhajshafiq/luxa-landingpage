@@ -43,7 +43,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     // Detect browser language on mount
-    const storedLang = localStorage.getItem('pocketly-language') as Language | null
+    const storedLang = localStorage.getItem('luxa-language') as Language | null
     const detectedLang = storedLang || detectBrowserLanguage()
     setLanguageState(detectedLang)
   }, [])
@@ -51,7 +51,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
     if (typeof window !== 'undefined') {
-      localStorage.setItem('pocketly-language', lang)
+      localStorage.setItem('luxa-language', lang)
     }
   }
 

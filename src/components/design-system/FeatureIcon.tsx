@@ -3,10 +3,13 @@
 import { type LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+type FeatureIconColor = 'primary' | 'epargne' | 'secondary' | 'besoins' | 'foreground'
+
 interface FeatureIconProps {
   icon: LucideIcon
   className?: string
   size?: 'sm' | 'md' | 'lg'
+  color?: FeatureIconColor
 }
 
 const sizeClasses = {
@@ -24,19 +27,29 @@ const sizeClasses = {
   },
 }
 
-export function FeatureIcon({ icon: Icon, className, size = 'md' }: FeatureIconProps) {
+const colorClasses: Record<FeatureIconColor, { bg: string; text: string }> = {
+  primary: { bg: 'bg-primary/10', text: 'text-primary' },
+  epargne: { bg: 'bg-epargne/10', text: 'text-epargne' },
+  secondary: { bg: 'bg-secondary/15', text: 'text-secondary' },
+  besoins: { bg: 'bg-besoins/10', text: 'text-besoins' },
+  foreground: { bg: 'bg-foreground/10', text: 'text-foreground' },
+}
+
+export function FeatureIcon({ icon: Icon, className, size = 'md', color = 'primary' }: FeatureIconProps) {
   const sizes = sizeClasses[size]
+  const colors = colorClasses[color]
 
   return (
     <div
       className={cn(
         sizes.wrapper,
-        'rounded-lg bg-primary/10 flex items-center justify-center',
+        colors.bg,
+        'rounded-xl flex items-center justify-center',
         'transition-transform duration-300 group-hover:scale-110',
         className
       )}
     >
-      <Icon className={cn(sizes.icon, 'text-primary')} />
+      <Icon className={cn(sizes.icon, colors.text)} />
     </div>
   )
 }

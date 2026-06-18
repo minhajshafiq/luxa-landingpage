@@ -9,7 +9,7 @@ export function GradientText({ children, className }: GradientTextProps) {
   return (
     <span
       className={cn(
-        'bg-gradient-to-r from-primary via-accent to-primary bg-clip-text',
+        'bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text',
         'text-transparent',
         className
       )}

@@ -17,47 +17,53 @@ export function Header() {
   const { t } = useTranslation()
 
   const navItems = [
-    { title: t('nav.home'), href: '/' },
     { title: t('nav.features'), href: '#features' },
-    { title: t('nav.pricing'), href: '#pricing' },
+    { title: t('nav.howItWorks'), href: '#how-it-works' },
+    { title: t('nav.faq'), href: '#faq' },
     { title: t('nav.roadmap'), href: '#roadmap' },
   ]
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 md:h-18 items-center justify-between px-4 sm:px-6 lg:px-8" style={{ maxWidth: '1200px' }}>
+    <header className="fixed top-3 md:top-5 inset-x-0 z-50 px-3 sm:px-4">
+      <div
+        className={cn(
+          'mx-auto w-full max-w-5xl flex h-14 md:h-16 items-center justify-between gap-2',
+          'rounded-full border border-border/50 bg-background/75 backdrop-blur-xl',
+          'supports-[backdrop-filter]:bg-background/60 shadow-lg shadow-black/[0.03]',
+          'px-3 sm:px-4 md:px-5'
+        )}
+      >
         {/* Logo */}
-        <Link href="/" className="flex items-center z-50 cursor-pointer">
+        <Link href="/" className="flex items-center z-50 cursor-pointer pl-1">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <LogoText className="transition-transform duration-300" />
           </motion.div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-1">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
                 'text-sm font-medium text-muted-foreground transition-all duration-300',
-                'hover:text-foreground relative group cursor-pointer'
+                'hover:text-foreground hover:bg-muted rounded-full px-4 py-2 cursor-pointer'
               )}
             >
               {item.title as string}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </Link>
           ))}
         </nav>
 
         {/* Desktop CTA + Dark Mode + Language */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2">
           <LanguageToggle />
           <ThemeToggle />
           <WaitlistForm>
             <AnimatedButton
               size="sm"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-6 cursor-pointer"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-5 cursor-pointer"
             >
               {t('nav.joinWaitlist') as string}
             </AnimatedButton>
@@ -100,17 +106,17 @@ export function Header() {
         </motion.button>
       </div>
 
-      {/* Mobile Navigation - Full Screen Overlay */}
+      {/* Mobile Navigation - Floating Card */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden absolute top-16 left-0 right-0 bg-background/98 backdrop-blur-lg border-b border-border/50 shadow-lg"
+            initial={{ opacity: 0, y: -12, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -12, scale: 0.97 }}
+            transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="md:hidden mx-auto mt-2 w-full max-w-5xl rounded-3xl border border-border/50 bg-background/95 backdrop-blur-xl shadow-xl overflow-hidden"
           >
-            <nav className="container mx-auto px-4 py-6 space-y-1">
+            <nav className="px-4 py-4 space-y-1">
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.href}
@@ -123,7 +129,7 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
                       'block px-4 py-3 text-base font-medium text-foreground',
-                      'rounded-lg hover:bg-primary/10 transition-colors',
+                      'rounded-2xl hover:bg-primary/10 transition-colors',
                       'border border-transparent hover:border-primary/20 cursor-pointer'
                     )}
                   >
