@@ -1,250 +1,290 @@
 {
   "nav": {
-    "home": "Home",
-    "features": "Features",
-    "howItWorks": "How it works",
+    "pockets": "Pockets",
+    "stella": "Stella",
+    "pricing": "Pricing",
     "faq": "FAQ",
-    "roadmap": "Roadmap",
-    "joinWaitlist": "Join Waitlist"
+    "downloadApp": "Download"
   },
   "hero": {
-    "badge": "✨ Budgeting, finally without the guilt",
-    "title": "Take control of your money,",
-    "titleHighlight": "without the stress",
-    "subtitle": "Track your spending in real time, let the",
-    "subtitle2": "50/30/20 method",
-    "subtitle3": " split your budget automatically, and reach your savings goals effortlessly.",
-    "comingSoon": "Coming soon on",
-    "downloadAppStore": "Download on the App Store",
-    "downloadPlayStore": "Get it on Google Play",
-    "watchDemo": "See the app in action",
-    "floatingSavings": "saved this month",
-    "floatingGoal": "Vacation goal",
+    "badge": "Available on iOS · Android in beta",
+    "title": "Your money,",
+    "titleHighlight": "finally clear.",
+    "subtitle": "Luxa turns the noise of your spending into a calm picture: pockets for every euro, subscriptions under control, and Stella — a small star who notices what matters.",
+    "ctaDownload": "Download on the App Store",
+    "ctaAndroidBeta": "Android · join the beta",
     "trust": {
-      "secure": "Secure",
-      "currencies": "26 currencies",
-      "languages": "9 languages",
-      "free": "100% free"
+      "free": "Free to start",
+      "noBank": "No bank connection",
+      "private": "Your data stays yours"
+    },
+    "chips": [
+      { "label": "Rent", "amount": "−€980" },
+      { "label": "Spotify", "amount": "−€10.99" },
+      { "label": "Groceries", "amount": "−€64.20" },
+      { "label": "Salary", "amount": "+€2,480" }
+    ],
+    "insightChip": {
+      "label": "Stella noticed",
+      "value": "Dining out is rising this week"
+    },
+    "savingsChip": {
+      "label": "Savings",
+      "value": "21% this month"
     }
   },
-  "problem": {
-    "badge": "The reality",
-    "title": "Managing your money shouldn't be a headache",
-    "subtitle": "Three everyday problems Luxa solves, without complexity or judgment.",
-    "items": [
-      {
-        "title": "Blurry budget",
-        "pain": "You never really know where your money went by the end of the month.",
-        "solution": "Luxa tracks every expense in real time and splits your budget with the 50/30/20 method."
-      },
-      {
-        "title": "Hard to save",
-        "pain": "Putting money aside stays a wish, with no tracking or clear goal.",
-        "solution": "Create savings goals and watch your progress automatically, in real time."
-      },
-      {
-        "title": "Financial stress",
-        "pain": "Classic banking apps feel cold, austere, and guilt-inducing.",
-        "solution": "Luxa is built to reassure: an elegant interface, a warm tone, zero judgment."
-      }
-    ]
-  },
-  "features": {
-    "title": "Everything you need to take back control",
-    "subtitle": "Features designed to simplify your financial life, never to complicate it.",
-    "budgetMethod": {
-      "title": "50/30/20 Method",
-      "description": "Your income is automatically split between needs, wants and savings, no math required."
-    },
-    "savingsGoals": {
-      "title": "Savings Goals",
-      "description": "Create goals, track your progress in real time and stay motivated until the end."
-    },
-    "multiCurrency": {
-      "title": "26 Currencies",
-      "description": "Manage your budget in the currency of your choice, wherever you are in the world."
-    },
-    "multiLanguage": {
-      "title": "9 Languages",
-      "description": "Luxa adapts to you: choose your language from 9 available options."
-    },
-    "security": {
-      "title": "Biometric Security",
-      "description": "Sign in with fingerprint, Face ID, or via Google and Apple. Your data belongs to you."
-    },
-    "darkMode": {
-      "title": "OLED Dark Mode",
-      "description": "An elegant interface in daylight, and a deep black that's easy on your eyes at night."
-    },
-    "cta": "See the app in action"
-  },
-  "howItWorks": {
-    "badge": "How it works",
-    "title": "Three steps, and you're set",
-    "subtitle": "Luxa fits into your routine in just a few minutes.",
-    "steps": [
-      {
-        "title": "Sign in securely",
-        "description": "Create your account with email or biometric sign-in, in just a few seconds."
-      },
-      {
-        "title": "Visualize your budget",
-        "description": "The 50/30/20 rule automatically splits your income between needs, wants and savings."
-      },
-      {
-        "title": "Reach your goals",
-        "description": "Track your progress in real time and save without even thinking about it."
-      }
-    ]
-  },
-  "screenshots": {
-    "badge": "The app",
-    "title": "An interface designed for clarity",
-    "subtitle": "See what managing your budget with Luxa looks like.",
-    "items": [
-      {
-        "title": "Dashboard",
-        "description": "Your balance, this week's spending and recent transactions, at a glance.",
-        "callout": "Real-time balance"
-      },
-      {
-        "title": "Transaction History",
-        "description": "Browse month by month and spot your spending habits with the calendar view.",
-        "callout": "Smart calendar"
-      },
-      {
-        "title": "50/30/20 Pockets",
-        "description": "Needs, wants and savings, automatically split and tracked in real time.",
-        "callout": "Automatic split"
-      }
-    ]
-  },
-  "testimonials": {
-    "badge": "Testimonials",
-    "title": "They transformed their finances",
-    "subtitle": "Discover how Luxa helps thousands of users save more and spend better.",
-    "stats": [
-      { "value": "4.9/5", "label": "Average rating" },
-      { "value": "5,000+", "label": "On the waitlist" },
-      { "value": "30%", "label": "More saved on average" }
+  "disperse": {
+    "eyebrow": "The real problem",
+    "title": "Your money doesn't vanish.",
+    "titleHighlight": "It scatters.",
+    "lead": "A coffee here, a subscription there, three online orders, a bill that lands… By the end of the month nothing dramatic happened — and yet you can't say where it all went.",
+    "chips": [
+      { "label": "Coffee", "amount": "−€2.80" },
+      { "label": "Uber Eats", "amount": "−€18.90" },
+      { "label": "Netflix", "amount": "−€13.49" },
+      { "label": "Pharmacy", "amount": "−€12.30" },
+      { "label": "Amazon", "amount": "−€27.99" },
+      { "label": "Fuel", "amount": "−€58.00" },
+      { "label": "Zara", "amount": "−€49.90" },
+      { "label": "Rent", "amount": "−€980" }
     ],
+    "pockets": [
+      { "name": "Needs", "target": "50%" },
+      { "name": "Wants", "target": "30%" },
+      { "name": "Savings", "target": "20%" }
+    ],
+    "after": {
+      "title": "Luxa sorts. You breathe.",
+      "lead": "Every expense finds its place. The mess becomes a picture you can read at a glance."
+    }
+  },
+  "pockets": {
+    "eyebrow": "Pockets",
+    "title": "Give every euro a place.",
+    "lead": "Rent, groceries, nights out, projects: every pocket has its budget. You see what's left, what's overflowing, and what you can afford — no spreadsheet, no mental math.",
+    "bullets": [
+      {
+        "title": "The 50/30/20 method, ready to use",
+        "description": "Needs, wants, savings. A simple frame that structures your month from day one — and bends to fit your life."
+      },
+      {
+        "title": "Budgets that live in real time",
+        "description": "Each pocket fills as you spend. You feel the month moving instead of enduring it."
+      },
+      {
+        "title": "Left-to-spend, always visible",
+        "description": "The only question that matters — \"can I?\" — finally has a clear answer, any time."
+      }
+    ],
+    "callout": {
+      "label": "Left to spend",
+      "value": "€62.96"
+    }
+  },
+  "stella": {
+    "eyebrow": "Stella",
+    "title": "A small star watching over your budget.",
+    "lead": "Stella isn't a cold chatbot. She looks at your month, notices what's changing, and tells you simply — no jargon, no judgment.",
+    "insights": [
+      {
+        "title": "Dining out is up 18% this week",
+        "description": "Nothing serious — but better to know now than on the 28th."
+      },
+      {
+        "title": "3 subscriptions renew before Friday",
+        "description": "Netflix, Spotify and your gym. About €49 to plan for."
+      },
+      {
+        "title": "Your savings rate hit 21% this month",
+        "description": "Your best month since January. Keep it up."
+      }
+    ],
+    "weekly": {
+      "title": "Every Sunday, your week in plain words",
+      "description": "A gentle recap: what came in, what went out, and how it compares to last week."
+    }
+  },
+  "subs": {
+    "eyebrow": "Subscriptions",
+    "title": "See what drains you in silence.",
+    "lead": "Streaming, gym, internet box, rent… Luxa gathers everything that recurs each month and shows you the real total. Some months, it's a revelation.",
+    "totalLabel": "The real total, every month",
+    "total": "−€1,276",
+    "perMonth": "/ month",
+    "note": "With Luxa Pro, Stella warns you before every debit."
+  },
+  "benefits": {
+    "eyebrow": "Everyday",
+    "title": "Built for real life, not spreadsheets.",
+    "subtitle": "Everything you need to keep the month readable — nothing more.",
     "items": [
       {
-        "name": "Sophie Martin",
-        "role": "Freelance Designer",
-        "text": "Luxa completely transformed my financial management. I saved 30% more in just 3 months thanks to the 50-30-20 method. The interface is beautiful and super intuitive."
+        "title": "Adding an expense takes three seconds",
+        "description": "Amount, category, done. Fast enough to do it in the supermarket queue."
       },
       {
-        "name": "Thomas Dubois",
-        "role": "Software Engineer",
-        "text": "As a developer, I appreciate Luxa's security and transparency. Automatic subscription tracking saved me €150/month by canceling ones I no longer used."
+        "title": "Import statements, Luxa reads them for you",
+        "description": "One PDF bank statement, and your transactions are extracted, checked and filed."
       },
       {
-        "name": "Emma Lefebvre",
-        "role": "Marketing Manager",
-        "text": "I love being able to manage my budget in multiple currencies without any hassle. Shared savings goals helped us save for our vacation in 6 months."
+        "title": "Replay your month, day by day",
+        "description": "A calendar of your spending to find any purchase — and watch your habits take shape."
       },
       {
-        "name": "Lucas Bernard",
-        "role": "Student",
-        "text": "Even with a tight student budget, Luxa helps me stay in control. The free version is already super complete, and AI insights taught me better money management."
-      },
-      {
-        "name": "Marie Rousseau",
-        "role": "Entrepreneur",
-        "text": "Luxa became essential for my business. I easily separate personal and professional finances. CSV reports are perfect for my accountant!"
-      },
-      {
-        "name": "Alexandre Petit",
-        "role": "Teacher",
-        "text": "Clear interface, smart notifications, and most importantly: my data is secure. Luxa is the budget app I recommend to all my colleagues."
+        "title": "Understand habits before they become problems",
+        "description": "Categories, trends, averages: you see what's rising while there's still time to adjust."
       }
     ]
+  },
+  "difference": {
+    "eyebrow": "The difference",
+    "title": "Your bank shows lines.",
+    "titleHighlight": "Luxa tells you what they mean.",
+    "bankTitle": "Your statement",
+    "luxaTitle": "With Luxa",
+    "rows": [
+      {
+        "bank": "SEPA DD NETFLIX.COM €13.49",
+        "luxa": "Subscription · streaming costs you €41/month",
+        "tone": "primary"
+      },
+      {
+        "bank": "CARD CARREFOUR 06/28 €64.20",
+        "luxa": "Groceries · 87% of budget used, all good",
+        "tone": "success"
+      },
+      {
+        "bank": "CARD UBER EATS 06/22 €18.90",
+        "luxa": "Wants · dining out is up 18% this week",
+        "tone": "warning"
+      },
+      {
+        "bank": "TRANSFER SALARY ACME €2,480.00",
+        "luxa": "Split: 50% needs · 30% wants · 20% savings",
+        "tone": "primary"
+      }
+    ],
+    "punch": "You already had the numbers. What was missing was the meaning."
+  },
+  "privacy": {
+    "eyebrow": "Trust",
+    "title": "Your budget is nobody's business but yours.",
+    "lead": "Luxa is designed as an intimate space, not an advertising product.",
+    "bullets": [
+      {
+        "title": "No bank connection required",
+        "description": "Luxa doesn't need access to your account to help you see clearly."
+      },
+      {
+        "title": "Encrypted, hosted in Europe",
+        "description": "Your data is encrypted in transit and stays on EU infrastructure."
+      },
+      {
+        "title": "Never sold, never mined",
+        "description": "Your budget isn't a product. It feeds no ad network."
+      }
+    ]
+  },
+  "pricing": {
+    "eyebrow": "Pricing",
+    "title": "Start free.",
+    "titleHighlight": "Go further with Pro.",
+    "subtitle": "The essentials are free, forever. Luxa Pro adds active help: full Stella, projections, and reminders before every debit.",
+    "free": {
+      "name": "Luxa",
+      "price": "€0",
+      "period": "free, forever",
+      "tagline": "Everything you need to see clearly",
+      "features": [
+        "Track spending and income",
+        "Pockets to organize your budget",
+        "50/30/20 method included",
+        "All your subscriptions in one place"
+      ],
+      "cta": "Download for free"
+    },
+    "pro": {
+      "name": "Luxa Pro",
+      "badge": "Active help",
+      "price": "€6.99",
+      "period": "per month",
+      "note": "or €35.99 / year — same features",
+      "tagline": "Full Stella, by your side",
+      "features": [
+        "Full Stella analytics and deeper insights",
+        "Spending projections and trend alerts",
+        "Reminders before every subscription debit",
+        "Advanced PDF import: bulk editing, validation",
+        "Richer weekly summary"
+      ],
+      "cta": "Try Luxa Pro"
+    }
   },
   "faq": {
-    "badge": "FAQ",
-    "title": "Frequently Asked Questions",
-    "subtitle": "Everything you need to know about Luxa. Can't find your answer? Contact our team.",
+    "eyebrow": "FAQ",
+    "title": "Questions people actually ask us",
+    "subtitle": "Something else on your mind? Write to us — we answer fast.",
     "items": [
       {
-        "question": "Is Luxa free?",
-        "answer": "Yes, Luxa is currently 100% free during the beta, with access to all essential features. Premium options will arrive later, without taking anything away from the current experience."
+        "question": "Is Luxa a bank?",
+        "answer": "No — and it doesn't try to be. Luxa never touches your money: it's a calm space above your accounts, where you understand and organize what's happening. Your bank executes; Luxa explains."
       },
       {
-        "question": "Is there a mobile app available?",
-        "answer": "Luxa is currently in beta and will be available soon on both iOS (App Store) and Android (Google Play). Join our waitlist to get early access and be notified as soon as we launch!"
+        "question": "Do I have to connect my bank account?",
+        "answer": "No, and that's deliberate. You add expenses by hand in seconds, or import a PDF statement that Luxa reads and files for you. No bank credentials ever pass through the app."
       },
       {
-        "question": "Is my financial data secure?",
-        "answer": "Yes. Luxa protects your account with biometric authentication (Face ID, fingerprint) or secure Google/Apple sign-in. Your data is never sold or shared."
+        "question": "Is my data private?",
+        "answer": "Yes. Your data is encrypted in transit, hosted on EU infrastructure, and never sold or used for advertising. Your budget is nobody's business but yours."
       },
       {
-        "question": "What languages and currencies does Luxa support?",
-        "answer": "Luxa is available in 9 languages and supports 26 different currencies, so it fits your life wherever you are in the world."
+        "question": "What if I'm bad with money?",
+        "answer": "Luxa was made precisely for that. No jargon, no intimidating charts, no guilt: simple pockets, a ready-to-use 50/30/20 frame, and Stella pointing out what matters. Start small — that's enough."
+      },
+      {
+        "question": "Can I customize my budget?",
+        "answer": "Yes. Pockets are free-form: create the ones that match your life, adjust the amounts, and adapt the 50/30/20 split to your reality. Luxa offers a frame, never a cage."
+      },
+      {
+        "question": "Is Luxa available on Android?",
+        "answer": "Luxa is on iOS today. Android is on the way — join the beta and we'll tell you the moment it opens."
+      },
+      {
+        "question": "What does Luxa Pro give me?",
+        "answer": "Active help. Free gives you clarity; Pro adds anticipation: full Stella analytics, end-of-month projections, reminders before every debit, and a more powerful PDF import. €6.99 a month, or €35.99 a year."
       }
     ]
   },
-  "roadmap": {
-    "badge": "Roadmap",
-    "title": "Our Vision for the Future",
-    "subtitle": "Discover Luxa's development stages and upcoming features.",
-    "completed": "Completed",
-    "current": "In Progress",
-    "upcoming": "Coming Soon",
-    "items": [
-      {
-        "title": "Beta App",
-        "description": "Beta version available now! Test the app early and share your feedback to help us create the best possible experience."
-      },
-      {
-        "title": "Published App",
-        "description": "Official release on App Store and Google Play with all premium features. Access advanced analytics, unlimited savings goals, and much more."
-      },
-      {
-        "title": "Web Version",
-        "description": "Manage your finances from any device with our complete web interface. Real-time sync, access from your computer, and an optimized experience on all screens."
-      },
-      {
-        "title": "Budget for Two",
-        "description": "Manage finances together as a couple or family. Create shared budgets, track common expenses, and reach your goals together with complete transparency."
-      }
-    ]
-  },
-  "cta": {
-    "badge": "Join +5,000 users already signed up",
-    "title": "It's time to take control of your finances.",
-    "subtitle": "Luxa helps you save more, spend better and reach your goals faster — without stress, without judgment.",
-    "joinWaitlist": "Join Waitlist",
-    "watchDemo": "See the app in action",
-    "freeToStart": "Free during beta",
-    "realTimeTracking": "Real-time tracking",
-    "guaranteedSavings": "Built-in 50/30/20 method"
+  "final": {
+    "title": "Your money can feel calm again.",
+    "subtitle": "Download Luxa and start your first readable month. Stella is waiting.",
+    "ctaDownload": "Download on the App Store",
+    "ctaAndroidBeta": "Android · join the beta",
+    "micro": "Free to start · No bank connection"
   },
   "footer": {
-    "description": "The app that helps you take control of your money, without the stress.",
+    "tagline": "Make your money readable, one month at a time.",
     "product": "Product",
-    "features": "Features",
-    "howItWorks": "How it works",
+    "pockets": "Pockets",
+    "stella": "Stella",
+    "pricing": "Pricing",
     "faq": "FAQ",
     "legal": "Legal",
     "contact": "Contact",
-    "privacy": "Privacy",
-    "rights": "All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "terms": "Terms of Use",
+    "rights": "All rights reserved.",
     "madeWith": "Made with ♥ by Minhaj"
   },
-  "waitlist": {
-    "title": "Join the Waitlist",
-    "successTitle": "You're in!",
-    "description": "Be among the first to discover Luxa and be notified as soon as we launch.",
-    "successDescription": "Thank you! You'll receive an email as soon as Luxa is available.",
+  "androidBeta": {
+    "title": "Join the Android beta",
+    "successTitle": "You're on the list!",
+    "description": "Luxa is live on iOS. Leave your email and we'll let you know the moment the Android beta opens.",
+    "successDescription": "Thanks! We'll email you as soon as the Android beta is ready.",
     "emailPlaceholder": "your.email@example.com",
-    "submit": "Join Waitlist",
-    "submitting": "Joining...",
+    "submit": "Join the Android beta",
+    "submitting": "Joining…",
     "checkEmail": "Check your inbox!",
-    "disclaimer": "By signing up, you agree to receive emails from Luxa. You can unsubscribe at any time.",
-    "usersCount": "5,000+ signed up",
-    "free": "100% free"
+    "disclaimer": "By signing up, you agree to receive emails from Luxa about the Android beta. You can unsubscribe at any time."
   }
 }

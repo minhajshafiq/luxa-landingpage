@@ -16,10 +16,10 @@ export function Footer() {
     {
       title: t('footer.product'),
       links: [
-        { title: t('footer.features'), href: '#features' },
-        { title: t('footer.howItWorks'), href: '#how-it-works' },
-        { title: t('footer.faq'), href: '#faq' },
-        { title: t('nav.roadmap'), href: '#roadmap' },
+        { title: t('footer.pockets'), href: '/#pockets' },
+        { title: t('footer.stella'), href: '/#stella' },
+        { title: t('footer.pricing'), href: '/#pricing' },
+        { title: t('footer.faq'), href: '/#faq' },
       ],
     },
     {
@@ -33,17 +33,16 @@ export function Footer() {
   ]
 
   return (
-    <footer className="border-t border-border/50 bg-muted/30">
-      <Container className="py-8 md:py-12 lg:py-16">
-        {/* Main Footer Content */}
+    <footer className="relative border-t border-border/60 bg-card/40">
+      <Container className="py-10 md:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
-          {/* Brand Section */}
+          {/* Brand */}
           <div className="space-y-4 sm:col-span-1">
             <Link href="/" className="inline-block cursor-pointer">
               <LogoText className="hover:scale-105 transition-transform duration-300" />
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              {t('footer.description') as string}
+              {t('footer.tagline') as string}
             </p>
             <div className="flex gap-3">
               {socialLinks.map((link) => {
@@ -59,7 +58,7 @@ export function Footer() {
                     href={link.href}
                     className={cn(
                       'p-2 rounded-lg text-muted-foreground hover:text-foreground',
-                      'hover:bg-primary/10 transition-all duration-300 cursor-pointer'
+                      'hover:bg-accent transition-all duration-300 cursor-pointer'
                     )}
                     aria-label={link.name}
                   >
@@ -70,10 +69,10 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Footer Links */}
+          {/* Links */}
           {footerSections.map((sec) => (
             <div key={sec.title as string} className="space-y-3 md:space-y-4">
-              <h3 className="font-semibold text-sm md:text-base text-foreground">
+              <h3 className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-muted-foreground">
                 {sec.title as string}
               </h3>
               <ul className="space-y-2 md:space-y-3">
@@ -81,7 +80,7 @@ export function Footer() {
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300 cursor-pointer"
+                      className="text-sm text-foreground/75 hover:text-foreground transition-colors duration-300 cursor-pointer"
                     >
                       {link.title as string}
                     </Link>
@@ -92,15 +91,15 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-6 md:pt-8 border-t border-border/50">
+        {/* Bottom bar */}
+        <div className="pt-6 border-t border-border/60">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-xs md:text-sm text-muted-foreground text-center sm:text-left">
               &copy; {year} Luxa. {t('footer.rights') as string}
             </p>
             <p className="flex items-center gap-1 text-xs md:text-sm text-muted-foreground">
               {(t('footer.madeWith') as string).split('♥')[0]}
-              <Heart className="h-3.5 w-3.5 fill-primary text-primary" />
+              <Heart className="h-3.5 w-3.5 fill-stella text-stella" />
               {(t('footer.madeWith') as string).split('♥')[1]}
             </p>
           </div>

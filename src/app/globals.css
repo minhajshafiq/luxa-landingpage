@@ -1,120 +1,71 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Luxa — "La nuit où ton argent devient lisible"
+   One committed look: the landing lives in the same night the
+   app lives in. OLED-deep canvas, lavender intelligence, Stella
+   coral warmth, mono money. No light mode — the design is the brand.
+   ============================================================ */
+
 @layer base {
   :root {
-    /* Light Mode - "Richesse & Clarté" Palette */
-    /* Background: #F9F9FB - Blanc neige */
-    --background: 240 20% 98%;
-    /* Text: #1E293B - Ardoise foncée */
-    --foreground: 217 33% 17%;
+    /* Canvas: deep night with a violet undertone (not pure black) */
+    --background: 248 22% 5%;
+    --foreground: 250 25% 95%;
 
-    /* Surface: #FFFFFF */
-    --card: 0 0% 100%;
-    --card-foreground: 217 33% 17%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 217 33% 17%;
+    /* Surfaces: elevated night */
+    --card: 246 16% 9%;
+    --card-foreground: 250 25% 95%;
+    --popover: 246 16% 9%;
+    --popover-foreground: 250 25% 95%;
 
-    /* Primary: #70000E - Bordeaux (marque, CTA) */
-    --primary: 353 100% 22%;
-    --primary-foreground: 0 0% 100%;
-    /* Primary Light: #FBEAEB */
-    --primary-light: 356 68% 95%;
+    /* Primary: the app's lavender — light fill, dark text (premium contrast) */
+    --primary: 255 90% 76%;
+    --primary-foreground: 250 25% 7%;
+    /* Deep lavender for gradients / large washes */
+    --primary-deep: 248 70% 62%;
+    --primary-light: 250 30% 14%;
 
-    /* Secondary: #D4AF37 - Or sablé (accents premium, badges) */
-    --secondary: 46 65% 52%;
-    --secondary-foreground: 217 33% 17%;
-    /* Secondary Light: #FBF6E0 */
-    --secondary-light: 49 77% 93%;
+    /* Stella: her coral body — the emotional accent, used sparingly */
+    --stella: 6 90% 73%;
+    --stella-foreground: 250 25% 7%;
+    --stella-light: 6 45% 14%;
 
-    /* Accent: neutral hover surface (not brand gold, kept subtle for UI mechanics) */
-    --accent: 210 40% 96%;
-    --accent-foreground: 217 33% 17%;
+    /* Gold: Stella's coins, budget health — tertiary sparkle */
+    --secondary: 46 84% 62%;
+    --secondary-foreground: 250 25% 7%;
+    --secondary-light: 46 45% 12%;
 
-    /* Muted: Light background variant */
-    --muted: 210 40% 96%;
-    /* Text Secondary: #64748B */
-    --muted-foreground: 215 16% 47%;
+    /* Purple kept as alias of primary family (legacy component compat) */
+    --purple: 255 90% 76%;
+    --purple-foreground: 250 25% 7%;
+    --purple-light: 250 30% 14%;
 
-    /* Epargne (succès/revenus): #1B8755 */
-    --success: 152 67% 32%;
-    --success-foreground: 0 0% 100%;
+    /* Neutral hover surface */
+    --accent: 246 14% 14%;
+    --accent-foreground: 250 25% 95%;
 
-    /* Envies: #F97316 */
-    --warning: 25 95% 53%;
-    --warning-foreground: 0 0% 100%;
+    --muted: 246 14% 12%;
+    --muted-foreground: 248 12% 67%;
 
-    /* Erreur/dépenses: #E15252 */
-    --destructive: 0 70% 60%;
-    --destructive-foreground: 0 0% 100%;
-
-    /* Couleurs visuels financiers (graphiques, démos uniquement) */
-    --besoins: 217 91% 60%;
-    --envies: 25 95% 53%;
-    --epargne: 152 67% 32%;
-    --error: 0 70% 60%;
-
-    /* Border: #E2E8F0 */
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    /* Ring: Primary color */
-    --ring: 353 100% 22%;
-    --radius: 0.75rem;
-  }
-
-  .dark {
-    /* Dark Mode - OLED pur */
-    --background: 0 0% 0%;
-    /* Text: #CBD5E1 */
-    --foreground: 213 27% 84%;
-
-    /* Surface: #1C1C1E */
-    --card: 240 3% 11%;
-    --card-foreground: 213 27% 84%;
-    --popover: 240 3% 11%;
-    --popover-foreground: 213 27% 84%;
-
-    /* Primary: #D9424F */
-    --primary: 355 67% 55%;
-    --primary-foreground: 0 0% 100%;
-    /* Primary Light: #2A0005 */
-    --primary-light: 353 100% 8%;
-
-    /* Secondary: #F0C840 */
-    --secondary: 46 85% 60%;
-    --secondary-foreground: 0 0% 7%;
-    --secondary-light: 46 60% 14%;
-
-    /* Accent: subtle elevated surface */
-    --accent: 240 3% 16%;
-    --accent-foreground: 213 27% 84%;
-
-    /* Muted: Slightly lighter than surface */
-    --muted: 240 3% 16%;
-    --muted-foreground: 215 16% 65%;
-
-    /* Epargne: #34D399 */
+    /* Money semantics — straight from the app */
     --success: 158 64% 52%;
-    --success-foreground: 0 0% 7%;
-
-    /* Envies */
-    --warning: 25 95% 58%;
-    --warning-foreground: 0 0% 7%;
-
-    /* Erreur: #F87171 */
+    --success-foreground: 250 25% 7%;
+    --warning: 27 96% 61%;
+    --warning-foreground: 250 25% 7%;
     --destructive: 0 91% 71%;
-    --destructive-foreground: 0 0% 7%;
+    --destructive-foreground: 250 25% 7%;
 
-    /* Couleurs visuels financiers */
+    /* Financial visuals (pockets, charts) */
     --besoins: 217 91% 68%;
-    --envies: 25 95% 58%;
+    --envies: 27 96% 61%;
     --epargne: 158 64% 52%;
     --error: 0 91% 71%;
 
-    /* Border: #2C2C2E */
-    --border: 240 2% 18%;
-    --input: 240 2% 18%;
-    /* Ring: Primary color */
-    --ring: 355 67% 55%;
+    --border: 246 12% 16%;
+    --input: 246 12% 16%;
+    --ring: 255 90% 76%;
+    --radius: 1rem;
   }
 }
 
@@ -127,10 +78,17 @@
   --color-popover-foreground: hsl(var(--popover-foreground));
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-deep: hsl(var(--primary-deep));
   --color-primary-light: hsl(var(--primary-light));
+  --color-stella: hsl(var(--stella));
+  --color-stella-foreground: hsl(var(--stella-foreground));
+  --color-stella-light: hsl(var(--stella-light));
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
   --color-secondary-light: hsl(var(--secondary-light));
+  --color-purple: hsl(var(--purple));
+  --color-purple-foreground: hsl(var(--purple-foreground));
+  --color-purple-light: hsl(var(--purple-light));
   --color-muted: hsl(var(--muted));
   --color-muted-foreground: hsl(var(--muted-foreground));
   --color-accent: hsl(var(--accent));
@@ -149,6 +107,7 @@
   --color-input: hsl(var(--input));
   --color-ring: hsl(var(--ring));
   --font-sans: var(--font-jakarta);
+  --font-display: var(--font-bricolage);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -159,6 +118,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+  }
 }
 
 /* Container centrage - Design System */
@@ -167,60 +129,368 @@
   max-width: 1200px;
 }
 
-/* Luxa Brand Styles */
+/* Tabular money — every amount on the page uses this */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------
+   Night-sky ambiance
+   ------------------------------------------------------------ */
+
+/* Faint static starfield — three layered dot grids, offset so they
+   never read as a pattern. Pure CSS, zero JS, zero layout cost. */
+.starfield {
+  background-image:
+    radial-gradient(1px 1px at 12% 24%, hsl(var(--foreground) / 0.55) 50%, transparent 51%),
+    radial-gradient(1px 1px at 38% 68%, hsl(var(--foreground) / 0.35) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 61% 15%, hsl(var(--primary) / 0.55) 50%, transparent 51%),
+    radial-gradient(1px 1px at 74% 44%, hsl(var(--foreground) / 0.45) 50%, transparent 51%),
+    radial-gradient(1px 1px at 89% 71%, hsl(var(--foreground) / 0.3) 50%, transparent 51%),
+    radial-gradient(1.5px 1.5px at 27% 87%, hsl(var(--stella) / 0.4) 50%, transparent 51%),
+    radial-gradient(1px 1px at 51% 39%, hsl(var(--foreground) / 0.3) 50%, transparent 51%),
+    radial-gradient(1px 1px at 95% 12%, hsl(var(--secondary) / 0.45) 50%, transparent 51%);
+  background-size: 640px 640px;
+}
+
+/* Faint dot grid (loader backdrop) */
 .bg-grid-pattern {
   background-image: radial-gradient(circle, hsl(var(--muted-foreground) / 0.1) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
-/* Luxa Gradient Backgrounds */
-.bg-luxa-gradient {
-  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
+/* Ambient glows — lavender for intelligence, coral for Stella warmth,
+   gold for money sparkle. The soft "living" thread down the page. */
+.glow-primary {
+  background: radial-gradient(closest-side, hsl(var(--primary-deep) / 0.22), transparent 70%);
+}
+.glow-stella {
+  background: radial-gradient(closest-side, hsl(var(--stella) / 0.17), transparent 70%);
+}
+.glow-gold {
+  background: radial-gradient(closest-side, hsl(var(--secondary) / 0.14), transparent 70%);
+}
+/* Legacy aliases (loader) */
+.glow-burgundy {
+  background: radial-gradient(closest-side, hsl(var(--primary-deep) / 0.2), transparent 70%);
+}
+.glow-purple {
+  background: radial-gradient(closest-side, hsl(var(--primary-deep) / 0.2), transparent 70%);
 }
 
-.bg-luxa-gradient-soft {
-  background: linear-gradient(135deg, hsl(var(--primary) / 0.1) 0%, hsl(var(--accent) / 0.1) 100%);
+/* Elevated surfaces on the night canvas */
+.shadow-premium {
+  box-shadow:
+    0 1px 0 hsl(var(--foreground) / 0.04) inset,
+    0 8px 24px -8px hsl(248 30% 2% / 0.7),
+    0 2px 8px -2px hsl(248 30% 2% / 0.5);
+}
+.shadow-premium-hover {
+  box-shadow:
+    0 1px 0 hsl(var(--foreground) / 0.06) inset,
+    0 20px 48px -12px hsl(var(--primary-deep) / 0.25),
+    0 6px 16px -4px hsl(248 30% 2% / 0.6);
+}
+/* The phone halo — a screen glowing in the dark */
+.shadow-screen {
+  box-shadow:
+    0 0 0 1px hsl(var(--foreground) / 0.06),
+    0 0 60px -12px hsl(var(--primary-deep) / 0.45),
+    0 40px 80px -24px hsl(248 30% 2% / 0.9);
 }
 
-.bg-luxa-success {
-  background: linear-gradient(135deg, hsl(var(--success)) 0%, hsl(var(--secondary)) 100%);
+/* ------------------------------------------------------------
+   Intro loader (chaos → clarity) — token-driven, unchanged flow
+   ------------------------------------------------------------ */
+
+.luxa-loader-shell {
+  animation: luxa-loader-shell-exit 1800ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* Luxa Shadows */
-.shadow-luxa {
-  box-shadow: 0 10px 25px -5px hsl(var(--primary) / 0.1), 0 10px 10px -5px hsl(var(--primary) / 0.04);
+.luxa-loader-shell.luxa-loader-js {
+  animation: none;
 }
 
-.shadow-luxa-lg {
-  box-shadow: 0 25px 50px -12px hsl(var(--primary) / 0.25);
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-chip {
+  opacity: 0;
+  filter: blur(3px);
+  transform: translate(-50%, -50%) translate(var(--chaos-x), var(--chaos-y)) rotate(var(--chip-rotate)) scale(0.96);
+  animation: luxa-loader-chip-clarify 1350ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: calc(50ms + (var(--chip-index) * 35ms));
 }
 
-/* Luxa Animations */
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-halo {
+  opacity: 0;
+  transform: scale(0.86);
+  animation: luxa-loader-halo-in 340ms ease-out 320ms forwards;
+}
+
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-stella {
+  opacity: 0;
+  transform: translateY(8px) scale(0.88);
+  animation:
+    luxa-loader-stella-in 380ms cubic-bezier(0.22, 1, 0.36, 1) 360ms forwards,
+    luxa-loader-stella-float 820ms ease-in-out 760ms infinite alternate;
+}
+
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-pocket {
+  opacity: 0;
+  transform: translateY(14px) scale(0.97);
+  animation: luxa-loader-pocket-in 300ms ease-out 620ms forwards;
+}
+
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-pocket:nth-child(2) {
+  animation-delay: 665ms;
+}
+
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-pocket:nth-child(3) {
+  animation-delay: 710ms;
+}
+
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-fill {
+  transform: scaleX(0);
+  animation: luxa-loader-fill-in 340ms ease-out 980ms forwards;
+}
+
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-progress {
+  transform: scaleX(0);
+  animation: luxa-loader-progress-in 420ms ease-in-out 1060ms forwards;
+}
+
+.luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-sparkle {
+  opacity: 0;
+  transform: scale(0.75);
+  animation: luxa-loader-sparkle-in 180ms ease-out 1300ms forwards;
+}
+
+@keyframes luxa-loader-chip-clarify {
+  0% {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translate(-50%, -50%) translate(var(--chaos-x), var(--chaos-y)) rotate(var(--chip-rotate)) scale(0.96);
+  }
+  20% {
+    opacity: 1;
+    filter: blur(1.4px);
+  }
+  52% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(var(--chaos-x), calc(var(--chaos-y) - 8px)) rotate(var(--chip-rotate)) scale(1);
+  }
+  92%, 100% {
+    opacity: 0.34;
+    filter: blur(0);
+    transform: translate(-50%, -50%) translate(var(--clarity-x), var(--clarity-y)) rotate(0deg) scale(0.66);
+  }
+}
+
+@keyframes luxa-loader-halo-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes luxa-loader-stella-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes luxa-loader-stella-float {
+  to {
+    transform: translateY(-2px) scale(1);
+  }
+}
+
+@keyframes luxa-loader-pocket-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes luxa-loader-fill-in {
+  to {
+    transform: scaleX(var(--fill-target));
+  }
+}
+
+@keyframes luxa-loader-progress-in {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes luxa-loader-sparkle-in {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes luxa-loader-shell-exit {
+  0%, 82% {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-12px);
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 639px) {
+  .luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-chip {
+    animation-name: luxa-loader-chip-clarify-mobile;
+  }
+
+  @keyframes luxa-loader-chip-clarify-mobile {
+    0% {
+      opacity: 0;
+      filter: blur(2.4px);
+      transform: translate(-50%, -50%) translate(calc(var(--chaos-x) * 0.62), calc(var(--chaos-y) * 0.62)) rotate(var(--chip-rotate)) scale(0.9);
+    }
+    24% {
+      opacity: 0.88;
+      filter: blur(1px);
+    }
+    92%, 100% {
+      opacity: 0.3;
+      filter: blur(0);
+      transform: translate(-50%, -50%) translate(calc(var(--clarity-x) * 0.62), calc(var(--clarity-y) * 0.62)) rotate(0deg) scale(0.54);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luxa-loader-shell {
+    animation-duration: 1050ms;
+  }
+
+  .luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-chip,
+  .luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-sparkle {
+    display: none;
+  }
+
+  .luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-halo,
+  .luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-stella,
+  .luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-pocket,
+  .luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-fill,
+  .luxa-loader-shell:not(.luxa-loader-js) .luxa-loader-progress {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ------------------------------------------------------------
+   Ambient loops
+   ------------------------------------------------------------ */
+
 @keyframes luxa-float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
 }
 
-@keyframes luxa-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes luxa-glow {
-  0%, 100% { box-shadow: 0 0 20px hsl(var(--primary) / 0.3); }
-  50% { box-shadow: 0 0 30px hsl(var(--primary) / 0.5); }
+@keyframes luxa-float-soft {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 .animate-luxa-float {
   animation: luxa-float 3s ease-in-out infinite;
 }
 
-.animate-luxa-pulse {
-  animation: luxa-pulse 2s ease-in-out infinite;
+/* Slower, gentler float for Stella (premium, low amplitude) */
+.animate-stella-float {
+  animation: luxa-float-soft 6s ease-in-out infinite;
 }
 
-.animate-luxa-glow {
-  animation: luxa-glow 2s ease-in-out infinite;
+/* Ambient glow breathing — opacity-only so it never fights transforms */
+@keyframes glow-breathe {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.72; }
+}
+.animate-glow-breathe {
+  animation: glow-breathe 7s ease-in-out infinite;
+}
+.animate-glow-breathe-slow {
+  animation: glow-breathe 10s ease-in-out infinite;
+}
+
+/* Star twinkle for decorative sparkles */
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.25; transform: scale(0.9); }
+  50% { opacity: 0.9; transform: scale(1); }
+}
+.animate-star-twinkle {
+  animation: star-twinkle 4s ease-in-out infinite;
+}
+
+/* Scroll-reveal elements start hidden (revealed by ScrollAnimations).
+   Kept in the DOM for SEO; shown instantly for reduced-motion. */
+[data-animate] {
+  opacity: 0;
+  transform: translate3d(0, 16px, 0);
+  will-change: opacity, transform;
+}
+
+/* Premium button press */
+@media (prefers-reduced-motion: no-preference) {
+  button:active,
+  a[data-press]:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Understated nav underline that grows from the center on hover */
+.nav-underline {
+  position: relative;
+}
+.nav-underline::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0.35rem;
+  height: 1.5px;
+  width: 0;
+  transform: translateX(-50%);
+  background: hsl(var(--primary));
+  border-radius: 9999px;
+  transition: width 0.25s ease;
+}
+.nav-underline:hover::after {
+  width: 55%;
+}
+
+/* Respect reduced-motion: disable ambient loops */
+@media (prefers-reduced-motion: reduce) {
+  [data-animate] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-luxa-float,
+  .animate-stella-float,
+  .animate-glow-breathe,
+  .animate-glow-breathe-slow,
+  .animate-star-twinkle {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 /* Smooth scrolling - offset for the floating navbar */
@@ -235,14 +505,14 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: hsl(var(--muted));
+  background: hsl(var(--background));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.3);
+  background: hsl(var(--muted-foreground) / 0.25);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.5);
+  background: hsl(var(--muted-foreground) / 0.45);
 }

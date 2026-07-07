@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import Link from 'next/link'
 import {
   Accordion,
   AccordionContent,
@@ -8,67 +8,55 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Container } from '@/components/design-system/Container'
-import { SectionTitle } from '@/components/design-system/SectionTitle'
-import { section } from '@/lib/design-tokens'
-import { fadeInUp, viewport } from '@/lib/animations'
-import { cn } from '@/lib/utils'
+import { SectionHeading } from '@/components/design-system/SectionHeading'
+import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { useTranslation } from '@/lib/i18n/useTranslation'
 
 export function FAQ() {
   const { t } = useTranslation()
-
-  const faqData = t('faq.items') as unknown as Array<{ question: string; answer: string }>
-
-  const faqs = faqData.map((item, index) => ({
-    id: `faq-${index + 1}`,
-    question: item.question,
-    answer: item.answer,
-  }))
+  const faqs = t('faq.items') as unknown as Array<{ question: string; answer: string }>
 
   return (
-    <section
-      id="faq"
-      className={cn('bg-background', section.padding.combined)}
-    >
-      <Container>
-        <SectionTitle
-          badge={t('faq.badge') as string}
+    <section id="faq" className="relative isolate overflow-hidden py-24 md:py-32">
+      <Container className="relative">
+        <div className="mx-auto flex justify-center" data-animate="stella">
+          <StellaMascot mood="thinking" size="md" floating />
+        </div>
+
+        <SectionHeading
+          eyebrow={t('faq.eyebrow') as string}
           title={t('faq.title') as string}
-          subtitle={t('faq.subtitle') as string}
+          className="mt-6 mb-10 md:mb-12"
         />
 
-        <motion.div
-          variants={fadeInUp}
-          initial="initial"
-          whileInView="animate"
-          viewport={viewport}
-          className="max-w-3xl mx-auto"
-        >
-          <Accordion type="single" collapsible className="w-full space-y-2">
-            {faqs.map((faq, index) => (
-              <motion.div
-                key={faq.id}
-                variants={fadeInUp}
-                initial="initial"
-                whileInView="animate"
-                viewport={viewport}
-                transition={{ delay: index * 0.05 }}
-              >
+        <div className="mx-auto max-w-3xl" data-animate="card">
+          <Accordion type="single" collapsible className="w-full space-y-3">
+            {Array.isArray(faqs) &&
+              faqs.map((faq, index) => (
                 <AccordionItem
-                  value={faq.id}
-                  className="border border-border/50 rounded-lg px-4 md:px-6 bg-card hover:border-primary/30 transition-colors"
+                  key={`faq-${index}`}
+                  value={`faq-${index}`}
+                  className="rounded-2xl border border-border bg-card px-5 transition-colors hover:border-primary/30 md:px-6"
                 >
-                  <AccordionTrigger className="text-base md:text-lg font-semibold text-foreground hover:no-underline py-4 md:py-5">
+                  <AccordionTrigger className="py-4 text-left text-base font-semibold text-foreground hover:no-underline md:py-5 md:text-lg">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground md:text-base">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
-              </motion.div>
-            ))}
+              ))}
           </Accordion>
-        </motion.div>
+
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            <Link
+              href="/contact"
+              className="underline decoration-primary/40 underline-offset-4 transition-colors hover:text-foreground hover:decoration-primary"
+            >
+              {t('faq.subtitle') as string}
+            </Link>
+          </p>
+        </div>
       </Container>
     </section>
   )

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Rocket, Check, Loader2, AlertCircle } from 'lucide-react'
+import { Smartphone, Check, Loader2, AlertCircle } from 'lucide-react'
 import {
   Dialog,
   DialogContent,
@@ -84,13 +84,13 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
-            <Rocket className="h-8 w-8 text-primary" />
+            <Smartphone className="h-8 w-8 text-primary" />
           </div>
           <DialogTitle className="text-center text-2xl md:text-3xl font-bold">
-            {isSuccess ? (t('waitlist.successTitle') as string) : (t('waitlist.title') as string)}
+            {isSuccess ? (t('androidBeta.successTitle') as string) : (t('androidBeta.title') as string)}
           </DialogTitle>
           <DialogDescription className="text-center text-base">
-            {isSuccess ? (t('waitlist.successDescription') as string) : (t('waitlist.description') as string)}
+            {isSuccess ? (t('androidBeta.successDescription') as string) : (t('androidBeta.description') as string)}
           </DialogDescription>
         </DialogHeader>
 
@@ -103,13 +103,13 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
           >
             <div className="space-y-2">
               <label htmlFor="waitlist-email" className="sr-only">
-                {t('waitlist.emailPlaceholder') as string}
+                {t('androidBeta.emailPlaceholder') as string}
               </label>
               <Input
                 id="waitlist-email"
                 name="email"
                 type="email"
-                placeholder={t('waitlist.emailPlaceholder') as string}
+                placeholder={t('androidBeta.emailPlaceholder') as string}
                 value={email}
                 onChange={handleEmailChange}
                 autoComplete="email"
@@ -119,7 +119,7 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
                   'h-12 text-base',
                   error && 'border-destructive focus-visible:ring-destructive'
                 )}
-                aria-label={t('waitlist.emailPlaceholder') as string}
+                aria-label={t('androidBeta.emailPlaceholder') as string}
                 aria-required="true"
                 aria-invalid={error ? 'true' : 'false'}
                 aria-describedby={error ? 'email-error' : undefined}
@@ -154,31 +154,19 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
               {isSubmitting ? (
                 <>
                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                  {t('waitlist.submitting') as string}
+                  {t('androidBeta.submitting') as string}
                 </>
               ) : (
                 <>
-                  <Rocket className="mr-2 h-5 w-5" />
-                  {t('waitlist.submit') as string}
+                  <Smartphone className="mr-2 h-5 w-5" />
+                  {t('androidBeta.submit') as string}
                 </>
               )}
             </Button>
 
             <p className="text-xs text-muted-foreground text-center leading-relaxed">
-              {t('waitlist.disclaimer') as string}
+              {t('androidBeta.disclaimer') as string}
             </p>
-
-            {/* Trust Indicators */}
-            <div className="flex items-center justify-center gap-4 pt-4 border-t border-border/50">
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <div className="w-2 h-2 bg-primary rounded-full" />
-                <span>{t('waitlist.usersCount') as string}</span>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                <div className="w-2 h-2 bg-primary rounded-full" />
-                <span>{t('waitlist.free') as string}</span>
-              </div>
-            </div>
           </form>
         ) : (
           <motion.div
@@ -190,10 +178,10 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
               <Check className="h-10 w-10 text-green-600 dark:text-green-400" />
             </div>
             <p className="text-lg font-semibold text-foreground mb-2">
-              {t('waitlist.checkEmail') as string}
+              {t('androidBeta.checkEmail') as string}
             </p>
             <p className="text-sm text-muted-foreground text-center">
-              {t('waitlist.successDescription') as string}
+              {t('androidBeta.successDescription') as string}
             </p>
           </motion.div>
         )}

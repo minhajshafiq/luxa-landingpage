@@ -1,8 +1,12 @@
 import { NavItem, SocialLink, Feature, PricingPlan, RoadmapItem } from "@/types"
 
+/** Live App Store listing — primary install destination. */
+export const APP_STORE_URL =
+  "https://apps.apple.com/us/app/luxa-budget-expense-tracker/id6778473614"
+
 export const siteConfig = {
   name: "Luxa",
-  description: "L'application mobile qui révolutionne votre quotidien",
+  description: "Votre coach budget personnel pour un mois plus clair",
   url: "https://luxa.app",
   ogImage: "https://luxa.app/og.jpg",
   links: {
@@ -25,8 +29,8 @@ export const navItems: NavItem[] = [
     href: "#pricing",
   },
   {
-    title: "Roadmap",
-    href: "#roadmap",
+    title: "FAQ",
+    href: "#faq",
   },
 ]
 

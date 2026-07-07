@@ -72,6 +72,20 @@ export const slideInRight: Variants = {
   },
 }
 
+// Blur-to-sharp reveal (premium mockup entrance)
+export const blurIn: Variants = {
+  initial: { opacity: 0, y: 24, filter: 'blur(12px)' },
+  animate: {
+    opacity: 1,
+    y: 0,
+    filter: 'blur(0px)',
+    transition: {
+      duration: 0.9,
+      ease: easings.smooth,
+    },
+  },
+}
+
 // Stagger container variant
 export const staggerContainer: Variants = {
   initial: {},
@@ -82,6 +96,31 @@ export const staggerContainer: Variants = {
     },
   },
 }
+
+// Stagger item — pairs with staggerContainer for card grids
+export const staggerItem: Variants = {
+  initial: { opacity: 0, y: 20 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.55,
+      ease: easings.smooth,
+    },
+  },
+}
+
+// Gentle hover-lift for premium cards
+export const cardLift = {
+  whileHover: {
+    y: -6,
+    transition: {
+      type: 'spring' as const,
+      stiffness: 300,
+      damping: 22,
+    },
+  },
+} as const
 
 // Spring animation configs for hover states
 export const springHover = {
