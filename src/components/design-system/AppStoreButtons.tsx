@@ -1,9 +1,10 @@
 'use client'
 
-import { Apple, Smartphone } from 'lucide-react'
-import { AnimatedButton } from '@/components/design-system/AnimatedButton'
+import Image from 'next/image'
+import { motion } from 'framer-motion'
 import { WaitlistForm } from '@/components/design-system/WaitlistForm'
 import { APP_STORE_URL } from '@/constants/site'
+import { buttonSpring } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
 interface AppStoreButtonsProps {
@@ -19,34 +20,42 @@ export function AppStoreButtons({
 }: AppStoreButtonsProps) {
   return (
     <div className={cn('flex flex-col sm:flex-row items-center gap-3', className)}>
-      <AnimatedButton
-        asChild
-        size="lg"
-        className={cn(
-          'w-full sm:w-auto h-12 md:h-14 px-6 md:px-8 text-base font-semibold',
-          'bg-primary hover:bg-primary/90 text-primary-foreground',
-          'shadow-[0_0_32px_-8px_hsl(var(--primary)/0.55)]'
-        )}
+      {/* The real Apple-issued badge — not a lookalike button. */}
+      <motion.a
+        {...buttonSpring}
+        href={APP_STORE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={downloadLabel}
+        className="block h-12 w-auto overflow-hidden rounded-xl shadow-[0_0_32px_-8px_hsl(var(--primary)/0.4)] md:h-14"
       >
-        <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-          <Apple className="mr-2 h-5 w-5" />
-          {downloadLabel}
-        </a>
-      </AnimatedButton>
+        <Image
+          src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
+          alt={downloadLabel}
+          width={160}
+          height={53}
+          className="h-full w-auto"
+          priority
+        />
+      </motion.a>
 
+      {/* The real Google Play badge — opens the beta waitlist since Android
+          isn't live on the Play Store yet. */}
       <WaitlistForm>
-        <AnimatedButton
-          size="lg"
-          variant="outline"
-          className={cn(
-            'w-full sm:w-auto h-12 md:h-14 px-6 md:px-8 text-base font-semibold',
-            'bg-transparent border border-border text-foreground/90',
-            'hover:bg-accent hover:border-primary/40'
-          )}
+        <motion.button
+          type="button"
+          {...buttonSpring}
+          aria-label={androidLabel}
+          className="block h-12 w-auto overflow-hidden rounded-xl md:h-14"
         >
-          <Smartphone className="mr-2 h-5 w-5" />
-          {androidLabel}
-        </AnimatedButton>
+          <Image
+            src="/GetItOnGooglePlay_Badge_Web_color_English.svg"
+            alt={androidLabel}
+            width={161}
+            height={48}
+            className="h-full w-auto"
+          />
+        </motion.button>
       </WaitlistForm>
     </div>
   )

@@ -47,7 +47,7 @@ export function Benefits() {
   const [quick, importPdf, calendar, habits] = items
 
   return (
-    <section ref={sectionRef} className="relative isolate overflow-hidden py-24 md:py-32">
+    <section ref={sectionRef} className="relative isolate overflow-hidden py-16 md:py-32">
       <Container className="relative">
         <SectionHeading
           eyebrow={t('benefits.eyebrow') as string}

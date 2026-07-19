@@ -1,6 +1,7 @@
 'use client'
 
-import { Check, Apple } from 'lucide-react'
+import { Check } from 'lucide-react'
+import { AppleLogo } from '@/components/ui/apple-logo'
 import { Container } from '@/components/design-system/Container'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
@@ -84,7 +85,7 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
         )}
       >
         <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-          <Apple className="mr-2 h-5 w-5" />
+          <AppleLogo className="mr-2 h-5 w-5" />
           {plan.cta}
         </a>
       </AnimatedButton>
@@ -98,7 +99,7 @@ export function Pricing() {
   const pro = t('pricing.pro') as unknown as Plan
 
   return (
-    <section id="pricing" className="relative isolate overflow-hidden py-24 md:py-32">
+    <section id="pricing" className="relative isolate overflow-hidden py-16 md:py-32">
       <div className="glow-primary animate-glow-breathe pointer-events-none absolute left-1/2 top-16 h-96 w-[760px] -translate-x-1/2 blur-[80px] opacity-40" />
 
       <Container className="relative">

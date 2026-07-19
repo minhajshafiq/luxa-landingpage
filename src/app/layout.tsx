@@ -78,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${jakarta.variable} ${bricolage.variable} ${geistMono.variable} antialiased min-h-screen bg-background font-sans`}
       >

@@ -14,7 +14,7 @@ export function FinalCTA() {
   const { t } = useTranslation()
 
   return (
-    <section className="relative isolate overflow-hidden py-28 md:py-40">
+    <section className="relative isolate overflow-hidden py-24 md:py-40">
       <div className="starfield pointer-events-none absolute inset-0 opacity-80" />
       <div className="glow-primary animate-glow-breathe-slow pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[820px] -translate-x-1/2 -translate-y-1/2 blur-[90px] opacity-50" />
 

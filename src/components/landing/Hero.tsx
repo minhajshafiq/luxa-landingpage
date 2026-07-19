@@ -63,21 +63,29 @@ export function Hero() {
   // Entrance choreography — waits for the loader, touches only tweenable
   // properties. Lives apart from the scroll triggers so re-running it never
   // destroys the dive pin (rebuilding a pin shifts every trigger below it).
+  // IMPORTANT: the entrance and the scroll dive animate DIFFERENT nodes.
+  // Entrance owns the inner wrappers (.hero-chip-in, .hero-stella-in, phone,
+  // words); the dive scrub owns the outer ones (.hero-chip, stellaRef,
+  // contentRef). Sharing a node between both made GSAP's startAt/lazy capture
+  // record the "hidden" entrance state and re-apply it when scrolling back up.
   useIsomorphicLayoutEffect(() => {
     if (prefersReducedMotion()) return
+    // Page already scrolled (reload mid-page, or scrolled during the loader):
+    // skip the intro — everything stays at its visible resting state.
+    if (window.scrollY > 8) return
 
     const ctx = gsap.context(() => {
       const words = titleRef.current
         ? Array.from(titleRef.current.querySelectorAll('.word'))
         : []
-      const chipsEls = gsap.utils.toArray<HTMLElement>('.hero-chip')
+      const chipsEls = gsap.utils.toArray<HTMLElement>('.hero-chip-in')
       const lead = gsap.utils.toArray<HTMLElement>('.hero-lead')
 
       gsap.set(words, { opacity: 0, y: 24 })
       gsap.set(lead, { opacity: 0, y: 16 })
       gsap.set(phoneRef.current, { opacity: 0, yPercent: 8, scale: 0.96, filter: 'blur(8px)' })
       gsap.set(chipsEls, { opacity: 0, y: 20, scale: 0.92 })
-      gsap.set(stellaRef.current, { opacity: 0, y: 18, scale: 0.88 })
+      gsap.set('.hero-stella-in', { opacity: 0, y: 18, scale: 0.88 })
 
       if (heroReady) {
         const tl = gsap.timeline({ defaults: { ease: EASE.out } })
@@ -89,7 +97,7 @@ export function Hero() {
             0.45
           )
           .to(chipsEls, { opacity: 1, y: 0, scale: 1, duration: 0.7, stagger: 0.09 }, 0.95)
-          .to(stellaRef.current, { opacity: 1, y: 0, scale: 1, duration: 0.7 }, 1.25)
+          .to('.hero-stella-in', { opacity: 1, y: 0, scale: 1, duration: 0.7 }, 1.25)
       }
     }, sectionRef)
 
@@ -136,6 +144,10 @@ export function Hero() {
               defaults: { ease: 'none' },
             })
 
+            // These targets are dive-exclusive (the entrance animates their
+            // inner wrappers), so the start values GSAP captures here are
+            // always the visible resting state — scrolling back up restores
+            // them no matter when the first render happens.
             dive
               .to(
                 contentRef.current,
@@ -213,7 +225,7 @@ export function Hero() {
       <Container className="relative z-10">
         <div ref={contentRef} className="text-center max-w-3xl mx-auto">
           {/* Availability badge */}
-          <p className="hero-lead inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-4 py-1.5 font-mono text-[11px] md:text-xs uppercase tracking-[0.18em] text-muted-foreground backdrop-blur">
+          <p className="hero-lead inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-1.5 font-mono text-[10px] tracking-[0.12em] md:px-4 md:text-xs md:tracking-[0.18em] uppercase text-muted-foreground backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-epargne/60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-epargne" />
@@ -281,11 +293,13 @@ export function Hero() {
                   data-scatter-y={slot.scatter.y}
                   className={cn('hero-chip absolute z-20 hidden md:block', slot.className)}
                 >
-                  <div
-                    className="animate-luxa-float"
-                    style={{ animationDelay: `${slot.delay}s`, animationDuration: '5.5s' }}
-                  >
-                    <AmountChip label={chip.label} amount={chip.amount} />
+                  <div className="hero-chip-in">
+                    <div
+                      className="animate-luxa-float"
+                      style={{ animationDelay: `${slot.delay}s`, animationDuration: '5.5s' }}
+                    >
+                      <AmountChip label={chip.label} amount={chip.amount} />
+                    </div>
                   </div>
                 </div>
               )
@@ -297,16 +311,18 @@ export function Hero() {
             data-scatter-y={-140}
             className="hero-chip absolute -top-4 left-1/2 z-20 w-max -translate-x-1/2 md:left-[8%] md:top-[38%] md:translate-x-0 lg:left-[10%]"
           >
-            <div className="animate-luxa-float" style={{ animationDuration: '6s' }}>
-              <div className="flex items-center gap-2.5 rounded-2xl border border-stella/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-stella/15">
-                  <Sparkles className="h-4 w-4 text-stella" />
-                </div>
-                <div className="leading-tight text-left">
-                  <p className="font-mono text-[10px] uppercase tracking-wider text-stella">
-                    {insightChip?.label}
-                  </p>
-                  <p className="text-xs font-medium text-foreground">{insightChip?.value}</p>
+            <div className="hero-chip-in">
+              <div className="animate-luxa-float" style={{ animationDuration: '6s' }}>
+                <div className="flex items-center gap-2.5 rounded-2xl border border-stella/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-stella/15">
+                    <Sparkles className="h-4 w-4 text-stella" />
+                  </div>
+                  <div className="leading-tight text-left">
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-stella">
+                      {insightChip?.label}
+                    </p>
+                    <p className="text-xs font-medium text-foreground">{insightChip?.value}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -318,16 +334,18 @@ export function Hero() {
             data-scatter-y={120}
             className="hero-chip absolute bottom-[16%] right-[2%] z-20 hidden md:block lg:right-[8%]"
           >
-            <div className="animate-luxa-float" style={{ animationDelay: '2.8s', animationDuration: '5s' }}>
-              <div className="flex items-center gap-2.5 rounded-2xl border border-epargne/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
-                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-epargne/15">
-                  <span className="font-mono text-xs font-bold text-epargne">%</span>
-                </div>
-                <div className="leading-tight text-left">
-                  <p className="font-mono text-[10px] uppercase tracking-wider text-epargne">
-                    {savingsChip?.label}
-                  </p>
-                  <p className="text-xs font-medium text-foreground tabular">{savingsChip?.value}</p>
+            <div className="hero-chip-in">
+              <div className="animate-luxa-float" style={{ animationDelay: '2.8s', animationDuration: '5s' }}>
+                <div className="flex items-center gap-2.5 rounded-2xl border border-epargne/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
+                  <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-epargne/15">
+                    <span className="font-mono text-xs font-bold text-epargne">%</span>
+                  </div>
+                  <div className="leading-tight text-left">
+                    <p className="font-mono text-[10px] uppercase tracking-wider text-epargne">
+                      {savingsChip?.label}
+                    </p>
+                    <p className="text-xs font-medium text-foreground tabular">{savingsChip?.value}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -349,8 +367,10 @@ export function Hero() {
             </div>
             {/* Stella peeks from behind the phone */}
             <div ref={stellaRef} className="absolute -right-16 bottom-10 z-20 md:-right-24 md:bottom-16">
-              <div className="glow-stella pointer-events-none absolute -inset-5 blur-2xl opacity-70" />
-              <StellaMascot mood="happy" size="lg" floating priority className="relative" />
+              <div className="hero-stella-in">
+                <div className="glow-stella pointer-events-none absolute -inset-5 blur-2xl opacity-70" />
+                <StellaMascot mood="happy" size="lg" floating priority className="relative" />
+              </div>
             </div>
           </div>
         </div>

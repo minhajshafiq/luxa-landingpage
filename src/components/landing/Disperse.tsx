@@ -17,20 +17,24 @@ type DispersePocket = { name: string; target: string }
  * while you scroll, every scattered expense flies into its pocket,
  * the bars fill, and the page exhales. You feel the sorting happen
  * under your fingers — chaos becoming a picture you can read.
- * Mobile and reduced-motion get a calm two-state version.
+ * Mobile plays the same story as a one-shot timeline (pop in scattered,
+ * flock into the pockets, sky closes up); reduced-motion gets the
+ * resolved state with no animation.
  */
 
-// Scatter layout: percentage positions inside the sky, hand-tuned so the
-// cloud reads as noise without overlaps. pocket: 0 = needs, 1 = wants, 2 = savings.
+// Scatter layout: hand-tuned positions inside the sky so the cloud reads as
+// noise without overlaps. Mobile gets its own coordinates (base classes) so
+// no chip ever bleeds off a phone screen; md: restores the desktop cloud.
+// pocket: 0 = needs, 1 = wants, 2 = savings.
 const chipLayout = [
-  { left: 8, top: 12, rotate: -9, pocket: 1 },   // Café
-  { left: 66, top: 6, rotate: 7, pocket: 1 },    // Uber Eats
-  { left: 30, top: 30, rotate: -4, pocket: 1 },  // Netflix
-  { left: 84, top: 34, rotate: 10, pocket: 0 },  // Pharmacie
-  { left: 12, top: 58, rotate: 6, pocket: 1 },   // Amazon
-  { left: 58, top: 52, rotate: -8, pocket: 0 },  // Essence
-  { left: 38, top: 76, rotate: 4, pocket: 1 },   // Zara
-  { left: 74, top: 74, rotate: -6, pocket: 0 },  // Loyer
+  { className: 'left-[2%] top-[3%] md:left-[8%] md:top-[12%]', rotate: -9, pocket: 1 },     // Café
+  { className: 'left-[52%] top-[9%] md:left-[66%] md:top-[6%]', rotate: 7, pocket: 1 },     // Uber Eats
+  { className: 'left-[10%] top-[27%] md:left-[30%] md:top-[30%]', rotate: -4, pocket: 1 },  // Netflix
+  { className: 'left-[54%] top-[33%] md:left-[84%] md:top-[34%]', rotate: 10, pocket: 0 },  // Pharmacie
+  { className: 'left-[4%] top-[52%] md:left-[12%] md:top-[58%]', rotate: 6, pocket: 1 },    // Amazon
+  { className: 'left-[54%] top-[58%] md:left-[58%] md:top-[52%]', rotate: -8, pocket: 0 },  // Essence
+  { className: 'left-[12%] top-[78%] md:left-[38%] md:top-[76%]', rotate: 4, pocket: 1 },   // Zara
+  { className: 'left-[56%] top-[84%] md:left-[74%] md:top-[74%]', rotate: -6, pocket: 0 },  // Loyer
 ]
 
 const pocketMeta: Array<{ icon: LucideIcon; barClass: string; iconClass: string; fill: number }> = [
@@ -143,38 +147,75 @@ export function Disperse() {
             // A final quiet beat so the exhale lands before unpinning.
             tl.to({}, { duration: 0.25 })
           } else if (mobile) {
-            // Lighter touch: chips drift in, pockets fill on reveal.
-            gsap.fromTo(
-              chipEls,
-              { opacity: 0, y: 14 },
-              {
-                opacity: 0.85,
-                y: 0,
-                duration: 0.6,
-                stagger: 0.06,
-                ease: EASE.out,
-                scrollTrigger: { trigger: skyRef.current, start: 'top 82%', once: true },
-              }
-            )
-            gsap.to(fillEls, {
-              scaleX: (i) => pocketMeta[i]?.fill ?? 0.5,
-              duration: 1,
-              stagger: 0.15,
-              ease: EASE.out,
-              scrollTrigger: { trigger: pocketRefs.current[0], start: 'top 85%', once: true },
+            // Same story as desktop, told once: expenses pop in scattered,
+            // breathe, then flock into their pockets. A play-once timeline
+            // (no pin — pins jump with mobile browser chrome) keeps it
+            // smooth at 60fps regardless of scroll momentum.
+            gsap.set(chipEls, { opacity: 0, scale: 0.7, y: 12 })
+            gsap.set(afterEls, { opacity: 0, y: 14 })
+
+            const tl = gsap.timeline({
+              scrollTrigger: { trigger: skyRef.current, start: 'top 68%', once: true },
+              defaults: { ease: EASE.out },
             })
-            gsap.fromTo(
-              afterEls,
-              { opacity: 0, y: 14 },
-              {
-                opacity: 1,
-                y: 0,
-                duration: 0.6,
-                stagger: 0.08,
-                ease: EASE.out,
-                scrollTrigger: { trigger: pocketRefs.current[0], start: 'top 75%', once: true },
-              }
+
+            // 1 — dispersion: the month happens, one small expense at a time.
+            tl.to(chipEls, { opacity: 1, scale: 1, y: 0, duration: 0.45, stagger: 0.07 })
+              .addLabel('flock', '+=0.4')
+
+            // 2 — regroupement: each chip flies into its pocket.
+            chipEls.forEach((chip, i) => {
+              const layout = chipLayout[i]
+              const target = pocketRefs.current[layout?.pocket ?? 0]
+              if (!layout || !target) return
+
+              tl.to(
+                chip,
+                {
+                  x: () => {
+                    const chipBox = chip.getBoundingClientRect()
+                    const targetBox = target.getBoundingClientRect()
+                    return targetBox.left + targetBox.width / 2 - (chipBox.left + chipBox.width / 2)
+                  },
+                  y: () => {
+                    const chipBox = chip.getBoundingClientRect()
+                    const targetBox = target.getBoundingClientRect()
+                    return targetBox.top + 10 - chipBox.top
+                  },
+                  rotate: 0,
+                  scale: 0.35,
+                  opacity: 0,
+                  duration: 0.6,
+                  ease: EASE.inOut,
+                },
+                `flock+=${i * 0.08}`
+              )
+              tl.to(
+                target,
+                { scale: 1.03, duration: 0.1, ease: 'power1.out' },
+                `flock+=${i * 0.08 + 0.55}`
+              ).to(target, { scale: 1, duration: 0.15, ease: 'power1.in' })
+            })
+
+            // 3 — the picture: bars fill, the emptied sky closes up
+            // (the page literally tightens), and the exhale lands.
+            tl.to(
+              fillEls,
+              { scaleX: (i) => pocketMeta[i]?.fill ?? 0.5, duration: 0.8, stagger: 0.12 },
+              'flock+=0.5'
             )
+              .to(
+                skyRef.current,
+                {
+                  height: 96,
+                  duration: 0.6,
+                  ease: EASE.inOut,
+                  // The page just got shorter — remeasure every trigger below.
+                  onComplete: () => ScrollTrigger.refresh(),
+                },
+                'flock+=1.2'
+              )
+              .to(afterEls, { opacity: 1, y: 0, duration: 0.55, stagger: 0.08 }, 'flock+=1.3')
           } else {
             // Reduced motion: show the resolved state, no animation.
             gsap.set(chipEls, { opacity: 0.7 })
@@ -193,7 +234,7 @@ export function Disperse() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden py-20 md:min-h-screen md:flex md:flex-col md:justify-center md:pt-28 md:pb-6"
+      className="relative isolate overflow-hidden py-16 md:min-h-screen md:flex md:flex-col md:justify-center md:pt-28 md:pb-6"
     >
       <div className="glow-stella animate-glow-breathe pointer-events-none absolute -left-32 top-16 h-80 w-80 blur-3xl opacity-40" />
 
@@ -209,7 +250,7 @@ export function Disperse() {
         {/* The sky: scattered spending */}
         <div
           ref={skyRef}
-          className="relative mx-auto h-52 max-w-3xl md:h-44"
+          className="relative mx-auto h-64 max-w-3xl md:h-44"
           aria-hidden="true"
         >
           {Array.isArray(chips) &&
@@ -219,12 +260,8 @@ export function Disperse() {
               return (
                 <div
                   key={index}
-                  className="disperse-chip absolute will-change-transform"
-                  style={{
-                    left: `${layout.left}%`,
-                    top: `${layout.top}%`,
-                    transform: `rotate(${layout.rotate}deg)`,
-                  }}
+                  className={cn('disperse-chip absolute will-change-transform', layout.className)}
+                  style={{ transform: `rotate(${layout.rotate}deg)` }}
                 >
                   <AmountChip label={chip.label} amount={chip.amount} muted />
                 </div>
@@ -232,8 +269,9 @@ export function Disperse() {
             })}
         </div>
 
-        {/* The pockets: where everything lands */}
-        <div className="mx-auto mt-8 grid max-w-3xl grid-cols-1 gap-4 sm:grid-cols-3">
+        {/* The pockets: where everything lands. Always 3-up so the flock
+            animation has visible targets on phones too. */}
+        <div className="mx-auto mt-6 grid max-w-3xl grid-cols-3 gap-2.5 md:mt-8 md:gap-4">
           {Array.isArray(pockets) &&
             pockets.map((pocket, index) => {
               const meta = pocketMeta[index]
@@ -245,18 +283,18 @@ export function Disperse() {
                   ref={(el) => {
                     pocketRefs.current[index] = el
                   }}
-                  className="rounded-3xl border border-border bg-card p-5 shadow-premium"
+                  className="rounded-2xl border border-border bg-card p-3 shadow-premium md:rounded-3xl md:p-5"
                 >
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2.5">
-                      <span className={cn('flex h-9 w-9 items-center justify-center rounded-full', meta.iconClass)}>
-                        <Icon className="h-4 w-4" />
+                  <div className="flex flex-col items-center gap-1.5 md:flex-row md:justify-between md:gap-2.5">
+                    <div className="flex flex-col items-center gap-1.5 md:flex-row md:gap-2.5">
+                      <span className={cn('flex h-8 w-8 items-center justify-center rounded-full md:h-9 md:w-9', meta.iconClass)}>
+                        <Icon className="h-3.5 w-3.5 md:h-4 md:w-4" />
                       </span>
-                      <span className="text-sm font-semibold text-foreground">{pocket.name}</span>
+                      <span className="text-center text-xs font-semibold text-foreground md:text-sm">{pocket.name}</span>
                     </div>
-                    <span className="font-mono tabular text-xs text-muted-foreground">{pocket.target}</span>
+                    <span className="font-mono tabular text-[10px] text-muted-foreground md:text-xs">{pocket.target}</span>
                   </div>
-                  <div className="mt-4 h-1.5 w-full overflow-hidden rounded-full bg-muted">
+                  <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-muted md:mt-4">
                     <div
                       className={cn('pocket-fill h-full w-full origin-left rounded-full', meta.barClass)}
                       style={{ transform: 'scaleX(0)' }}

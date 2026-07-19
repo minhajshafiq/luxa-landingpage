@@ -65,7 +65,7 @@ export function Subscriptions() {
   }, [finalTotal, language])
 
   return (
-    <section ref={sectionRef} className="relative isolate overflow-hidden py-24 md:py-32">
+    <section ref={sectionRef} className="relative isolate overflow-hidden py-16 md:py-32">
       <div className="glow-primary animate-glow-breathe-slow pointer-events-none absolute -left-40 bottom-0 h-96 w-96 blur-3xl opacity-40" />
 
       <Container className="relative">
@@ -114,7 +114,9 @@ export function Subscriptions() {
             </div>
           </div>
 
-          <div ref={phoneRef} className="relative mx-auto w-[260px] md:w-[300px] will-change-transform" data-animate="card">
+          {/* No data-animate here: the reveal engine's overwrite would kill
+              the parallax scrub that owns this node's transform. */}
+          <div ref={phoneRef} className="relative mx-auto w-[260px] md:w-[300px] will-change-transform">
             <div className="glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[380px] w-[480px] -translate-x-1/2 -translate-y-1/2 blur-[60px] opacity-55" />
             <PhoneFrame
               src="/subscriptions.png"

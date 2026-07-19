@@ -17,7 +17,7 @@ export function FAQ() {
   const faqs = t('faq.items') as unknown as Array<{ question: string; answer: string }>
 
   return (
-    <section id="faq" className="relative isolate overflow-hidden py-24 md:py-32">
+    <section id="faq" className="relative isolate overflow-hidden py-16 md:py-32">
       <Container className="relative">
         <div className="mx-auto flex justify-center" data-animate="stella">
           <StellaMascot mood="thinking" size="md" floating />

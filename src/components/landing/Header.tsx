@@ -3,10 +3,11 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Apple } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { LanguageToggle } from '@/components/design-system/LanguageToggle'
 import { AnimatedButton } from '@/components/design-system/AnimatedButton'
 import { LogoText } from '@/components/ui/logo'
+import { AppleLogo } from '@/components/ui/apple-logo'
 import { APP_STORE_URL } from '@/constants/site'
 import { cn } from '@/lib/utils'
 import { useTranslation } from '@/lib/i18n/useTranslation'
@@ -63,7 +64,7 @@ export function Header() {
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-5 cursor-pointer"
           >
             <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
-              <Apple className="mr-1.5 h-4 w-4" />
+              <AppleLogo className="mr-1.5 h-4 w-4" />
               {t('nav.downloadApp') as string}
             </a>
           </AnimatedButton>
@@ -153,7 +154,7 @@ export function Header() {
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold cursor-pointer"
                 >
                   <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
-                    <Apple className="mr-1.5 h-4 w-4" />
+                    <AppleLogo className="mr-1.5 h-4 w-4" />
                     {t('nav.downloadApp') as string}
                   </a>
                 </AnimatedButton>
