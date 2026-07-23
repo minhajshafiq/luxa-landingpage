@@ -119,18 +119,22 @@
     "subtitle": "Tout ce qu'il faut pour garder un mois lisible — rien de plus.",
     "items": [
       {
+        "tag": "3 sec",
         "title": "Ajouter une dépense prend trois secondes",
         "description": "Montant, catégorie, c'est rangé. Assez rapide pour le faire dans la file du supermarché."
       },
       {
+        "tag": "PDF",
         "title": "Importe tes relevés, Luxa les lit pour toi",
         "description": "Un relevé bancaire en PDF, et tes transactions sont extraites, vérifiées et classées."
       },
       {
+        "tag": "Jour / jour",
         "title": "Revois ton mois jour par jour",
         "description": "Un calendrier de tes dépenses pour retrouver n'importe quel achat — et voir tes habitudes se dessiner."
       },
       {
+        "tag": "Tendances",
         "title": "Comprends tes habitudes avant qu'elles posent problème",
         "description": "Catégories, tendances, moyennes : tu vois ce qui monte pendant qu'il est encore temps d'ajuster."
       }

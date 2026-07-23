@@ -119,18 +119,22 @@
     "subtitle": "Everything you need to keep the month readable — nothing more.",
     "items": [
       {
+        "tag": "3 sec",
         "title": "Adding an expense takes three seconds",
         "description": "Amount, category, done. Fast enough to do it in the supermarket queue."
       },
       {
+        "tag": "PDF",
         "title": "Import statements, Luxa reads them for you",
         "description": "One PDF bank statement, and your transactions are extracted, checked and filed."
       },
       {
+        "tag": "Day / day",
         "title": "Replay your month, day by day",
         "description": "A calendar of your spending to find any purchase — and watch your habits take shape."
       },
       {
+        "tag": "Trends",
         "title": "Understand habits before they become problems",
         "description": "Categories, trends, averages: you see what's rising while there's still time to adjust."
       }

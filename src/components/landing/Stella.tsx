@@ -17,7 +17,6 @@ export function Stella() {
   return (
     <section id="stella" className="relative isolate overflow-hidden py-16 md:py-32">
       {/* Stella's zone glows coral — the warm heart of the page */}
-      <div className="glow-stella animate-glow-breathe pointer-events-none absolute left-1/2 top-24 h-96 w-[700px] -translate-x-1/2 blur-[80px] opacity-50" />
       <div className="starfield pointer-events-none absolute inset-0 opacity-50" />
 
       <Container className="relative">

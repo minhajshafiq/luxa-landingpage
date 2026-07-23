@@ -6,6 +6,7 @@ import { Container } from '@/components/design-system/Container'
 import { PhoneFrame } from '@/components/design-system/PhoneFrame'
 import { GradientText } from '@/components/design-system/GradientText'
 import { AppStoreButtons } from '@/components/design-system/AppStoreButtons'
+import { RatingBadge } from '@/components/design-system/RatingBadge'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { AmountChip } from '@/components/design-system/AmountChip'
 import { LUXA_LOADER_COMPLETE_EVENT, hasSeenLuxaLoader } from '@/components/loader-provider'
@@ -224,13 +225,15 @@ export function Hero() {
 
       <Container className="relative z-10">
         <div ref={contentRef} className="text-center max-w-3xl mx-auto">
-          {/* Availability badge */}
-          <p className="hero-lead inline-flex items-center gap-2 rounded-full border border-border bg-card/70 px-3.5 py-1.5 font-mono text-[10px] tracking-[0.12em] md:px-4 md:text-xs md:tracking-[0.18em] uppercase text-muted-foreground backdrop-blur">
+          {/* Availability + rating, one badge instead of two side by side */}
+          <p className="hero-lead inline-flex items-center gap-2 rounded-xl border border-border bg-card/70 px-3.5 py-1.5 font-mono text-[10px] tracking-[0.12em] md:px-4 md:text-xs md:tracking-[0.18em] uppercase text-muted-foreground backdrop-blur">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-epargne/60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-epargne" />
             </span>
             {t('hero.badge') as string}
+            <span className="text-border">·</span>
+            <RatingBadge bare />
           </p>
 
           {/* Headline */}

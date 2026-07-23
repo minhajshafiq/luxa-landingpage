@@ -1,6 +1,5 @@
 'use client'
 
-import { Check } from 'lucide-react'
 import { AppleLogo } from '@/components/ui/apple-logo'
 import { Container } from '@/components/design-system/Container'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
@@ -21,32 +20,33 @@ type Plan = {
   cta: string
 }
 
+/**
+ * A receipt, not a SaaS pricing table: a dashed tear between the price and
+ * what it buys, features listed as itemized lines — the same mono-ledger
+ * grammar as the rest of the page, no checkmark-in-a-circle icons.
+ */
 function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) {
   return (
     <div
       data-animate="card"
       className={cn(
-        'relative flex h-full flex-col rounded-3xl border p-7 md:p-8',
-        highlighted
-          ? 'border-primary/40 bg-gradient-to-b from-primary/12 to-card shadow-premium-hover'
-          : 'border-border bg-card shadow-premium'
+        'relative flex h-full flex-col rounded-2xl border p-7 md:p-8',
+        highlighted ? 'border-primary/40 bg-card shadow-premium-hover' : 'border-border bg-card shadow-premium'
       )}
     >
-      {highlighted && plan.badge && (
-        <span className="absolute -top-3.5 left-7 inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-primary-foreground">
-          <span aria-hidden="true">✦</span>
-          {plan.badge}
-        </span>
-      )}
-
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between gap-3">
         <div>
-          <h3 className="font-display text-xl font-semibold text-foreground">{plan.name}</h3>
+          <div className="flex flex-wrap items-center gap-2">
+            <h3 className="font-display text-xl font-semibold text-foreground">{plan.name}</h3>
+            {highlighted && plan.badge && (
+              <span className="rounded-md bg-primary/15 px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+                {plan.badge}
+              </span>
+            )}
+          </div>
           <p className="mt-1 text-sm text-muted-foreground">{plan.tagline}</p>
         </div>
-        {highlighted && (
-          <StellaMascot mood="budgeting" size="sm" floating className="-mr-2 -mt-3" />
-        )}
+        {highlighted && <StellaMascot mood="budgeting" size="sm" floating className="-mr-1 -mt-1 shrink-0" />}
       </div>
 
       <div className="mt-6 flex items-baseline gap-2">
@@ -57,16 +57,20 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
       </div>
       {plan.note && <p className="mt-1.5 text-xs text-muted-foreground">{plan.note}</p>}
 
-      <ul className="mt-7 flex-1 space-y-3.5">
+      {/* The tear between what it costs and what it buys */}
+      <div className="mt-7 border-t border-dashed border-border" />
+
+      <ul className="mt-6 flex-1 space-y-3">
         {plan.features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-3">
+          <li key={index} className="flex items-baseline gap-3">
             <span
               className={cn(
-                'mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full',
-                highlighted ? 'bg-primary/20 text-primary' : 'bg-epargne/15 text-epargne'
+                'shrink-0 font-mono text-sm',
+                highlighted ? 'text-primary' : 'text-epargne'
               )}
+              aria-hidden="true"
             >
-              <Check className="h-3 w-3" />
+              +
             </span>
             <span className="text-sm leading-relaxed text-foreground/85">{feature}</span>
           </li>
@@ -100,7 +104,6 @@ export function Pricing() {
 
   return (
     <section id="pricing" className="relative isolate overflow-hidden py-16 md:py-32">
-      <div className="glow-primary animate-glow-breathe pointer-events-none absolute left-1/2 top-16 h-96 w-[760px] -translate-x-1/2 blur-[80px] opacity-40" />
 
       <Container className="relative">
         <SectionHeading

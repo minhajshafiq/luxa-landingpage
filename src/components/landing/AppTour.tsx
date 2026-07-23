@@ -63,7 +63,6 @@ export function AppTour() {
   return (
     // overflow-x-clip (not hidden): an overflow-hidden ancestor disables position:sticky
     <section ref={sectionRef} id="pockets" className="relative isolate overflow-x-clip py-16 md:py-28">
-      <div className="glow-primary animate-glow-breathe-slow pointer-events-none absolute -right-40 top-1/3 h-96 w-96 blur-3xl opacity-45" />
 
       <Container className="relative">
         <SectionHeading

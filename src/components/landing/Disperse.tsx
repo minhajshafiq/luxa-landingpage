@@ -236,7 +236,6 @@ export function Disperse() {
       ref={sectionRef}
       className="relative isolate overflow-hidden py-16 md:min-h-screen md:flex md:flex-col md:justify-center md:pt-28 md:pb-6"
     >
-      <div className="glow-stella animate-glow-breathe pointer-events-none absolute -left-32 top-16 h-80 w-80 blur-3xl opacity-40" />
 
       <Container className="relative">
         <SectionHeading

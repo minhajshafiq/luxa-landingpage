@@ -54,7 +54,6 @@ export function Difference() {
 
   return (
     <section ref={sectionRef} className="relative isolate overflow-hidden py-16 md:py-32">
-      <div className="glow-primary animate-glow-breathe pointer-events-none absolute left-1/2 top-0 h-72 w-[640px] -translate-x-1/2 blur-3xl opacity-35" />
 
       <Container className="relative">
         <SectionHeading

@@ -2,6 +2,7 @@
 
 import { Container } from '@/components/design-system/Container'
 import { AppStoreButtons } from '@/components/design-system/AppStoreButtons'
+import { RatingBadge } from '@/components/design-system/RatingBadge'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { useTranslation } from '@/lib/i18n/useTranslation'
 
@@ -41,6 +42,7 @@ export function FinalCTA() {
           </p>
 
           <div data-animate="cta" className="mt-9 flex flex-col items-center gap-4">
+            <RatingBadge />
             <AppStoreButtons
               downloadLabel={t('final.ctaDownload') as string}
               androidLabel={t('final.ctaAndroidBeta') as string}

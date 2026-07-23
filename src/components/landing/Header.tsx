@@ -28,7 +28,7 @@ export function Header() {
       <div
         className={cn(
           'mx-auto w-full max-w-5xl flex h-14 md:h-16 items-center justify-between gap-2',
-          'rounded-full border border-border/70 bg-background/70 backdrop-blur-xl',
+          'rounded-2xl border border-border/70 bg-background/70 backdrop-blur-xl',
           'shadow-premium px-3 sm:px-4 md:px-5'
         )}
       >
@@ -47,7 +47,7 @@ export function Header() {
               href={item.href}
               className={cn(
                 'text-sm font-medium text-muted-foreground transition-all duration-300',
-                'hover:text-foreground hover:bg-accent rounded-full px-4 py-2 cursor-pointer'
+                'hover:text-foreground hover:bg-accent rounded-xl px-4 py-2 cursor-pointer'
               )}
             >
               {item.title as string}
@@ -70,40 +70,50 @@ export function Header() {
           </AnimatedButton>
         </div>
 
-        {/* Mobile Menu Button */}
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={cn(
-            'md:hidden p-2 rounded-full hover:bg-accent transition-colors',
-            'relative z-50 cursor-pointer'
-          )}
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-        >
-          <AnimatePresence mode="wait">
-            {isMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <X className="h-6 w-6 text-foreground" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="menu"
-                initial={{ rotate: 90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: -90, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                <Menu className="h-6 w-6 text-foreground" />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.button>
+        {/* Mobile: always-visible CTA (was hidden behind the menu) + menu toggle */}
+        <div className="flex items-center gap-2 md:hidden">
+          <motion.a
+            whileTap={{ scale: 0.95 }}
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t('nav.downloadApp') as string}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground cursor-pointer"
+          >
+            <AppleLogo className="h-4 w-4" />
+          </motion.a>
+
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="p-2 rounded-full hover:bg-accent transition-colors relative z-50 cursor-pointer"
+            aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <AnimatePresence mode="wait">
+              {isMenuOpen ? (
+                <motion.div
+                  key="close"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <X className="h-6 w-6 text-foreground" />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="menu"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Menu className="h-6 w-6 text-foreground" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+        </div>
       </div>
 
       {/* Mobile Navigation - Floating Card */}

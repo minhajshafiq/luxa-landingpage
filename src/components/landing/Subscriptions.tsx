@@ -66,8 +66,6 @@ export function Subscriptions() {
 
   return (
     <section ref={sectionRef} className="relative isolate overflow-hidden py-16 md:py-32">
-      <div className="glow-primary animate-glow-breathe-slow pointer-events-none absolute -left-40 bottom-0 h-96 w-96 blur-3xl opacity-40" />
-
       <Container className="relative">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div>

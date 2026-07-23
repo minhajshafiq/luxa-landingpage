@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { buttonSpring } from '@/lib/animations'
-import { cn } from '@/lib/utils'
 import type { ButtonProps } from '@/components/ui/button'
 
 interface AnimatedButtonProps extends ButtonProps {
@@ -16,10 +15,7 @@ export function AnimatedButton({ children, className, ...props }: AnimatedButton
       {...buttonSpring}
       className="inline-block"
     >
-      <Button
-        className={cn('rounded-full', className)}
-        {...props}
-      >
+      <Button className={className} {...props}>
         {children}
       </Button>
     </motion.div>
