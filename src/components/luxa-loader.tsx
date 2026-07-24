@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useRef, type CSSProperties } from 'react'
+import { useCallback, useEffect, useRef, type CSSProperties } from 'react'
 import { Check, Sparkles } from 'lucide-react'
 import { gsap, EASE, prefersReducedMotion } from '@/lib/motion'
 import { cn } from '@/lib/utils'
@@ -152,12 +152,6 @@ interface LuxaLoaderProps {
   onComplete: () => void
 }
 
-function setRef<T>(refs: { current: Array<T | null> }, index: number) {
-  return (node: T | null) => {
-    refs.current[index] = node
-  }
-}
-
 export function LuxaLoader({ onComplete }: LuxaLoaderProps) {
   const rootRef = useRef<HTMLDivElement>(null)
   const stageRef = useRef<HTMLDivElement>(null)
@@ -170,11 +164,11 @@ export function LuxaLoader({ onComplete }: LuxaLoaderProps) {
   const fillRefs = useRef<Array<HTMLDivElement | null>>([])
   const completeRef = useRef(false)
 
-  const handleComplete = () => {
+  const handleComplete = useCallback(() => {
     if (completeRef.current) return
     completeRef.current = true
     onComplete()
-  }
+  }, [onComplete])
 
   useEffect(() => {
     const root = rootRef.current
@@ -397,7 +391,7 @@ export function LuxaLoader({ onComplete }: LuxaLoaderProps) {
       root.classList.remove('luxa-loader-js')
       ctx.revert()
     }
-  }, [onComplete])
+  }, [handleComplete])
 
   return (
     <div
@@ -426,7 +420,9 @@ export function LuxaLoader({ onComplete }: LuxaLoaderProps) {
               key={transaction.label}
               transaction={transaction}
               index={index}
-              chipRef={setRef(chipRefs, index)}
+              chipRef={(node) => {
+                chipRefs.current[index] = node
+              }}
             />
           ))}
 
@@ -462,8 +458,12 @@ export function LuxaLoader({ onComplete }: LuxaLoaderProps) {
                 key={pocket.id}
                 label={pocket.label}
                 fill={pocket.fill}
-                pocketRef={setRef(pocketRefs, index)}
-                fillRef={setRef(fillRefs, index)}
+                pocketRef={(node) => {
+                  pocketRefs.current[index] = node
+                }}
+                fillRef={(node) => {
+                  fillRefs.current[index] = node
+                }}
               />
             ))}
           </div>

@@ -4,13 +4,17 @@ import * as React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useTranslation } from '@/lib/i18n/useTranslation'
 
+const subscribeToHydration = () => () => undefined
+const getClientSnapshot = () => true
+const getServerSnapshot = () => false
+
 export function LanguageToggle() {
   const { language, setLanguage } = useTranslation()
-  const [mounted, setMounted] = React.useState(false)
-
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+  const mounted = React.useSyncExternalStore(
+    subscribeToHydration,
+    getClientSnapshot,
+    getServerSnapshot
+  )
 
   if (!mounted) {
     return (

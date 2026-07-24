@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Twitter, Github, Linkedin, Heart } from 'lucide-react'
+import { Instagram, Music2, Heart } from 'lucide-react'
 import { LogoText } from '@/components/ui/logo'
 import { socialLinks } from '@/constants/site'
 import { Container } from '@/components/design-system/Container'
@@ -46,16 +46,13 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
               {socialLinks.map((link) => {
-                const Icon =
-                  link.icon === 'twitter'
-                    ? Twitter
-                    : link.icon === 'github'
-                    ? Github
-                    : Linkedin
+                const Icon = link.icon === 'tiktok' ? Music2 : Instagram
                 return (
                   <Link
                     key={link.name}
                     href={link.href}
+                    target="_blank"
+                    rel="noreferrer"
                     className={cn(
                       'p-2 rounded-lg text-muted-foreground hover:text-foreground',
                       'hover:bg-accent transition-all duration-300 cursor-pointer'

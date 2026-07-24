@@ -41,8 +41,8 @@ export function Hero() {
 
   useEffect(() => {
     if (hasSeenLuxaLoader()) {
-      setHeroReady(true)
-      return
+      const readyFrame = window.requestAnimationFrame(() => setHeroReady(true))
+      return () => window.cancelAnimationFrame(readyFrame)
     }
 
     const handleLoaderComplete = () => setHeroReady(true)
@@ -130,17 +130,15 @@ export function Hero() {
 
           // --- Scroll --------------------------------------------------------
           if (desktop) {
-            // The dive: the hero pins and you scroll INTO the screen.
-            // Headline lifts away, chips scatter like startled fireflies,
-            // the phone grows until its screen is the world.
+            // A compact dive as the hero leaves the viewport. Keeping the
+            // section in normal document flow avoids pin spacers shifting
+            // every navigation anchor after the page has loaded.
             const dive = gsap.timeline({
               scrollTrigger: {
                 trigger: sectionRef.current,
                 start: 'top top',
-                end: '+=120%',
+                end: 'bottom top',
                 scrub: 0.8,
-                pin: true,
-                anticipatePin: 1,
               },
               defaults: { ease: 'none' },
             })
@@ -170,10 +168,10 @@ export function Hero() {
               .to(stellaRef.current, { opacity: 0, scale: 0.85, y: 60, duration: 0.3 }, 0.1)
               .to(
                 zoomRef.current,
-                { scale: 2.3, y: () => window.innerHeight * 0.22, duration: 1 },
+                { scale: 1.35, y: () => window.innerHeight * 0.08, duration: 1 },
                 0
               )
-              .to(stageRef.current, { opacity: 0.45, duration: 0.15 }, 0.85)
+              .to(stageRef.current, { opacity: 0.65, duration: 0.15 }, 0.85)
           } else {
             // Mobile: no pin (browser chrome makes pins jumpy) — a gentle
             // grow-toward-you as the phone crosses the viewport.
@@ -216,7 +214,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate overflow-hidden min-h-screen flex flex-col items-center pt-32 md:pt-36 pb-0"
+      className="luxa-hero-shell relative isolate mx-auto mb-8 min-h-screen w-[calc(100%-1rem)] max-w-7xl overflow-hidden flex flex-col items-center pt-32 pb-0 md:mb-14 md:pt-40"
     >
       {/* Night ambiance: stars + a screen-like lavender glow rising from below */}
       <div className="starfield pointer-events-none absolute inset-0 opacity-70" />
@@ -224,7 +222,7 @@ export function Hero() {
       <div className="hero-glow glow-stella pointer-events-none absolute top-1/2 -right-32 h-96 w-96 blur-3xl opacity-40" />
 
       <Container className="relative z-10">
-        <div ref={contentRef} className="text-center max-w-3xl mx-auto">
+        <div ref={contentRef} className="mx-auto max-w-4xl text-center">
           {/* Availability + rating, one badge instead of two side by side */}
           <p className="hero-lead inline-flex items-center gap-2 rounded-xl border border-border bg-card/70 px-3.5 py-1.5 font-mono text-[10px] tracking-[0.12em] md:px-4 md:text-xs md:tracking-[0.18em] uppercase text-muted-foreground backdrop-blur">
             <span className="relative flex h-2 w-2">
@@ -239,7 +237,7 @@ export function Hero() {
           {/* Headline */}
           <h1
             ref={titleRef}
-            className="mt-6 font-display text-[2.75rem] leading-[1.05] md:text-6xl lg:text-7xl font-semibold tracking-tight text-foreground"
+            className="mt-6 font-display text-[3rem] leading-[1.01] font-semibold tracking-[-0.045em] text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem]"
           >
             {titleWords.map((word, index) => (
               <span key={`title-${index}`}>
@@ -259,7 +257,7 @@ export function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="hero-lead mx-auto mt-6 max-w-2xl text-base md:text-lg leading-relaxed text-muted-foreground text-pretty">
+          <p className="hero-lead mx-auto mt-7 max-w-3xl text-base leading-relaxed text-muted-foreground text-pretty md:text-xl md:leading-relaxed">
             {t('hero.subtitle') as string}
           </p>
 
@@ -281,7 +279,7 @@ export function Hero() {
         </div>
 
         {/* Product stage: one phone glowing in the night, transactions orbiting */}
-        <div ref={stageRef} className="relative mx-auto mt-12 md:mt-16 max-w-4xl">
+        <div ref={stageRef} className="relative mx-auto mt-10 max-w-5xl md:mt-14">
           <div className="hero-glow glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[440px] w-[720px] -translate-x-1/2 -translate-y-1/2 blur-[70px] opacity-70" />
 
           {/* Orbiting transaction chips (desktop) */}
@@ -357,14 +355,14 @@ export function Hero() {
           {/* The zoom target: on desktop you scroll INTO this screen */}
           <div
             ref={zoomRef}
-            className="relative z-10 mx-auto w-[280px] md:w-[340px] lg:w-[380px] will-change-transform"
+            className="relative z-10 mx-auto w-[min(80vw,310px)] md:w-[360px] lg:w-[420px] will-change-transform"
             style={{ transformOrigin: '50% 22%' }}
           >
             <div ref={phoneRef} className="relative will-change-transform">
               <PhoneFrame
                 src="/dashboard.png"
                 alt="Luxa — dashboard: balance, weekly spending, recent transactions"
-                className="shadow-screen rounded-[2.75rem]"
+                sizes="(max-width: 767px) 80vw, (max-width: 1023px) 360px, 420px"
                 priority
               />
             </div>

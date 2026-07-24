@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Mail, MessageCircle, Clock, Loader2, Check, AlertCircle, Twitter, Github, Linkedin } from 'lucide-react'
+import { Mail, MessageCircle, Clock, Loader2, Check, AlertCircle, Instagram, Music2 } from 'lucide-react'
 import { Header } from '@/components/landing/Header'
 import { Footer } from '@/components/landing/Footer'
 import { Input } from '@/components/ui/input'
@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { socialLinks } from '@/constants/site'
 
-const socialIcons = { twitter: Twitter, github: Github, linkedin: Linkedin } as const
+const socialIcons = { tiktok: Music2, instagram: Instagram } as const
 
 const initialForm = { name: '', email: '', subject: '', message: '' }
 
@@ -208,10 +208,10 @@ export default function ContactPage() {
                       <div>
                         <p className="font-semibold text-foreground mb-1">Par email</p>
                         <a
-                          href="mailto:contact@luxa.app"
+                          href="mailto:contact@getluxa.app"
                           className="text-sm text-primary hover:underline"
                         >
-                          contact@luxa.app
+                          contact@getluxa.app
                         </a>
                       </div>
                     </div>
@@ -239,6 +239,8 @@ export default function ContactPage() {
                               <a
                                 key={link.name}
                                 href={link.href}
+                                target="_blank"
+                                rel="noreferrer"
                                 aria-label={link.name}
                                 className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-colors"
                               >

@@ -13,8 +13,8 @@ type DisperseChip = { label: string; amount: string }
 type DispersePocket = { name: string; target: string }
 
 /**
- * The signature sequence of the page. On desktop the section PINS:
- * while you scroll, every scattered expense flies into its pocket,
+ * The signature sequence of the page. On desktop, while you scroll,
+ * every scattered expense flies into its pocket,
  * the bars fill, and the page exhales. You feel the sorting happen
  * under your fingers — chaos becoming a picture you can read.
  * Mobile plays the same story as a one-shot timeline (pop in scattered,
@@ -76,16 +76,14 @@ export function Disperse() {
             // playhead arrives — set them explicitly so nothing shows early.
             gsap.set(afterEls, { opacity: 0, y: 22, filter: 'blur(5px)' })
 
-            // Pinned choreography: the whole section holds still while
-            // the chips file themselves away, driven by the scroll.
+            // Scroll choreography in normal document flow. Avoiding a pin
+            // keeps deep links and back/forward navigation stable.
             const tl = gsap.timeline({
               scrollTrigger: {
                 trigger: sectionRef.current,
-                start: 'top top',
-                end: '+=170%',
+                start: 'top 82%',
+                end: 'bottom 28%',
                 scrub: 1,
-                pin: true,
-                anticipatePin: 1,
                 invalidateOnRefresh: true,
               },
               defaults: { ease: EASE.inOut },
@@ -144,7 +142,7 @@ export function Disperse() {
               { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.35, stagger: 0.06, ease: EASE.out },
               '>-0.15'
             )
-            // A final quiet beat so the exhale lands before unpinning.
+            // A final quiet beat so the exhale has room to land.
             tl.to({}, { duration: 0.25 })
           } else if (mobile) {
             // Same story as desktop, told once: expenses pop in scattered,

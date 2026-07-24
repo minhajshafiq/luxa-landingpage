@@ -45,7 +45,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     // Detect browser language on mount
     const storedLang = localStorage.getItem('luxa-language') as Language | null
     const detectedLang = storedLang || detectBrowserLanguage()
-    setLanguageState(detectedLang)
+    const languageFrame = window.requestAnimationFrame(() => {
+      setLanguageState(detectedLang)
+    })
+
+    return () => window.cancelAnimationFrame(languageFrame)
   }, [])
 
   const setLanguage = (lang: Language) => {

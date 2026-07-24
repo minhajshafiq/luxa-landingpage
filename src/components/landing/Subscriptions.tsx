@@ -65,7 +65,7 @@ export function Subscriptions() {
   }, [finalTotal, language])
 
   return (
-    <section ref={sectionRef} className="relative isolate overflow-hidden py-16 md:py-32">
+    <section ref={sectionRef} className="luxa-section-shell relative isolate mx-auto mb-8 w-[calc(100%-1rem)] max-w-7xl overflow-hidden py-16 md:mb-14 md:py-32">
       <Container className="relative">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div>
@@ -119,7 +119,8 @@ export function Subscriptions() {
             <PhoneFrame
               src="/subscriptions.png"
               alt="Luxa — recurring expenses gathered with their monthly total"
-              className="shadow-screen rounded-[2.75rem] relative"
+              className="relative"
+              sizes="(max-width: 767px) 260px, 300px"
             />
           </div>
         </div>

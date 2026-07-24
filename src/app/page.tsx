@@ -1,6 +1,7 @@
 import { Header } from "@/components/landing/Header"
 import { Footer } from "@/components/landing/Footer"
 import { Hero } from "@/components/landing/Hero"
+import { ProductProof } from "@/components/landing/ProductProof"
 import { Disperse } from "@/components/landing/Disperse"
 import { AppTour } from "@/components/landing/AppTour"
 import { Stella } from "@/components/landing/Stella"
@@ -26,6 +27,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
+        <ProductProof />
         <Disperse />
         <AppTour />
         <Stella />

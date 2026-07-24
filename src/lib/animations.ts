@@ -138,7 +138,6 @@ export const springHover = {
 export const buttonSpring = {
   whileHover: {
     scale: 1.05,
-    boxShadow: '0 12px 32px -4px hsl(var(--primary) / 0.2)',
     transition: {
       type: 'spring' as const,
       stiffness: 400,

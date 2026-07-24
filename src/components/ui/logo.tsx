@@ -14,7 +14,7 @@ const sizeClasses = {
   xl: "h-16 w-16"
 }
 
-export function Logo({ className = "", size = "md", variant = "default" }: LogoProps) {
+export function Logo({ className = "", size = "md" }: LogoProps) {
   const sizeClass = sizeClasses[size]
   
   return (

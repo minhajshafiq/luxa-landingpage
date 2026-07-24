@@ -30,8 +30,10 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
     <div
       data-animate="card"
       className={cn(
-        'relative flex h-full flex-col rounded-2xl border p-7 md:p-8',
-        highlighted ? 'border-primary/40 bg-card shadow-premium-hover' : 'border-border bg-card shadow-premium'
+        'relative flex h-full flex-col rounded-[2rem] border p-6 sm:p-7 md:p-9',
+        highlighted
+          ? 'border-primary/40 bg-gradient-to-br from-primary/[0.13] via-card to-card shadow-premium-hover'
+          : 'border-border/80 bg-card/75 shadow-premium'
       )}
     >
       <div className="flex items-start justify-between gap-3">
@@ -60,7 +62,7 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
       {/* The tear between what it costs and what it buys */}
       <div className="mt-7 border-t border-dashed border-border" />
 
-      <ul className="mt-6 flex-1 space-y-3">
+      <ul className="mt-6 space-y-3">
         {plan.features.map((feature, index) => (
           <li key={index} className="flex items-baseline gap-3">
             <span
@@ -81,8 +83,9 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
         asChild
         size="lg"
         variant={highlighted ? 'default' : 'outline'}
+        wrapperClassName="mt-auto block w-full pt-8"
         className={cn(
-          'mt-8 w-full h-12 text-base font-semibold',
+          'w-full h-12 text-base font-semibold',
           highlighted
             ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_28px_-8px_hsl(var(--primary)/0.55)]'
             : 'bg-transparent border border-border text-foreground hover:bg-accent hover:border-primary/40'
@@ -100,10 +103,10 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
 export function Pricing() {
   const { t } = useTranslation()
   const free = t('pricing.free') as unknown as Plan
-  const pro = t('pricing.pro') as unknown as Plan
+  const plus = t('pricing.plus') as unknown as Plan
 
   return (
-    <section id="pricing" className="relative isolate overflow-hidden py-16 md:py-32">
+    <section id="pricing" className="luxa-section-shell relative isolate mx-auto mb-8 w-[calc(100%-1rem)] max-w-7xl overflow-hidden py-16 md:mb-14 md:py-32">
 
       <Container className="relative">
         <SectionHeading
@@ -115,7 +118,7 @@ export function Pricing() {
 
         <div className="mx-auto grid max-w-4xl items-stretch gap-6 md:grid-cols-2">
           <PlanCard plan={free} />
-          <PlanCard plan={pro} highlighted />
+          <PlanCard plan={plus} highlighted />
         </div>
       </Container>
     </section>

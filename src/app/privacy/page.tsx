@@ -306,7 +306,7 @@ export default function Privacy() {
                     <div>
                       <h3 className="text-xl font-medium mb-2">12.1 Délégué à la protection des données (DPO)</h3>
                       <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                        <li><strong>E-mail</strong> : privacy@luxa.app</li>
+                        <li><strong>E-mail</strong> : privacy@getluxa.app</li>
                         <li><strong>Adresse</strong> : 123 Rue de la Paix, 75001 Paris, France</li>
                       </ul>
                     </div>
@@ -317,7 +317,7 @@ export default function Privacy() {
                     <div>
                       <h3 className="text-xl font-medium mb-2">12.3 Support client</h3>
                       <ul className="list-disc list-inside space-y-2 text-muted-foreground">
-                        <li><strong>E-mail</strong> : support@luxa.app</li>
+                        <li><strong>E-mail</strong> : support@getluxa.app</li>
                         <li><strong>Réponse</strong> : Sous 48h ouvrées</li>
                       </ul>
                     </div>

@@ -15,7 +15,7 @@ export function Privacy() {
   const bullets = t('privacy.bullets') as unknown as PrivacyBullet[]
 
   return (
-    <section className="relative isolate overflow-hidden py-16 md:py-28">
+    <section className="luxa-section-shell luxa-section-shell-quiet relative isolate mx-auto mb-8 w-[calc(100%-1rem)] max-w-7xl overflow-hidden py-16 md:mb-14 md:py-28">
 
       <Container className="relative">
         <div className="mx-auto flex justify-center" data-animate="stella">

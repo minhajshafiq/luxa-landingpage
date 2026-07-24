@@ -27,9 +27,9 @@ export function Header() {
     <header className="fixed top-3 md:top-5 inset-x-0 z-50 px-3 sm:px-4">
       <div
         className={cn(
-          'mx-auto w-full max-w-5xl flex h-14 md:h-16 items-center justify-between gap-2',
-          'rounded-2xl border border-border/70 bg-background/70 backdrop-blur-xl',
-          'shadow-premium px-3 sm:px-4 md:px-5'
+          'mx-auto flex h-14 w-full max-w-4xl items-center justify-between gap-2 md:h-[60px]',
+          'rounded-2xl border border-white/[0.08] bg-card/72 backdrop-blur-2xl md:rounded-full',
+          'shadow-[0_16px_48px_-24px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.05)] px-3 sm:px-4 md:px-4'
         )}
       >
         {/* Logo */}
@@ -47,7 +47,7 @@ export function Header() {
               href={item.href}
               className={cn(
                 'text-sm font-medium text-muted-foreground transition-all duration-300',
-                'hover:text-foreground hover:bg-accent rounded-xl px-4 py-2 cursor-pointer'
+                'hover:text-foreground hover:bg-accent rounded-full px-3.5 py-2 cursor-pointer'
               )}
             >
               {item.title as string}
@@ -89,7 +89,7 @@ export function Header() {
             className="p-2 rounded-full hover:bg-accent transition-colors relative z-50 cursor-pointer"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence initial={false} mode="wait">
               {isMenuOpen ? (
                 <motion.div
                   key="close"
@@ -124,9 +124,12 @@ export function Header() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.97 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden mx-auto mt-2 w-full max-w-5xl rounded-3xl border border-border/70 bg-background/95 backdrop-blur-xl shadow-premium overflow-hidden"
+            className="mx-auto mt-2 max-h-[calc(100dvh-5.75rem)] w-full max-w-4xl overflow-y-auto overscroll-contain rounded-3xl border border-border/70 bg-background/95 shadow-premium backdrop-blur-xl md:hidden"
           >
-            <nav className="px-4 py-4 space-y-1">
+            <nav
+              className="space-y-1 px-4 pt-4"
+              style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom))' }}
+            >
               {navItems.map((item, index) => (
                 <motion.div
                   key={item.href}

@@ -10,8 +10,8 @@ export const siteConfig = {
   url: "https://luxa.app",
   ogImage: "https://luxa.app/og.jpg",
   links: {
-    twitter: "https://twitter.com/luxa",
-    github: "https://github.com/luxa",
+    tiktok: "https://www.tiktok.com/@luxaapp",
+    instagram: "https://www.instagram.com/getluxa/",
   },
 }
 
@@ -36,19 +36,14 @@ export const navItems: NavItem[] = [
 
 export const socialLinks: SocialLink[] = [
   {
-    name: "Twitter",
-    href: "https://twitter.com/luxa",
-    icon: "twitter",
+    name: "TikTok",
+    href: "https://www.tiktok.com/@luxaapp",
+    icon: "tiktok",
   },
   {
-    name: "GitHub",
-    href: "https://github.com/luxa",
-    icon: "github",
-  },
-  {
-    name: "LinkedIn",
-    href: "https://linkedin.com/company/luxa",
-    icon: "linkedin",
+    name: "Instagram",
+    href: "https://www.instagram.com/getluxa/",
+    icon: "instagram",
   },
 ]
 

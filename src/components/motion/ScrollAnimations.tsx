@@ -36,6 +36,18 @@ export function ScrollAnimations() {
       .filter((el) => !el.dataset.animateDone)
     if (!els.length) return
 
+    // Hide only once JavaScript is active. The CSS default stays visible so
+    // content can never remain blank if an observer is delayed or unavailable.
+    els.forEach((el) => {
+      const c = CONFIG[el.dataset.animate ?? 'card'] ?? CONFIG.card
+      gsap.set(el, {
+        opacity: 0,
+        y: c.y,
+        scale: c.scale ?? 1,
+        filter: c.blur ? `blur(${c.blur}px)` : 'none',
+      })
+    })
+
     // Stagger siblings that enter together by observing entry order.
     let queue: HTMLElement[] = []
     let flushTimer: number | null = null
@@ -87,15 +99,66 @@ export function ScrollAnimations() {
 
     els.forEach((el) => io.observe(el))
 
+    // Safety net for unusual browser/scroll restoration timing. Motion is a
+    // progressive enhancement; readable content always wins.
+    const revealFallbackTimer = window.setTimeout(() => {
+      els.forEach((el) => {
+        if (el.dataset.animateDone) return
+        io.unobserve(el)
+        el.dataset.animateDone = '1'
+        gsap.to(el, {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          filter: 'blur(0px)',
+          duration: 0.45,
+          ease: EASE.out,
+          overwrite: true,
+          clearProps: 'filter,willChange',
+        })
+      })
+    }, 1600)
+
+    let hashFrame: number | null = null
+
+    // Pinned sections add spacers after the browser's native anchor jump.
+    // Re-run the jump once those spacers are measured so section titles do
+    // not end up hidden behind the floating navigation.
+    const scrollToHash = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1))
+      if (!id) return
+
+      const target = document.getElementById(id)
+      if (!target) return
+
+      ScrollTrigger.refresh()
+      if (hashFrame !== null) window.cancelAnimationFrame(hashFrame)
+      hashFrame = window.requestAnimationFrame(() => {
+        target.scrollIntoView({ block: 'start' })
+      })
+    }
+
+    const hashTimer = window.setTimeout(scrollToHash, 250)
+    const handleHashChange = () => window.setTimeout(scrollToHash, 0)
+
     // Once the intro loader releases the page (and layout is settled),
-    // recompute every pinned/scrubbed trigger on the page.
-    const handleLoaderDone = () => ScrollTrigger.refresh()
+    // recompute every pinned/scrubbed trigger and restore any deep link.
+    const handleLoaderDone = () => {
+      ScrollTrigger.refresh()
+      scrollToHash()
+    }
+
     window.addEventListener(LUXA_LOADER_COMPLETE_EVENT, handleLoaderDone, { once: true })
+    window.addEventListener('hashchange', handleHashChange)
 
     return () => {
       io.disconnect()
       if (flushTimer !== null) window.clearTimeout(flushTimer)
+      window.clearTimeout(revealFallbackTimer)
+      window.clearTimeout(hashTimer)
+      if (hashFrame !== null) window.cancelAnimationFrame(hashFrame)
       window.removeEventListener(LUXA_LOADER_COMPLETE_EVENT, handleLoaderDone)
+      window.removeEventListener('hashchange', handleHashChange)
     }
   }, [language])
 

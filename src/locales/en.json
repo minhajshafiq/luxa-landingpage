@@ -111,7 +111,7 @@
     "totalLabel": "The real total, every month",
     "total": "−€1,276",
     "perMonth": "/ month",
-    "note": "With Luxa Pro, Stella warns you before every debit."
+    "note": "With Luxa Plus, Stella warns you before every debit."
   },
   "benefits": {
     "eyebrow": "Everyday",
@@ -192,8 +192,8 @@
   "pricing": {
     "eyebrow": "Pricing",
     "title": "Start free.",
-    "titleHighlight": "Go further with Pro.",
-    "subtitle": "The essentials are free, forever. Luxa Pro adds active help: full Stella, projections, and reminders before every debit.",
+    "titleHighlight": "Unlock more with Luxa Plus.",
+    "subtitle": "The essentials are free, forever. Luxa Plus adds active help: full Stella, projections, and reminders before every debit.",
     "free": {
       "name": "Luxa",
       "price": "€0",
@@ -207,8 +207,8 @@
       ],
       "cta": "Download for free"
     },
-    "pro": {
-      "name": "Luxa Pro",
+    "plus": {
+      "name": "Luxa Plus",
       "badge": "Active help",
       "price": "€6.99",
       "period": "per month",
@@ -221,7 +221,7 @@
         "Advanced PDF import: bulk editing, validation",
         "Richer weekly summary"
       ],
-      "cta": "Try Luxa Pro"
+      "cta": "Try Luxa Plus"
     }
   },
   "faq": {
@@ -254,8 +254,8 @@
         "answer": "Luxa is on iOS today. Android is on the way — join the beta and we'll tell you the moment it opens."
       },
       {
-        "question": "What does Luxa Pro give me?",
-        "answer": "Active help. Free gives you clarity; Pro adds anticipation: full Stella analytics, end-of-month projections, reminders before every debit, and a more powerful PDF import. €6.99 a month, or €35.99 a year."
+        "question": "What does Luxa Plus give me?",
+        "answer": "Active help. Free gives you clarity; Luxa Plus adds anticipation: full Stella analytics, end-of-month projections, reminders before every debit, and a more powerful PDF import. €6.99 a month, or €35.99 a year."
       }
     ]
   },

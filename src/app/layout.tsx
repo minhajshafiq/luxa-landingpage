@@ -57,7 +57,6 @@ export const metadata: Metadata = {
     title: "Luxa — Make your money feel clear again",
     description:
       "Pockets for every euro, subscriptions under control, and Stella who notices what matters.",
-    creator: "@luxa",
   },
   robots: {
     index: true,

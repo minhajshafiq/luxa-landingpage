@@ -37,12 +37,14 @@ export function LoaderProvider({ children }: LoaderProviderProps) {
 
   useEffect(() => {
     if (hasSeenLuxaLoader()) {
-      setShowLoader(false)
-      window.requestAnimationFrame(dispatchLuxaLoaderComplete)
-      return
+      const readyFrame = window.requestAnimationFrame(() => {
+        setShowLoader(false)
+        dispatchLuxaLoaderComplete()
+      })
+      return () => window.cancelAnimationFrame(readyFrame)
     }
 
-    setShowLoader(true)
+    return undefined
   }, [])
 
   useEffect(() => {

@@ -1,8 +1,8 @@
 'use client'
 
 import { useRef } from 'react'
-import Image from 'next/image'
 import { Container } from '@/components/design-system/Container'
+import { PhoneFrame } from '@/components/design-system/PhoneFrame'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { gsap, ScrollTrigger, prefersReducedMotion, useIsomorphicLayoutEffect } from '@/lib/motion'
@@ -83,25 +83,20 @@ export function Benefits() {
             </div>
           </div>
 
-          {/* The proof: Luxa's own history screen, reading a real month */}
-          <div className="relative mx-auto w-full max-w-sm lg:sticky lg:top-28">
+          {/* The proof: the new export already includes its complete phone. */}
+          <div className="relative mx-auto w-[260px] md:w-[290px] lg:sticky lg:top-24">
             <StellaMascot
               mood="reading"
               size="sm"
               floating
               className="absolute -left-4 -top-5 z-10 md:-left-6"
             />
-            <div className="relative h-[420px] overflow-hidden rounded-[2rem] border border-border shadow-premium md:h-[520px]">
-              <div ref={calendarImgRef} className="absolute -inset-y-10 inset-x-0 will-change-transform">
-                <Image
-                  src="/history.png"
-                  alt="Luxa — spending calendar, each day showing its merchants"
-                  fill
-                  sizes="(max-width: 1024px) 90vw, 420px"
-                  className="object-cover object-[center_32%]"
-                />
-              </div>
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+            <div ref={calendarImgRef} className="relative will-change-transform">
+              <PhoneFrame
+                src="/history.png"
+                alt="Luxa — spending calendar, each day showing its merchants"
+                sizes="(max-width: 767px) 260px, 290px"
+              />
             </div>
           </div>
         </div>

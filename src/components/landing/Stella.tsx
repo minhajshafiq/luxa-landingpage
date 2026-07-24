@@ -15,7 +15,7 @@ export function Stella() {
   const weekly = t('stella.weekly') as unknown as { title: string; description: string }
 
   return (
-    <section id="stella" className="relative isolate overflow-hidden py-16 md:py-32">
+    <section id="stella" className="luxa-section-shell luxa-section-shell-warm relative isolate mx-auto mb-8 w-[calc(100%-1rem)] max-w-7xl overflow-hidden py-16 md:mb-14 md:py-32">
       {/* Stella's zone glows coral — the warm heart of the page */}
       <div className="starfield pointer-events-none absolute inset-0 opacity-50" />
 

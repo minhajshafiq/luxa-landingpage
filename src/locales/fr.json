@@ -111,7 +111,7 @@
     "totalLabel": "Le vrai total, chaque mois",
     "total": "−1 276 €",
     "perMonth": "/ mois",
-    "note": "Avec Luxa Pro, Stella te prévient avant chaque prélèvement."
+    "note": "Avec Luxa Plus, Stella te prévient avant chaque prélèvement."
   },
   "benefits": {
     "eyebrow": "Au quotidien",
@@ -192,8 +192,8 @@
   "pricing": {
     "eyebrow": "Tarifs",
     "title": "Commence gratuitement.",
-    "titleHighlight": "Va plus loin avec Pro.",
-    "subtitle": "L'essentiel est gratuit, pour toujours. Luxa Pro ajoute une aide active : Stella au complet, des projections, et des rappels avant chaque prélèvement.",
+    "titleHighlight": "Passe à Luxa Plus.",
+    "subtitle": "L'essentiel est gratuit, pour toujours. Luxa Plus ajoute une aide active : Stella au complet, des projections, et des rappels avant chaque prélèvement.",
     "free": {
       "name": "Luxa",
       "price": "0 €",
@@ -207,8 +207,8 @@
       ],
       "cta": "Télécharger gratuitement"
     },
-    "pro": {
-      "name": "Luxa Pro",
+    "plus": {
+      "name": "Luxa Plus",
       "badge": "Aide active",
       "price": "6,99 €",
       "period": "par mois",
@@ -221,7 +221,7 @@
         "Import PDF avancé : édition en masse, validation",
         "Résumé hebdomadaire enrichi"
       ],
-      "cta": "Essayer Luxa Pro"
+      "cta": "Essayer Luxa Plus"
     }
   },
   "faq": {
@@ -254,8 +254,8 @@
         "answer": "Luxa est disponible sur iOS dès aujourd'hui. La version Android arrive — inscris-toi à la bêta pour être prévenu·e dès l'ouverture."
       },
       {
-        "question": "Que m'apporte Luxa Pro ?",
-        "answer": "Une aide active. Le gratuit te donne la clarté ; Pro ajoute l'anticipation : les analyses complètes de Stella, des projections de fin de mois, des rappels avant chaque prélèvement, et un import PDF plus puissant. 6,99 € par mois, ou 35,99 € par an."
+        "question": "Que m'apporte Luxa Plus ?",
+        "answer": "Une aide active. Le gratuit te donne la clarté ; Luxa Plus ajoute l'anticipation : les analyses complètes de Stella, des projections de fin de mois, des rappels avant chaque prélèvement, et un import PDF plus puissant. 6,99 € par mois, ou 35,99 € par an."
       }
     ]
   },

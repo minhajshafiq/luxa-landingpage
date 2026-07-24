@@ -153,7 +153,7 @@ export default function Terms() {
                   <h2 className="text-2xl font-semibold mb-4">12. CONTACT</h2>
                   <p className="text-muted-foreground leading-relaxed">
                     Pour toute question concernant ces Conditions Générales d&apos;Utilisation, contactez-nous à{' '}
-                    <a href="mailto:contact@luxa.app" className="text-primary hover:underline">contact@luxa.app</a>{' '}
+                    <a href="mailto:contact@getluxa.app" className="text-primary hover:underline">contact@getluxa.app</a>{' '}
                     ou via notre <a href="/contact" className="text-primary hover:underline">page de contact</a>.
                   </p>
                 </section>

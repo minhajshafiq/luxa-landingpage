@@ -6,30 +6,46 @@ interface PhoneFrameProps {
   alt?: string
   className?: string
   priority?: boolean
+  sizes?: string
   /** Custom screen content, rendered instead of an <Image> when provided. */
   children?: React.ReactNode
 }
 
-export function PhoneFrame({ src, alt, className, priority, children }: PhoneFrameProps) {
+/**
+ * The current product shots already include the complete iPhone mockup.
+ * Keeping the frame here as a simple intrinsic-ratio wrapper prevents a
+ * second bezel/notch from being drawn around those images.
+ */
+export function PhoneFrame({
+  src,
+  alt,
+  className,
+  priority,
+  sizes = '(max-width: 768px) 280px, 340px',
+  children,
+}: PhoneFrameProps) {
   return (
-    <div className={cn('relative aspect-[1206/2622] w-full', className)}>
-      <div className="absolute inset-0 rounded-[2.75rem] bg-black p-[10px] shadow-2xl">
-        <div className="relative h-full w-full overflow-hidden rounded-[2.25rem] bg-black">
-          {src ? (
-            <Image
-              src={src}
-              alt={alt ?? ''}
-              fill
-              priority={priority}
-              className="object-cover"
-              sizes="(max-width: 768px) 280px, 340px"
-            />
-          ) : (
-            children
-          )}
+    <div
+      className={cn(
+        'relative aspect-[1530/3036] w-full drop-shadow-[0_32px_55px_rgba(17,8,35,0.82)]',
+        className
+      )}
+    >
+      {src ? (
+        <Image
+          src={src}
+          alt={alt ?? ''}
+          width={1530}
+          height={3036}
+          priority={priority}
+          className="h-full w-full select-none object-contain"
+          sizes={sizes}
+        />
+      ) : (
+        <div className="absolute inset-0 overflow-hidden rounded-[2.25rem] bg-black">
+          {children}
         </div>
-        <div className="pointer-events-none absolute left-1/2 top-[10px] h-6 w-24 -translate-x-1/2 rounded-full bg-black" />
-      </div>
+      )}
     </div>
   )
 }
