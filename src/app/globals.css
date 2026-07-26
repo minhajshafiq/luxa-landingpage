@@ -1076,3 +1076,47 @@ html {
   text-transform: uppercase;
   color: hsl(var(--muted-foreground));
 }
+
+/* ------------------------------------------------------------
+   Jour 01 — la grille ratio
+   La grille 50/30/20 — un seul emplacement sur toute la page (jour 01).
+   Les colonnes font littéralement 50 %, 30 % et 20 % : la page enseigne la
+   méthode avant qu'on en ait lu un mot. Le point de bascule à 700px (et non
+   md/768) est volontaire : les trois colonnes doivent se replier plus tôt
+   que le reste du gabarit du relevé.
+   ------------------------------------------------------------ */
+.ratio-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin-top: 28px;
+}
+@media (min-width: 700px) {
+  .ratio-grid {
+    grid-template-columns: 50fr 30fr 20fr;
+    gap: 0;
+  }
+  .ratio-cell + .ratio-cell { padding-left: 20px; }
+}
+.ratio-cell {
+  border-top: 2px solid;
+  padding-top: 16px;
+  padding-right: 20px;
+}
+.ratio-pct {
+  font-size: 28px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Le ciel : la zone d'où les dépenses partent. */
+.ratio-sky {
+  position: relative;
+  height: 168px;
+  margin-top: 30px;
+  overflow: hidden;
+}
+@media (min-width: 700px) {
+  .ratio-sky { height: 190px; }
+}
