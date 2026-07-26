@@ -3,9 +3,7 @@ import { Footer } from "@/components/landing/Footer"
 import { Hero } from "@/components/landing/Hero"
 import { ProductProof } from "@/components/landing/ProductProof"
 import { Disperse } from "@/components/landing/Disperse"
-import { AppTour } from "@/components/landing/AppTour"
 import { Stella } from "@/components/landing/Stella"
-import { Benefits } from "@/components/landing/Benefits"
 import { Privacy } from "@/components/landing/Privacy"
 import { Pricing } from "@/components/landing/Pricing"
 import { FAQ } from "@/components/landing/FAQ"
@@ -27,9 +25,7 @@ export default function Home() {
         <Hero />
         <ProductProof />
         <Disperse />
-        <AppTour />
         <Stella />
-        <Benefits />
         <Privacy />
         <Pricing />
         <FAQ />
