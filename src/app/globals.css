@@ -1077,6 +1077,15 @@ html {
   color: hsl(var(--muted-foreground));
 }
 
+/* Jour 17 — l'inversion. La marge prend toute la page : la voix de Stella
+   devient le contenu au lieu de le commenter. Seule fois où la structure se
+   retourne, donc elle porte du sens. */
+.stmt-entry--voice .stmt-gutter { opacity: 0.55; }
+.stmt-entry--voice blockquote {
+  border-left: 2px solid hsl(var(--stella));
+  padding-left: clamp(18px, 3vw, 34px);
+}
+
 /* ------------------------------------------------------------
    Jour 01 — la grille ratio
    La grille 50/30/20 — un seul emplacement sur toute la page (jour 01).

@@ -10,8 +10,8 @@ interface StatementEntryProps {
   amount: string
   /** Micro-libellé sous le montant, ex. « prélèvements ». */
   tag: string
-  title: string
-  body: string
+  title?: string
+  body?: string
   tone?: EntryTone
   /** Annotation de Stella pour la marge. */
   note?: string
@@ -51,12 +51,16 @@ export function StatementEntry({
       </div>
 
       <div className="min-w-0">
-        <h2 className="max-w-[19ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance md:max-w-[24ch]">
-          {title}
-        </h2>
-        <p className="mt-4 max-w-[62ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
-          {body}
-        </p>
+        {title && (
+          <h2 className="max-w-[19ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance md:max-w-[24ch]">
+            {title}
+          </h2>
+        )}
+        {body && (
+          <p className="mt-4 max-w-[62ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
+            {body}
+          </p>
+        )}
         {children}
 
         {/* Sous 1100px la marge n'existe plus : la note revient dans le flux. */}

@@ -6,7 +6,6 @@ import { Disperse } from "@/components/landing/Disperse"
 import { AppTour } from "@/components/landing/AppTour"
 import { Stella } from "@/components/landing/Stella"
 import { Benefits } from "@/components/landing/Benefits"
-import { Difference } from "@/components/landing/Difference"
 import { Privacy } from "@/components/landing/Privacy"
 import { Pricing } from "@/components/landing/Pricing"
 import { FAQ } from "@/components/landing/FAQ"
@@ -31,7 +30,6 @@ export default function Home() {
         <AppTour />
         <Stella />
         <Benefits />
-        <Difference />
         <Privacy />
         <Pricing />
         <FAQ />
