@@ -5,7 +5,6 @@ import { ProductProof } from "@/components/landing/ProductProof"
 import { Disperse } from "@/components/landing/Disperse"
 import { AppTour } from "@/components/landing/AppTour"
 import { Stella } from "@/components/landing/Stella"
-import { Subscriptions } from "@/components/landing/Subscriptions"
 import { Benefits } from "@/components/landing/Benefits"
 import { Difference } from "@/components/landing/Difference"
 import { Privacy } from "@/components/landing/Privacy"
@@ -31,7 +30,6 @@ export default function Home() {
         <Disperse />
         <AppTour />
         <Stella />
-        <Subscriptions />
         <Benefits />
         <Difference />
         <Privacy />
