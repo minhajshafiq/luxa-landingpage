@@ -1,7 +1,7 @@
 'use client'
 
 import { AppleLogo } from '@/components/ui/apple-logo'
-import { Container } from '@/components/design-system/Container'
+import { Section } from '@/components/design-system/Section'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { AnimatedButton } from '@/components/design-system/AnimatedButton'
@@ -30,10 +30,10 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
     <div
       data-animate="card"
       className={cn(
-        'relative flex h-full flex-col rounded-[2rem] border p-6 sm:p-7 md:p-9',
+        'relative flex h-full flex-col rounded-card p-6 sm:p-7 md:p-9',
         highlighted
-          ? 'border-primary/40 bg-gradient-to-br from-primary/[0.13] via-card to-card shadow-premium-hover'
-          : 'border-border/80 bg-card/75 shadow-premium'
+          ? 'border border-primary/40 bg-gradient-to-br from-primary/[0.14] via-card to-card shadow-[0_0_60px_-30px_hsl(var(--primary)),0_24px_56px_-20px_hsl(0_0%_0%/0.95)]'
+          : 'luxa-card luxa-hairline luxa-card-hover'
       )}
     >
       <div className="flex items-start justify-between gap-3">
@@ -41,7 +41,7 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
           <div className="flex flex-wrap items-center gap-2">
             <h3 className="font-display text-xl font-semibold text-foreground">{plan.name}</h3>
             {highlighted && plan.badge && (
-              <span className="rounded-md bg-primary/15 px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
+              <span className="rounded-tag bg-primary/15 px-2.5 py-1 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-primary">
                 {plan.badge}
               </span>
             )}
@@ -52,7 +52,8 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
       </div>
 
       <div className="mt-6 flex items-baseline gap-2">
-        <span className="font-mono tabular text-4xl font-bold text-foreground md:text-5xl">
+        {/* Display face, not mono — see the note on the subscriptions total. */}
+        <span className="font-display tabular text-4xl font-bold tracking-[-0.03em] text-foreground md:text-5xl">
           {plan.price}
         </span>
         <span className="text-sm text-muted-foreground">{plan.period}</span>
@@ -85,10 +86,11 @@ function PlanCard({ plan, highlighted }: { plan: Plan; highlighted?: boolean }) 
         variant={highlighted ? 'default' : 'outline'}
         wrapperClassName="mt-auto block w-full pt-8"
         className={cn(
-          'w-full h-12 text-base font-semibold',
+          // h-12 with a 1.25rem radius reproduces the app's 56/24 button ratio.
+          'w-full h-12 rounded-button text-base font-semibold',
           highlighted
-            ? 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_28px_-8px_hsl(var(--primary)/0.55)]'
-            : 'bg-transparent border border-border text-foreground hover:bg-accent hover:border-primary/40'
+            ? 'luxa-cta text-primary-foreground'
+            : 'luxa-ghost border-0 bg-transparent text-foreground'
         )}
       >
         <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
@@ -106,9 +108,7 @@ export function Pricing() {
   const plus = t('pricing.plus') as unknown as Plan
 
   return (
-    <section id="pricing" className="luxa-section-shell relative isolate mx-auto mb-8 w-[calc(100%-1rem)] max-w-7xl overflow-hidden py-16 md:mb-14 md:py-32">
-
-      <Container className="relative">
+    <Section id="pricing" tone="primary" divider>
         <SectionHeading
           eyebrow={t('pricing.eyebrow') as string}
           title={t('pricing.title') as string}
@@ -120,7 +120,6 @@ export function Pricing() {
           <PlanCard plan={free} />
           <PlanCard plan={plus} highlighted />
         </div>
-      </Container>
-    </section>
+    </Section>
   )
 }

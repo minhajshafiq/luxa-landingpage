@@ -18,7 +18,7 @@ export function LanguageToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 rounded-full bg-muted/50 animate-pulse" />
+      <div className="w-10 h-10 rounded-full bg-foreground/[0.06] animate-pulse" />
     )
   }
 
@@ -31,7 +31,7 @@ export function LanguageToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       onClick={toggleLanguage}
-      className="w-10 h-10 rounded-full bg-muted/50 hover:bg-muted flex items-center justify-center transition-colors relative overflow-hidden cursor-pointer"
+      className="luxa-ghost w-10 h-10 rounded-full flex items-center justify-center relative overflow-hidden cursor-pointer"
       aria-label={`Switch to ${language === 'en' ? 'French' : 'English'}`}
     >
       <AnimatePresence mode="wait">

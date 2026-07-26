@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -14,7 +14,18 @@ import { useTranslation } from '@/lib/i18n/useTranslation'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const { t } = useTranslation()
+
+  // At the top the bar floats wide and almost transparent, letting the hero
+  // aurora through. Once you leave the hero it tightens and turns solid so
+  // text never has to compete with whatever is scrolling underneath.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const navItems = [
     { title: t('nav.pockets'), href: '/#pockets' },
@@ -27,9 +38,12 @@ export function Header() {
     <header className="fixed top-3 md:top-5 inset-x-0 z-50 px-3 sm:px-4">
       <div
         className={cn(
-          'mx-auto flex h-14 w-full max-w-4xl items-center justify-between gap-2 md:h-[60px]',
-          'rounded-2xl border border-white/[0.08] bg-card/72 backdrop-blur-2xl md:rounded-full',
-          'shadow-[0_16px_48px_-24px_rgba(0,0,0,0.9),inset_0_1px_0_rgba(255,255,255,0.05)] px-3 sm:px-4 md:px-4'
+          'luxa-hairline mx-auto flex w-full items-center justify-between gap-2',
+          'rounded-tile backdrop-blur-2xl md:rounded-full px-3 sm:px-4 md:px-4',
+          'transition-[max-width,height,background-color,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+          scrolled
+            ? 'h-[52px] max-w-3xl bg-card/85 shadow-[0_18px_50px_-26px_rgba(0,0,0,1)] md:h-14'
+            : 'h-14 max-w-4xl bg-card/45 shadow-[0_16px_48px_-30px_rgba(0,0,0,0.9)] md:h-[60px]'
         )}
       >
         {/* Logo */}
@@ -61,7 +75,7 @@ export function Header() {
           <AnimatedButton
             asChild
             size="sm"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-5 cursor-pointer"
+            className="luxa-cta rounded-full text-primary-foreground font-semibold px-5 cursor-pointer"
           >
             <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
               <AppleLogo className="mr-1.5 h-4 w-4" />
@@ -78,7 +92,7 @@ export function Header() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={t('nav.downloadApp') as string}
-            className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground cursor-pointer"
+            className="luxa-cta flex h-10 w-10 items-center justify-center rounded-full text-primary-foreground cursor-pointer"
           >
             <AppleLogo className="h-4 w-4" />
           </motion.a>
@@ -124,7 +138,7 @@ export function Header() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.97 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-2 max-h-[calc(100dvh-5.75rem)] w-full max-w-4xl overflow-y-auto overscroll-contain rounded-3xl border border-border/70 bg-background/95 shadow-premium backdrop-blur-xl md:hidden"
+            className="luxa-card luxa-hairline mx-auto mt-2 max-h-[calc(100dvh-5.75rem)] w-full max-w-4xl overflow-y-auto overscroll-contain rounded-card md:hidden"
           >
             <nav
               className="space-y-1 px-4 pt-4"
@@ -142,7 +156,7 @@ export function Header() {
                     onClick={() => setIsMenuOpen(false)}
                     className={cn(
                       'block px-4 py-3 text-base font-medium text-foreground',
-                      'rounded-2xl hover:bg-accent transition-colors',
+                      'rounded-tile hover:bg-accent transition-colors',
                       'border border-transparent hover:border-border cursor-pointer'
                     )}
                   >
@@ -164,7 +178,7 @@ export function Header() {
                 <AnimatedButton
                   asChild
                   size="default"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold cursor-pointer"
+                  className="luxa-cta w-full rounded-tile text-primary-foreground font-semibold cursor-pointer"
                 >
                   <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
                     <AppleLogo className="mr-1.5 h-4 w-4" />

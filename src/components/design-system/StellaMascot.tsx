@@ -99,7 +99,7 @@ export function StellaMascot({
         height={px}
         priority={priority}
         loading={priority ? undefined : 'lazy'}
-        className="h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(246,112,98,0.25)]"
+        className="h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(239,139,124,0.3)]"
         sizes={`${px}px`}
       />
     </div>

@@ -6,6 +6,18 @@
     "faq": "FAQ",
     "downloadApp": "Télécharger"
   },
+  "proof": {
+    "reviews": "avis",
+    "appStore": "Voir sur l'App Store"
+  },
+  "meta": {
+    "title": "Luxa — Ton argent, enfin lisible",
+    "description": "Luxa transforme le bruit de tes dépenses en une image calme : des pockets pour chaque euro, tes abonnements sous contrôle, et Stella, une petite étoile qui remarque ce qui compte. Sans connexion bancaire.",
+    "ogDescription": "Des pockets pour chaque euro, tes abonnements sous contrôle, et Stella qui remarque ce qui compte. Un budget calme, clair et humain.",
+    "notFoundTitle": "Cette page s'est perdue dans la nuit",
+    "notFoundLead": "Le lien que tu as suivi ne mène nulle part. Stella te ramène à la maison.",
+    "notFoundCta": "Retour à l'accueil"
+  },
   "hero": {
     "badge": "Disponible sur iOS · Android en bêta",
     "title": "Ton argent,",
@@ -289,6 +301,8 @@
     "submit": "Rejoindre la bêta Android",
     "submitting": "Inscription…",
     "checkEmail": "Surveille ta boîte mail !",
-    "disclaimer": "En t'inscrivant, tu acceptes de recevoir des emails de Luxa au sujet de la bêta Android. Désinscription possible à tout moment."
+    "disclaimer": "En t'inscrivant, tu acceptes de recevoir des emails de Luxa au sujet de la bêta Android. Désinscription possible à tout moment.",
+    "errorNetwork": "Connexion impossible. Vérifie ta connexion internet.",
+    "errorGeneric": "Une erreur est survenue. Réessaie."
   }
 }

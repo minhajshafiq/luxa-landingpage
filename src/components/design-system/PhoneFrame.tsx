@@ -27,7 +27,7 @@ export function PhoneFrame({
   return (
     <div
       className={cn(
-        'relative aspect-[1530/3036] w-full drop-shadow-[0_32px_55px_rgba(17,8,35,0.82)]',
+        'relative aspect-[1530/3036] w-full drop-shadow-[0_32px_55px_rgba(0,0,0,0.92)]',
         className
       )}
     >

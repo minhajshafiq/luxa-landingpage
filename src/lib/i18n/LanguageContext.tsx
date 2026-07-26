@@ -1,10 +1,13 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
+import React, { createContext, useContext, useState, type ReactNode } from 'react'
 import enTranslations from '@/locales/en.json'
 import frTranslations from '@/locales/fr.json'
-
-type Language = 'en' | 'fr'
+import {
+  LANGUAGE_COOKIE,
+  LANGUAGE_COOKIE_MAX_AGE,
+  type Language,
+} from './config'
 
 interface LanguageContextType {
   language: Language
@@ -14,49 +17,35 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined)
 
-// French-speaking country codes
-const FRENCH_LOCALES = [
-  'fr', 'fr-FR', 'fr-CA', 'fr-BE', 'fr-CH', 'fr-LU',
-  'fr-MC', 'fr-CI', 'fr-CM', 'fr-SN', 'fr-ML', 'fr-MG'
-]
-
 const translations: Record<Language, Record<string, unknown>> = {
   en: enTranslations as Record<string, unknown>,
   fr: frTranslations as Record<string, unknown>,
 }
 
-function detectBrowserLanguage(): Language {
-  if (typeof window === 'undefined') return 'en'
-
-  const browserLang = navigator.language || (navigator as { userLanguage?: string }).userLanguage
-
-  // Check if browser language matches any French locale
-  if (browserLang && FRENCH_LOCALES.some(locale => browserLang.startsWith(locale))) {
-    return 'fr'
-  }
-
-  return 'en'
-}
-
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('en')
-
-  useEffect(() => {
-    // Detect browser language on mount
-    const storedLang = localStorage.getItem('luxa-language') as Language | null
-    const detectedLang = storedLang || detectBrowserLanguage()
-    const languageFrame = window.requestAnimationFrame(() => {
-      setLanguageState(detectedLang)
-    })
-
-    return () => window.cancelAnimationFrame(languageFrame)
-  }, [])
+/**
+ * `initialLanguage` is resolved on the server (cookie, then Accept-Language),
+ * so the first render already matches what the visitor should see. Nothing is
+ * corrected after mount — no flash, and the <html lang> the server emitted
+ * stays accurate.
+ */
+export function LanguageProvider({
+  children,
+  initialLanguage,
+}: {
+  children: ReactNode
+  initialLanguage: Language
+}) {
+  const [language, setLanguageState] = useState<Language>(initialLanguage)
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang)
-    if (typeof window !== 'undefined') {
-      localStorage.setItem('luxa-language', lang)
-    }
+
+    if (typeof document === 'undefined') return
+
+    // The server reads this on the next request; keep lang in sync now so
+    // screen readers and translation tools follow the switch immediately.
+    document.cookie = `${LANGUAGE_COOKIE}=${lang};path=/;max-age=${LANGUAGE_COOKIE_MAX_AGE};samesite=lax`
+    document.documentElement.lang = lang
   }
 
   const t = (key: string): string | string[] | Record<string, unknown> | unknown[] => {
@@ -71,7 +60,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       }
     }
 
-    return (value !== undefined && value !== null) ? value as string | string[] | Record<string, unknown> | unknown[] : key
+    return (value !== undefined && value !== null)
+      ? value as string | string[] | Record<string, unknown> | unknown[]
+      : key
   }
 
   return (

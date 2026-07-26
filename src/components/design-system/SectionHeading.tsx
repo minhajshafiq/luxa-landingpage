@@ -30,22 +30,20 @@ export function SectionHeading({
         className
       )}
     >
+      {/* The eyebrow is a chip, not a line of text — same shape language as
+          the app's status pills ("70% used · 30 days left"). */}
       {eyebrow && (
-        <p
-          className={cn(
-            'font-mono text-[11px] md:text-xs font-medium uppercase tracking-[0.22em] text-primary',
-            'flex items-center gap-2',
-            centered && 'justify-center'
-          )}
-        >
-          <span aria-hidden="true" className="text-stella">✦</span>
-          {eyebrow}
-        </p>
+        <div className={cn('flex', centered && 'justify-center')}>
+          <p className="luxa-hairline inline-flex items-center gap-2 rounded-full bg-primary/[0.07] px-3 py-1.5 font-mono text-[10px] md:text-[11px] font-medium uppercase tracking-[0.22em] text-primary">
+            <span aria-hidden="true" className="text-stella">✦</span>
+            {eyebrow}
+          </p>
+        </div>
       )}
 
       <h2
         className={cn(
-          'font-display text-3xl font-semibold tracking-[-0.035em] leading-[1.05] text-foreground text-balance md:text-5xl lg:text-[3.5rem]',
+          'font-display text-[clamp(1.95rem,4.6vw,3.5rem)] font-semibold tracking-[-0.042em] leading-[1.03] text-foreground text-balance',
           centered && 'mx-auto max-w-4xl'
         )}
       >
@@ -53,7 +51,9 @@ export function SectionHeading({
         {titleHighlight && (
           <>
             {' '}
-            <span className="text-primary">{titleHighlight}</span>
+            <span className="text-primary [text-shadow:0_0_44px_hsl(var(--primary)/0.4)]">
+              {titleHighlight}
+            </span>
           </>
         )}
       </h2>

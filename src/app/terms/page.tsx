@@ -158,7 +158,7 @@ export default function Terms() {
                   </p>
                 </section>
 
-                <div className="bg-primary-light border border-primary/20 rounded-2xl p-6 mt-8">
+                <div className="bg-primary-light border border-primary/20 rounded-tile p-6 mt-8">
                   <p className="text-foreground font-medium text-center">
                     En utilisant Luxa, vous reconnaissez avoir lu, compris et accepté ces Conditions Générales
                     d&apos;Utilisation.

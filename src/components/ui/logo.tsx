@@ -24,7 +24,7 @@ export function Logo({ className = "", size = "md" }: LogoProps) {
         alt="Luxa Logo"
         width={64}
         height={64}
-        className="w-full h-full rounded-lg"
+        className="w-full h-full rounded-tag"
       />
     </div>
   )

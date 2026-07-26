@@ -102,7 +102,7 @@ export function TransactionChip({ transaction, index, chipRef }: TransactionChip
       ref={chipRef}
       style={style}
       className={cn(
-        'luxa-loader-chip absolute left-1/2 top-[42%] z-20 flex min-w-[112px] items-center justify-between gap-3 rounded-lg border px-3 py-2 text-left shadow-premium backdrop-blur-md will-change-transform',
+        'luxa-loader-chip absolute left-1/2 top-[42%] z-20 flex min-w-[112px] items-center justify-between gap-3 rounded-tag border px-3 py-2 text-left shadow-premium backdrop-blur-md will-change-transform',
         'sm:min-w-[136px] sm:px-3.5',
         transaction.tone
       )}
@@ -130,7 +130,7 @@ export function MiniPocket({ label, fill, pocketRef, fillRef }: MiniPocketProps)
   return (
     <div
       ref={pocketRef}
-      className="luxa-loader-pocket rounded-lg border border-primary/12 bg-background/82 p-3 shadow-[0_10px_28px_-22px_hsl(var(--primary)/0.65)] backdrop-blur-md"
+      className="luxa-loader-pocket rounded-tag border border-primary/12 bg-background/82 p-3 shadow-[0_10px_28px_-22px_hsl(var(--primary)/0.65)] backdrop-blur-md"
       data-fill={fill}
     >
       <div className="mb-2 flex items-center justify-between gap-2">
@@ -322,7 +322,9 @@ export function LuxaLoader({ onComplete }: LuxaLoaderProps) {
             scale: 1,
             duration: 0.38,
             ease: EASE.out,
-            onStart: () => stellaFloat.play(),
+            onStart: () => {
+              stellaFloat.play()
+            },
           },
           0.36
         )
@@ -441,7 +443,7 @@ export function LuxaLoader({ onComplete }: LuxaLoaderProps) {
                 width={88}
                 height={88}
                 priority
-                className="h-20 w-20 object-contain drop-shadow-[0_12px_26px_rgba(112,0,14,0.22)] sm:h-24 sm:w-24"
+                className="h-20 w-20 object-contain drop-shadow-[0_12px_26px_rgba(155,143,251,0.28)] sm:h-24 sm:w-24"
               />
               <span
                 ref={sparkleRef}

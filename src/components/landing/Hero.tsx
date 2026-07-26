@@ -10,6 +10,7 @@ import { RatingBadge } from '@/components/design-system/RatingBadge'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { AmountChip } from '@/components/design-system/AmountChip'
 import { LUXA_LOADER_COMPLETE_EVENT, hasSeenLuxaLoader } from '@/components/loader-provider'
+import { SHOW_RATING } from '@/constants/site'
 import { gsap, ScrollTrigger, EASE, prefersReducedMotion, useIsomorphicLayoutEffect } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { useTranslation } from '@/lib/i18n/useTranslation'
@@ -214,30 +215,38 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="luxa-hero-shell relative isolate mx-auto mb-8 min-h-screen w-[calc(100%-1rem)] max-w-7xl overflow-hidden flex flex-col items-center pt-32 pb-0 md:mb-14 md:pt-40"
+      className="relative isolate flex min-h-screen w-full flex-col items-center overflow-x-clip pt-32 pb-16 md:pt-40 md:pb-24"
     >
-      {/* Night ambiance: stars + a screen-like lavender glow rising from below */}
+      {/* Night ambiance, back to front: a drifting aurora, the starfield on
+          top of it, a screen-like lavender glow, and a grid floor so the
+          phone reads as standing somewhere rather than floating in soup. */}
+      <div className="luxa-aurora pointer-events-none absolute -top-[34%] left-1/2 h-[620px] w-[120%] -translate-x-1/2 opacity-25 md:opacity-30" />
       <div className="starfield pointer-events-none absolute inset-0 opacity-70" />
       <div className="hero-glow glow-primary pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 blur-[60px] opacity-60" />
       <div className="hero-glow glow-stella pointer-events-none absolute top-1/2 -right-32 h-96 w-96 blur-3xl opacity-40" />
+      <div className="luxa-horizon pointer-events-none absolute inset-x-0 bottom-0 h-[420px] opacity-70" />
 
       <Container className="relative z-10">
         <div ref={contentRef} className="mx-auto max-w-4xl text-center">
           {/* Availability + rating, one badge instead of two side by side */}
-          <p className="hero-lead inline-flex items-center gap-2 rounded-xl border border-border bg-card/70 px-3.5 py-1.5 font-mono text-[10px] tracking-[0.12em] md:px-4 md:text-xs md:tracking-[0.18em] uppercase text-muted-foreground backdrop-blur">
+          <p className="luxa-hairline hero-lead inline-flex items-center gap-2 rounded-full bg-card/60 px-3.5 py-1.5 font-mono text-[10px] tracking-[0.12em] md:px-4 md:text-xs md:tracking-[0.18em] uppercase text-muted-foreground backdrop-blur-xl">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-epargne/60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-epargne" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-epargne shadow-[0_0_10px_hsl(var(--epargne))]" />
             </span>
             {t('hero.badge') as string}
-            <span className="text-border">·</span>
-            <RatingBadge bare />
+            {SHOW_RATING && (
+              <>
+                <span className="text-border">·</span>
+                <RatingBadge bare />
+              </>
+            )}
           </p>
 
           {/* Headline */}
           <h1
             ref={titleRef}
-            className="mt-6 font-display text-[3rem] leading-[1.01] font-semibold tracking-[-0.045em] text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+            className="mt-6 font-display text-[clamp(2.9rem,8.4vw,6rem)] leading-[0.98] font-semibold tracking-[-0.05em] text-foreground [text-shadow:0_0_60px_hsl(var(--primary)/0.25)]"
           >
             {titleWords.map((word, index) => (
               <span key={`title-${index}`}>
@@ -314,7 +323,7 @@ export function Hero() {
           >
             <div className="hero-chip-in">
               <div className="animate-luxa-float" style={{ animationDuration: '6s' }}>
-                <div className="flex items-center gap-2.5 rounded-2xl border border-stella/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
+                <div className="flex items-center gap-2.5 rounded-tile border border-stella/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-stella/15">
                     <Sparkles className="h-4 w-4 text-stella" />
                   </div>
@@ -337,7 +346,7 @@ export function Hero() {
           >
             <div className="hero-chip-in">
               <div className="animate-luxa-float" style={{ animationDelay: '2.8s', animationDuration: '5s' }}>
-                <div className="flex items-center gap-2.5 rounded-2xl border border-epargne/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
+                <div className="flex items-center gap-2.5 rounded-tile border border-epargne/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-epargne/15">
                     <span className="font-mono text-xs font-bold text-epargne">%</span>
                   </div>
@@ -379,6 +388,7 @@ export function Hero() {
 
       {/* Fade the phone into the next section — no hard seam */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-40 bg-gradient-to-t from-background to-transparent" />
+      <div aria-hidden="true" className="luxa-rule absolute inset-x-0 bottom-0 z-20 mx-auto w-full max-w-[1200px] px-4 opacity-70 sm:px-6 lg:px-8" />
     </section>
   )
 }

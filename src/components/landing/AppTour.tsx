@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Percent, Gauge, Eye, type LucideIcon } from 'lucide-react'
-import { Container } from '@/components/design-system/Container'
+import { Section } from '@/components/design-system/Section'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { PhoneFrame } from '@/components/design-system/PhoneFrame'
 import { cn } from '@/lib/utils'
@@ -116,10 +116,7 @@ export function AppTour() {
   }, [steps.length])
 
   return (
-    // overflow-x-clip (not hidden): an overflow-hidden ancestor disables position:sticky
-    <section ref={sectionRef} id="pockets" className="relative isolate overflow-x-clip py-16 md:py-28">
-
-      <Container className="relative">
+    <Section ref={sectionRef} id="pockets" divider>
         <SectionHeading
           eyebrow={t('pockets.eyebrow') as string}
           title={t('pockets.title') as string}
@@ -140,7 +137,7 @@ export function AppTour() {
                 <div className="glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[440px] w-[520px] -translate-x-1/2 -translate-y-1/2 blur-[72px] opacity-70" />
 
                 {/* The supplied shots already contain the complete device. */}
-                <div className="relative aspect-[1530/3036] drop-shadow-[0_32px_55px_rgba(17,8,35,0.82)]">
+                <div className="relative aspect-[1530/3036] drop-shadow-[0_32px_55px_rgba(0,0,0,0.92)]">
                   {stepScreens.map((src, index) => (
                     <Image
                       key={`${src}-${index}`}
@@ -184,7 +181,7 @@ export function AppTour() {
                       : 'opacity-0 translate-y-3 pointer-events-none'
                   )}
                 >
-                  <div className="rounded-2xl border border-stella/30 bg-card/95 px-4 py-3 shadow-premium backdrop-blur-md">
+                  <div className="rounded-tile border border-stella/30 bg-card/95 px-4 py-3 shadow-premium backdrop-blur-md">
                     <p className="font-mono text-[10px] uppercase tracking-wider text-stella">
                       {callout?.label}
                     </p>
@@ -200,8 +197,10 @@ export function AppTour() {
                     <span
                       key={index}
                       className={cn(
-                        'h-2 w-2 rounded-full transition-all duration-500',
-                        active === index ? 'bg-primary scale-110' : 'bg-border'
+                        'h-2 rounded-full transition-all duration-500',
+                        active === index
+                          ? 'h-5 w-2 bg-primary shadow-[0_0_12px_hsl(var(--primary))]'
+                          : 'w-2 bg-border'
                       )}
                     />
                   ))}
@@ -223,7 +222,7 @@ export function AppTour() {
                       stepRefs.current[index] = el
                     }}
                     className={cn(
-                      'relative flex overflow-hidden rounded-[2rem] border py-8 shadow-premium md:h-[68vh] md:min-h-[600px] md:max-h-[680px] md:items-center md:py-0',
+                      'luxa-hairline relative flex overflow-hidden rounded-card border py-8 shadow-premium md:h-[68vh] md:min-h-[600px] md:max-h-[680px] md:items-center md:py-0',
                       stepThemes[index % stepThemes.length]
                     )}
                   >
@@ -233,9 +232,9 @@ export function AppTour() {
                     >
                       <span
                         className={cn(
-                          'flex h-12 w-12 items-center justify-center rounded-2xl border transition-colors duration-500',
+                          'flex h-12 w-12 items-center justify-center rounded-tile border transition-all duration-500',
                           active === index
-                            ? 'border-primary/40 bg-primary/15 text-primary'
+                            ? 'border-primary/40 bg-primary/15 text-primary shadow-[0_0_28px_-8px_hsl(var(--primary))]'
                             : 'border-border bg-card text-muted-foreground'
                         )}
                       >
@@ -260,7 +259,7 @@ export function AppTour() {
                             sizes="220px"
                           />
                           {index === 2 && (
-                            <div className="absolute -right-6 top-[52%] rounded-2xl border border-stella/30 bg-card/95 px-3 py-2 shadow-premium">
+                            <div className="absolute -right-6 top-[52%] rounded-tile border border-stella/30 bg-card/95 px-3 py-2 shadow-premium">
                               <p className="font-mono text-[9px] uppercase tracking-wider text-stella">
                                 {callout?.label}
                               </p>
@@ -277,7 +276,6 @@ export function AppTour() {
               })}
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   )
 }

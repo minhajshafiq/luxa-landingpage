@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { ArrowRight, Sparkles } from 'lucide-react'
-import { Container } from '@/components/design-system/Container'
+import { Section } from '@/components/design-system/Section'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { gsap, ScrollTrigger, prefersReducedMotion, useIsomorphicLayoutEffect } from '@/lib/motion'
 import { cn } from '@/lib/utils'
@@ -53,9 +53,7 @@ export function Difference() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative isolate overflow-hidden py-16 md:py-32">
-
-      <Container className="relative">
+    <Section ref={sectionRef} divider>
         <SectionHeading
           eyebrow={t('difference.eyebrow') as string}
           title={t('difference.title') as string}
@@ -85,7 +83,7 @@ export function Difference() {
                     className="diff-row grid grid-cols-1 items-stretch gap-2 md:grid-cols-[1fr_auto_1fr] md:gap-4"
                   >
                     {/* The line as your bank prints it */}
-                    <div className="diff-bank flex items-center rounded-2xl border border-border/70 bg-muted/40 px-4 py-3.5 will-change-transform">
+                    <div className="diff-bank flex items-center rounded-tile border border-border/70 bg-[repeating-linear-gradient(135deg,hsl(var(--foreground)/0.02)_0_6px,transparent_6px_12px)] px-4 py-3.5 will-change-transform">
                       <p className="truncate font-mono tabular text-xs text-muted-foreground md:text-[13px]">
                         {row.bank}
                       </p>
@@ -98,7 +96,7 @@ export function Difference() {
                     {/* The same line, once Luxa has read it */}
                     <div
                       className={cn(
-                        'diff-luxa flex items-center rounded-2xl border bg-card px-4 py-3.5 shadow-premium will-change-transform',
+                        'diff-luxa flex items-center rounded-tile border bg-gradient-to-r from-card to-elevated px-4 py-3.5 shadow-premium will-change-transform',
                         tone.border
                       )}
                     >
@@ -126,7 +124,6 @@ export function Difference() {
             {t('difference.punch') as string}
           </p>
         </div>
-      </Container>
-    </section>
+    </Section>
   )
 }

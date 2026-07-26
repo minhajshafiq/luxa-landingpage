@@ -37,14 +37,21 @@ const chipLayout = [
   { className: 'left-[56%] top-[84%] md:left-[74%] md:top-[74%]', rotate: -6, pocket: 0 },  // Loyer
 ]
 
-const pocketMeta: Array<{ icon: LucideIcon; barClass: string; iconClass: string; fill: number }> = [
-  { icon: Home, barClass: 'bg-besoins', iconClass: 'bg-besoins/15 text-besoins', fill: 0.72 },
-  { icon: Heart, barClass: 'bg-envies', iconClass: 'bg-envies/15 text-envies', fill: 0.55 },
-  { icon: TrendingUp, barClass: 'bg-epargne', iconClass: 'bg-epargne/15 text-epargne', fill: 0.4 },
+// `toneClass` sets the text colour on the meter wrapper; the fill and its knob
+// both paint with currentColor, exactly like the app's budget bars.
+const pocketMeta: Array<{ icon: LucideIcon; toneClass: string; iconClass: string; fill: number }> = [
+  { icon: Home, toneClass: 'text-besoins', iconClass: 'bg-besoins/15 text-besoins', fill: 0.72 },
+  { icon: Heart, toneClass: 'text-envies', iconClass: 'bg-envies/15 text-envies', fill: 0.55 },
+  { icon: TrendingUp, toneClass: 'text-epargne', iconClass: 'bg-epargne/15 text-epargne', fill: 0.4 },
 ]
+
+/** Fill ratio of pocket i as a CSS percentage — one source for bar and knob. */
+const fillPercent = (i: number) => `${(pocketMeta[i]?.fill ?? 0.5) * 100}%`
 
 export function Disperse() {
   const sectionRef = useRef<HTMLElement>(null)
+  /** The element GSAP pins — held still while the sort plays out. */
+  const stageRef = useRef<HTMLDivElement>(null)
   const skyRef = useRef<HTMLDivElement>(null)
   const pocketRefs = useRef<(HTMLDivElement | null)[]>([])
   const { t } = useTranslation()
@@ -69,6 +76,7 @@ export function Disperse() {
           }
           const chipEls = gsap.utils.toArray<HTMLElement>('.disperse-chip')
           const fillEls = gsap.utils.toArray<HTMLElement>('.pocket-fill')
+          const knobEls = gsap.utils.toArray<HTMLElement>('.pocket-knob')
           const afterEls = gsap.utils.toArray<HTMLElement>('.disperse-after')
 
           if (desktop) {
@@ -76,13 +84,22 @@ export function Disperse() {
             // playhead arrives — set them explicitly so nothing shows early.
             gsap.set(afterEls, { opacity: 0, y: 22, filter: 'blur(5px)' })
 
-            // Scroll choreography in normal document flow. Avoiding a pin
-            // keeps deep links and back/forward navigation stable.
+            // PINNED. The previous version ran in normal document flow from
+            // `top 82%` to `bottom 28%`, which meant the whole sort played
+            // out while the section was still climbing into the viewport:
+            // by the time you could actually see the pockets the chips had
+            // already gone and the bars were already full, leaving a dead
+            // band where the chips used to be. Pinning holds the section
+            // still and spends the scroll on the choreography instead of on
+            // travel, so the payoff happens in front of you.
             const tl = gsap.timeline({
               scrollTrigger: {
                 trigger: sectionRef.current,
-                start: 'top 82%',
-                end: 'bottom 28%',
+                start: 'top top',
+                end: '+=120%',
+                pin: stageRef.current,
+                pinSpacing: true,
+                anticipatePin: 1,
                 scrub: 1,
                 invalidateOnRefresh: true,
               },
@@ -126,16 +143,39 @@ export function Disperse() {
               ).to(target, { scale: 1, duration: 0.08, ease: 'power1.in' })
             })
 
+            // Bar and knob run as two tweens at the same timeline position
+            // with the same easing, so the knob stays welded to the head of
+            // the fill. (Animating width, not scaleX, keeps the rounded cap
+            // a circle instead of squashing it into an ellipse.)
             tl.to(
               fillEls,
               {
-                scaleX: (i) => pocketMeta[i]?.fill ?? 0.5,
+                width: (i: number) => fillPercent(i),
                 duration: 0.5,
                 stagger: 0.08,
                 ease: EASE.out,
               },
               0.45
             )
+            tl.to(
+              knobEls,
+              {
+                left: (i: number) => fillPercent(i),
+                opacity: 1,
+                duration: 0.5,
+                stagger: 0.08,
+                ease: EASE.out,
+              },
+              0.45
+            )
+            // The emptied sky closes up. Without this the 300px band the
+            // chips came from stays reserved and reads as a hole punched in
+            // the section; collapsing it lets the pockets rise into the
+            // middle of the frame — the page literally tightening around the
+            // result. Safe inside the pin: the stage is min-h-screen, so its
+            // measured height (and the pin spacer) never changes.
+            tl.to(skyRef.current, { height: 0, duration: 0.35, ease: EASE.inOut }, 0.62)
+
             tl.fromTo(
               afterEls,
               { opacity: 0, y: 22, filter: 'blur(5px)' },
@@ -199,9 +239,14 @@ export function Disperse() {
             // (the page literally tightens), and the exhale lands.
             tl.to(
               fillEls,
-              { scaleX: (i) => pocketMeta[i]?.fill ?? 0.5, duration: 0.8, stagger: 0.12 },
+              { width: (i: number) => fillPercent(i), duration: 0.8, stagger: 0.12 },
               'flock+=0.5'
             )
+              .to(
+                knobEls,
+                { left: (i: number) => fillPercent(i), opacity: 1, duration: 0.8, stagger: 0.12 },
+                'flock+=0.5'
+              )
               .to(
                 skyRef.current,
                 {
@@ -217,7 +262,8 @@ export function Disperse() {
           } else {
             // Reduced motion: show the resolved state, no animation.
             gsap.set(chipEls, { opacity: 0.7 })
-            gsap.set(fillEls, { scaleX: (i: number) => pocketMeta[i]?.fill ?? 0.5 })
+            gsap.set(fillEls, { width: (i: number) => fillPercent(i) })
+            gsap.set(knobEls, { left: (i: number) => fillPercent(i), opacity: 1 })
             gsap.set(afterEls, { opacity: 1 })
           }
         }
@@ -230,10 +276,25 @@ export function Disperse() {
   }, [])
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative isolate overflow-hidden py-16 md:min-h-screen md:flex md:flex-col md:justify-center md:pt-28 md:pb-6"
-    >
+    <section ref={sectionRef} className="relative isolate overflow-x-clip">
+      <div
+        aria-hidden="true"
+        className="luxa-rule absolute inset-x-0 top-0 z-10 mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8"
+      />
+
+      {/* The pinned stage. Everything inside stays put while the sort plays. */}
+      <div
+        ref={stageRef}
+        className="flex min-h-screen flex-col justify-center py-24 md:py-32"
+      >
+        <div className="glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[420px] w-[820px] -translate-x-1/2 -translate-y-1/2 blur-[80px] opacity-40" />
+        {/* Three faint pools of pocket colour sitting under the row of
+            pockets: the resolution is already glowing before the chips land. */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-[22%] mx-auto hidden max-w-3xl justify-between px-8 opacity-[0.3] blur-[64px] md:flex">
+          <span className="h-24 w-32 rounded-full bg-besoins" />
+          <span className="h-24 w-32 rounded-full bg-envies" />
+          <span className="h-24 w-32 rounded-full bg-epargne" />
+        </div>
 
       <Container className="relative">
         <SectionHeading
@@ -247,7 +308,7 @@ export function Disperse() {
         {/* The sky: scattered spending */}
         <div
           ref={skyRef}
-          className="relative mx-auto h-64 max-w-3xl md:h-44"
+          className="relative mx-auto h-64 max-w-3xl md:h-[300px]"
           aria-hidden="true"
         >
           {Array.isArray(chips) &&
@@ -280,7 +341,7 @@ export function Disperse() {
                   ref={(el) => {
                     pocketRefs.current[index] = el
                   }}
-                  className="rounded-2xl border border-border bg-card p-3 shadow-premium md:rounded-3xl md:p-5"
+                  className="luxa-card luxa-hairline rounded-tile p-3 md:rounded-card md:p-5"
                 >
                   <div className="flex flex-col items-center gap-1.5 md:flex-row md:justify-between md:gap-2.5">
                     <div className="flex flex-col items-center gap-1.5 md:flex-row md:gap-2.5">
@@ -291,10 +352,14 @@ export function Disperse() {
                     </div>
                     <span className="font-mono tabular text-[10px] text-muted-foreground md:text-xs">{pocket.target}</span>
                   </div>
-                  <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-muted md:mt-4">
-                    <div
-                      className={cn('pocket-fill h-full w-full origin-left rounded-full', meta.barClass)}
-                      style={{ transform: 'scaleX(0)' }}
+
+                  {/* The app's budget bar, knob and all */}
+                  <div className={cn('luxa-meter mt-3 md:mt-4', meta.toneClass)}>
+                    <div className="pocket-fill luxa-meter-fill" style={{ width: 0 }} />
+                    <span
+                      aria-hidden="true"
+                      className="pocket-knob luxa-meter-knob"
+                      style={{ left: 0, opacity: 0 }}
                     />
                   </div>
                 </div>
@@ -304,6 +369,7 @@ export function Disperse() {
 
         {/* The exhale */}
         <div className="mt-10 text-center md:mt-8">
+          <div className="luxa-rule disperse-after mx-auto mb-8 max-w-sm" />
           <h3 className="disperse-after font-display text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
             {(t('disperse.after') as Record<string, string>)?.title}
           </h3>
@@ -312,6 +378,7 @@ export function Disperse() {
           </p>
         </div>
       </Container>
+      </div>
     </section>
   )
 }

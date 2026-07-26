@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { BellRing } from 'lucide-react'
-import { Container } from '@/components/design-system/Container'
+import { Section } from '@/components/design-system/Section'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { PhoneFrame } from '@/components/design-system/PhoneFrame'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
@@ -65,66 +65,67 @@ export function Subscriptions() {
   }, [finalTotal, language])
 
   return (
-    <section ref={sectionRef} className="luxa-section-shell relative isolate mx-auto mb-8 w-[calc(100%-1rem)] max-w-7xl overflow-hidden py-16 md:mb-14 md:py-32">
-      <Container className="relative">
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          <div>
-            <SectionHeading
-              eyebrow={t('subs.eyebrow') as string}
-              title={t('subs.title') as string}
-              lead={t('subs.lead') as string}
-              centered={false}
-              className="mb-8 md:mb-10"
+    <Section ref={sectionRef} tone="primary" divider>
+      <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div>
+          <SectionHeading
+            eyebrow={t('subs.eyebrow') as string}
+            title={t('subs.title') as string}
+            lead={t('subs.lead') as string}
+            centered={false}
+            className="mb-8 md:mb-10"
+          />
+
+          {/* The reveal card: the true monthly total */}
+          <div
+            data-animate="card"
+            className="luxa-card luxa-hairline relative rounded-card p-6 md:p-8"
+          >
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              {t('subs.totalLabel') as string}
+            </p>
+            <p className="mt-3 flex items-baseline gap-2">
+              <span
+                ref={totalRef}
+                // Big amounts are set in the display face, not mono: at 48px
+                // the mono space glyph turns "−1 276 €" into three islands.
+                // The app writes its totals in sans for the same reason.
+                className="font-display tabular text-4xl font-bold tracking-[-0.03em] text-destructive [text-shadow:0_0_36px_hsl(var(--destructive)/0.55)] md:text-5xl"
+              >
+                {finalTotal}
+              </span>
+              <span className="text-sm text-muted-foreground">{t('subs.perMonth') as string}</span>
+            </p>
+
+            {/* Stella can't believe it either */}
+            <StellaMascot
+              mood="surprised"
+              size="sm"
+              floating
+              className="absolute -right-3 -top-8 md:-right-6"
             />
 
-            {/* The reveal card: the true monthly total */}
-            <div
-              data-animate="card"
-              className="relative rounded-3xl border border-border bg-card p-6 shadow-premium md:p-8"
-            >
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-                {t('subs.totalLabel') as string}
+            <div className="mt-5 flex items-start gap-2.5 border-t border-border pt-5">
+              <BellRing className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                {t('subs.note') as string}
               </p>
-              <p className="mt-3 flex items-baseline gap-2">
-                <span
-                  ref={totalRef}
-                  className="font-mono tabular text-4xl font-bold text-destructive md:text-5xl"
-                >
-                  {finalTotal}
-                </span>
-                <span className="text-sm text-muted-foreground">{t('subs.perMonth') as string}</span>
-              </p>
-
-              {/* Stella can't believe it either */}
-              <StellaMascot
-                mood="surprised"
-                size="sm"
-                floating
-                className="absolute -right-3 -top-8 md:-right-6"
-              />
-
-              <div className="mt-5 flex items-start gap-2.5 border-t border-border pt-5">
-                <BellRing className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  {t('subs.note') as string}
-                </p>
-              </div>
             </div>
           </div>
-
-          {/* No data-animate here: the reveal engine's overwrite would kill
-              the parallax scrub that owns this node's transform. */}
-          <div ref={phoneRef} className="relative mx-auto w-[260px] md:w-[300px] will-change-transform">
-            <div className="glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[380px] w-[480px] -translate-x-1/2 -translate-y-1/2 blur-[60px] opacity-55" />
-            <PhoneFrame
-              src="/subscriptions.png"
-              alt="Luxa — recurring expenses gathered with their monthly total"
-              className="relative"
-              sizes="(max-width: 767px) 260px, 300px"
-            />
-          </div>
         </div>
-      </Container>
-    </section>
+
+        {/* No data-animate here: the reveal engine's overwrite would kill
+            the parallax scrub that owns this node's transform. */}
+        <div ref={phoneRef} className="relative mx-auto w-[260px] md:w-[300px] will-change-transform">
+          <div className="glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[380px] w-[480px] -translate-x-1/2 -translate-y-1/2 blur-[60px] opacity-55" />
+          <PhoneFrame
+            src="/subscriptions.png"
+            alt="Luxa — recurring expenses gathered with their monthly total"
+            className="relative"
+            sizes="(max-width: 767px) 260px, 300px"
+          />
+        </div>
+      </div>
+    </Section>
   )
 }

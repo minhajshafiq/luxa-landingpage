@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { Container } from '@/components/design-system/Container'
+import { Section } from '@/components/design-system/Section'
 import { PhoneFrame } from '@/components/design-system/PhoneFrame'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
@@ -48,8 +48,7 @@ export function Benefits() {
   if (!Array.isArray(items) || items.length < 4) return null
 
   return (
-    <section ref={sectionRef} className="relative isolate overflow-hidden py-16 md:py-32">
-      <Container className="relative">
+    <Section ref={sectionRef} divider>
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <div>
             <SectionHeading
@@ -65,9 +64,15 @@ export function Benefits() {
                 <div
                   key={index}
                   data-animate="card"
-                  className="flex gap-4 border-b border-border/70 py-6 first:pt-8 last:border-b-0 md:gap-6 md:py-7"
+                  className="group relative flex gap-4 border-b border-border/70 py-6 first:pt-8 last:border-b-0 md:gap-6 md:py-7"
                 >
-                  <span className="w-16 shrink-0 pt-0.5 font-mono text-[11px] uppercase tracking-[0.14em] text-primary md:w-24 md:text-xs md:tracking-[0.18em]">
+                  {/* A lavender tick lights up on the rule as you hover the
+                      row — the ledger acknowledging the line you're reading. */}
+                  <span
+                    aria-hidden="true"
+                    className="pointer-events-none absolute -bottom-px left-0 h-px w-0 bg-primary transition-[width] duration-500 ease-out group-hover:w-full group-last:hidden"
+                  />
+                  <span className="w-16 shrink-0 pt-0.5 font-mono text-[11px] uppercase tracking-[0.14em] text-primary/70 transition-colors duration-300 group-hover:text-primary md:w-24 md:text-xs md:tracking-[0.18em]">
                     {item.tag}
                   </span>
                   <div className="min-w-0">
@@ -100,7 +105,6 @@ export function Benefits() {
             </div>
           </div>
         </div>
-      </Container>
-    </section>
+    </Section>
   )
 }

@@ -27,7 +27,7 @@ export function AppStoreButtons({
         target="_blank"
         rel="noopener noreferrer"
         aria-label={downloadLabel}
-        className="flex h-12 w-auto cursor-pointer items-center rounded-xl shadow-[0_0_32px_-8px_hsl(var(--primary)/0.4)] md:h-14"
+        className="flex h-12 w-auto cursor-pointer items-center rounded-tile shadow-[0_0_32px_-8px_hsl(var(--primary)/0.4)] md:h-14"
       >
         <Image
           src="/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg"
@@ -47,7 +47,7 @@ export function AppStoreButtons({
           type="button"
           {...buttonSpring}
           aria-label={androidLabel}
-          className="flex h-12 w-auto cursor-pointer items-center rounded-xl md:h-14"
+          className="flex h-12 w-auto cursor-pointer items-center rounded-tile md:h-14"
         >
           <Image
             src="/GetItOnGooglePlay_Badge_Web_color_English.svg"

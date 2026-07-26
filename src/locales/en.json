@@ -6,6 +6,18 @@
     "faq": "FAQ",
     "downloadApp": "Download"
   },
+  "proof": {
+    "reviews": "reviews",
+    "appStore": "See on the App Store"
+  },
+  "meta": {
+    "title": "Luxa — Make your money feel clear again",
+    "description": "Luxa turns the noise of your spending into a calm picture: pockets for every euro, subscriptions under control, and Stella, a small star who notices what matters. No bank connection required.",
+    "ogDescription": "Pockets for every euro, subscriptions under control, and Stella who notices what matters. Budgeting that feels calm, clear and human.",
+    "notFoundTitle": "This page got lost in the night",
+    "notFoundLead": "The link you followed doesn't lead anywhere. Stella will walk you back home.",
+    "notFoundCta": "Back to home"
+  },
   "hero": {
     "badge": "Available on iOS · Android in beta",
     "title": "Your money,",
@@ -289,6 +301,8 @@
     "submit": "Join the Android beta",
     "submitting": "Joining…",
     "checkEmail": "Check your inbox!",
-    "disclaimer": "By signing up, you agree to receive emails from Luxa about the Android beta. You can unsubscribe at any time."
+    "disclaimer": "By signing up, you agree to receive emails from Luxa about the Android beta. You can unsubscribe at any time.",
+    "errorNetwork": "Could not connect. Check your internet connection.",
+    "errorGeneric": "Something went wrong. Please try again."
   }
 }

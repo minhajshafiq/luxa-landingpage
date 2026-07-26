@@ -1,7 +1,7 @@
 'use client'
 
 import { ShieldCheck, Server, EyeOff, type LucideIcon } from 'lucide-react'
-import { Container } from '@/components/design-system/Container'
+import { Section } from '@/components/design-system/Section'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { useTranslation } from '@/lib/i18n/useTranslation'
@@ -15,9 +15,7 @@ export function Privacy() {
   const bullets = t('privacy.bullets') as unknown as PrivacyBullet[]
 
   return (
-    <section className="luxa-section-shell luxa-section-shell-quiet relative isolate mx-auto mb-8 w-[calc(100%-1rem)] max-w-7xl overflow-hidden py-16 md:mb-14 md:py-28">
-
-      <Container className="relative">
+    <Section tone="epargne" divider>
         <div className="mx-auto flex justify-center" data-animate="stella">
           <StellaMascot mood="love" size="md" floating />
         </div>
@@ -37,9 +35,9 @@ export function Privacy() {
                 <div
                   key={index}
                   data-animate="card"
-                  className="rounded-3xl border border-border bg-card/80 p-6 text-center shadow-premium"
+                  className="luxa-card luxa-hairline luxa-card-hover rounded-card p-6 text-center"
                 >
-                  <span className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-stella/12 text-stella">
+                  <span className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-stella/12 text-stella shadow-[0_0_24px_-6px_hsl(var(--stella))]">
                     <Icon className="h-4.5 w-4.5" />
                   </span>
                   <h3 className="text-sm font-semibold text-foreground md:text-base">
@@ -52,7 +50,6 @@ export function Privacy() {
               )
             })}
         </div>
-      </Container>
-    </section>
+    </Section>
   )
 }

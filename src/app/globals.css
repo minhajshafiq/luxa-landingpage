@@ -9,63 +9,80 @@
 
 @layer base {
   :root {
-    /* Canvas: deep night with a violet undertone (not pure black) */
-    --background: 248 22% 5%;
-    --foreground: 250 25% 95%;
+    /* ----------------------------------------------------------------
+       Every value below is the app's own dark token, converted to HSL.
+       Source of truth: luxa/src/core/theme/colors.ts → DarkColors and
+       COLOR_THEMES.lilas.dark. The hex is kept in the comment so any
+       drift between the app and the site is a one-line diff to spot.
+       ---------------------------------------------------------------- */
 
-    /* Surfaces: elevated night */
-    --card: 246 16% 9%;
-    --card-foreground: 250 25% 95%;
-    --popover: 246 16% 9%;
-    --popover-foreground: 250 25% 95%;
+    /* Canvas: the app's OLED black. The product shots are pure black too,
+       so the phones sit IN the page instead of on top of it. Depth comes
+       from surfaces, hairlines and glows — never from lifting the canvas. */
+    --background: 0 0% 0%;              /* #000000  DarkColors.background */
+    --foreground: 0 0% 100%;            /* #FFFFFF  DarkColors.text */
 
-    /* Primary: the app's lavender — light fill, dark text (premium contrast) */
-    --primary: 255 90% 76%;
-    --primary-foreground: 250 25% 7%;
-    /* Deep lavender for gradients / large washes */
-    --primary-deep: 248 70% 62%;
-    --primary-light: 250 30% 14%;
+    /* Surfaces: the app's two elevation steps */
+    --card: 240 2% 11%;                 /* #1C1C1E  DarkColors.card */
+    --card-foreground: 0 0% 100%;
+    --elevated: 240 2% 14%;             /* #242426  DarkColors.surfaceElevated */
+    --popover: 240 2% 11%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Stella: her coral body — the emotional accent, used sparingly */
-    --stella: 6 90% 73%;
-    --stella-foreground: 250 25% 7%;
-    --stella-light: 6 45% 14%;
+    /* Primary: the app's lilas — light fill, dark text (premium contrast) */
+    --primary: 247 93% 78%;             /* #9B8FFB  lilas.dark.primary */
+    --primary-foreground: 0 0% 0%;
+    /* The light-theme lilas, used here for gradients / large washes */
+    --primary-deep: 245 91% 67%;        /* #6B5FF7  lilas.light.primary */
+    --primary-light: 242 45% 17%;       /* #1A1840  lilas.dark.primaryLight */
+
+    /* Stella: her coral body — the emotional accent, used sparingly.
+       Sampled from the mascot art, not from an app token. */
+    --stella: 9 80% 72%;
+    --stella-foreground: 0 0% 0%;
+    --stella-light: 9 45% 13%;
 
     /* Gold: Stella's coins, budget health — tertiary sparkle */
-    --secondary: 46 84% 62%;
-    --secondary-foreground: 250 25% 7%;
-    --secondary-light: 46 45% 12%;
+    --secondary: 46 85% 60%;            /* #F0C840  DarkColors.secondary */
+    --secondary-foreground: 0 0% 0%;
+    --secondary-light: 46 100% 5%;      /* #1A1400  DarkColors.secondaryLight */
 
-    /* Purple kept as alias of primary family (legacy component compat) */
-    --purple: 255 90% 76%;
-    --purple-foreground: 250 25% 7%;
-    --purple-light: 250 30% 14%;
+    /* Purple kept as alias of the primary family (legacy component compat) */
+    --purple: 247 93% 78%;
+    --purple-foreground: 0 0% 0%;
+    --purple-light: 242 45% 17%;
 
     /* Neutral hover surface */
-    --accent: 246 14% 14%;
-    --accent-foreground: 250 25% 95%;
+    --accent: 240 2% 15%;
+    --accent-foreground: 0 0% 100%;
 
-    --muted: 246 14% 12%;
-    --muted-foreground: 248 12% 67%;
+    --muted: 240 3% 8%;
+    --muted-foreground: 240 2% 67%;     /* #AAAAAA  DarkColors.textMuted */
 
     /* Money semantics — straight from the app */
-    --success: 158 64% 52%;
-    --success-foreground: 250 25% 7%;
-    --warning: 27 96% 61%;
-    --warning-foreground: 250 25% 7%;
-    --destructive: 0 91% 71%;
-    --destructive-foreground: 250 25% 7%;
+    --success: 158 64% 52%;             /* #34D399  DarkColors.success */
+    --success-foreground: 0 0% 0%;
+    --warning: 43 96% 56%;              /* #FBBF24  DarkColors.warning */
+    --warning-foreground: 0 0% 0%;
+    --destructive: 0 91% 71%;           /* #F87171  DarkColors.danger */
+    --destructive-foreground: 0 0% 0%;
 
     /* Financial visuals (pockets, charts) */
-    --besoins: 217 91% 68%;
-    --envies: 27 96% 61%;
-    --epargne: 158 64% 52%;
+    --besoins: 217 91% 68%;             /* #60A5FA  DarkColors.besoins */
+    --envies: 27 96% 61%;               /* #FB923C  DarkColors.envies */
+    --epargne: 158 64% 52%;             /* #34D399  DarkColors.epargne */
     --error: 0 91% 71%;
 
-    --border: 246 12% 16%;
-    --input: 246 12% 16%;
-    --ring: 255 90% 76%;
-    --radius: 1rem;
+    --border: 240 2% 18%;               /* #2C2C2E  DarkColors.border */
+    --input: 240 2% 18%;
+    --ring: 247 93% 78%;
+
+    /* Radii — the app's role-based scale (core/theme/tokens.ts) */
+    --r-tag: 0.5rem;    /* 8   tags, mini badges */
+    --r-tile: 1rem;     /* 16  tiles, list rows */
+    --r-card: 1.5rem;   /* 24  screen-level cards */
+    --r-button: 1.5rem; /* 24  primary buttons */
+    --radius: var(--r-tile);
   }
 }
 
@@ -74,6 +91,7 @@
   --color-foreground: hsl(var(--foreground));
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
+  --color-elevated: hsl(var(--elevated));
   --color-popover: hsl(var(--popover));
   --color-popover-foreground: hsl(var(--popover-foreground));
   --color-primary: hsl(var(--primary));
@@ -109,6 +127,10 @@
   --font-sans: var(--font-jakarta);
   --font-display: var(--font-bricolage);
   --font-mono: var(--font-geist-mono);
+  --radius-tag: var(--r-tag);
+  --radius-tile: var(--r-tile);
+  --radius-card: var(--r-card);
+  --radius-button: var(--r-button);
 }
 
 @layer base {
@@ -130,9 +152,32 @@
   body {
     @apply bg-background text-foreground;
     overflow-x: clip;
+    /* Money and UI copy both benefit: no ligature surprises in amounts. */
+    font-feature-settings: 'kern' 1, 'liga' 1;
+    text-rendering: optimizeLegibility;
   }
   ::selection {
     background: hsl(var(--primary) / 0.3);
+  }
+
+  /* Film grain over the whole page. On a true-black canvas this is what
+     separates "premium dark" from "dead black": it kills gradient banding
+     and gives every large wash a physical surface. Fixed + non-interactive,
+     so it costs one composited layer and nothing else. */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;
+    opacity: 0.032;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* Headlines get optical tracking; the display face is set tight on
+     purpose and needs the counter-adjustment at small sizes. */
+  h1, h2, h3 {
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
   }
 }
 
@@ -147,66 +192,110 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Framed, cinematic chapters inspired by the best mobile-app landing pages,
-   translated into Luxa's own night-sky visual language. */
-.luxa-hero-shell {
-  border: 1px solid hsl(var(--foreground) / 0.07);
-  border-radius: 2rem;
-  background:
-    radial-gradient(70% 46% at 50% 5%, hsl(var(--primary-deep) / 0.2), transparent 72%),
-    radial-gradient(35% 32% at 88% 38%, hsl(var(--stella) / 0.09), transparent 75%),
-    linear-gradient(180deg, hsl(246 20% 7%) 0%, hsl(var(--background)) 76%);
-  box-shadow:
-    inset 0 1px 0 hsl(var(--foreground) / 0.035),
-    0 36px 100px -64px hsl(var(--primary-deep) / 0.7);
-}
+/* ------------------------------------------------------------
+   Positioning context, in the components layer — on purpose
+   Every primitive below draws with an ::before/::after pinned to `inset: 0`,
+   so each needs a positioning context. Those `position` declarations live
+   HERE, inside @layer components, while the rest of each rule stays
+   unlayered further down.
 
-.luxa-proof-rail {
-  border: 1px solid hsl(var(--foreground) / 0.07);
-  border-radius: 1.75rem;
-  background:
-    linear-gradient(135deg, hsl(var(--card) / 0.78), hsl(var(--background) / 0.82));
-  box-shadow:
-    inset 0 1px 0 hsl(var(--foreground) / 0.04),
-    0 24px 70px -48px hsl(var(--primary-deep) / 0.55);
-}
-
-.luxa-section-shell,
-.luxa-final-shell {
-  border: 1px solid hsl(var(--foreground) / 0.065);
-  border-radius: 2rem;
-  background:
-    radial-gradient(54% 60% at 92% 10%, hsl(var(--primary-deep) / 0.09), transparent 72%),
-    linear-gradient(145deg, hsl(var(--card) / 0.54), hsl(var(--background) / 0.86));
-  box-shadow: inset 0 1px 0 hsl(var(--foreground) / 0.03);
-}
-
-.luxa-section-shell-warm {
-  background:
-    radial-gradient(46% 62% at 12% 42%, hsl(var(--stella) / 0.12), transparent 72%),
-    radial-gradient(48% 58% at 92% 12%, hsl(var(--primary-deep) / 0.08), transparent 74%),
-    linear-gradient(145deg, hsl(var(--card) / 0.58), hsl(var(--background) / 0.88));
-}
-
-.luxa-section-shell-quiet {
-  background:
-    radial-gradient(44% 66% at 50% 0%, hsl(var(--epargne) / 0.07), transparent 75%),
-    linear-gradient(145deg, hsl(var(--card) / 0.54), hsl(var(--background) / 0.9));
-}
-
-.luxa-final-shell {
-  background:
-    radial-gradient(60% 70% at 50% 50%, hsl(var(--primary-deep) / 0.17), transparent 75%),
-    linear-gradient(180deg, hsl(var(--card) / 0.7), hsl(var(--background)));
-}
-
-@media (min-width: 768px) {
-  .luxa-hero-shell,
-  .luxa-section-shell,
-  .luxa-final-shell {
-    border-radius: 3rem;
+   Why the split: unlayered CSS beats Tailwind's @layer utilities. That is
+   what lets .luxa-cta's gradient win over `bg-primary` — but applied to
+   `position` it also silently beat `.fixed`, which dropped the waitlist
+   dialog out of the viewport and down to the end of the document. Layering
+   only the positioning lets utilities override it, exactly as expected.
+   ------------------------------------------------------------ */
+@layer components {
+  .luxa-hairline,
+  .luxa-cta,
+  .luxa-meter {
+    position: relative;
   }
 }
+
+/* ------------------------------------------------------------
+   Hairline — the signature edge
+   A 1px gradient stroke that catches light at the top-left and
+   dissolves toward the bottom-right, the way a real bevel would.
+   Flat 1px borders are what make dark pages look flat; this is
+   the single highest-leverage upgrade on the whole page.
+   Apply to any rounded box; it inherits the element's radius.
+   ------------------------------------------------------------ */
+.luxa-hairline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    155deg,
+    hsl(var(--foreground) / 0.16) 0%,
+    hsl(var(--foreground) / 0.05) 28%,
+    hsl(var(--foreground) / 0.015) 52%,
+    hsl(var(--primary) / 0.09) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Card = app surface + hairline + the shadow a screen casts in the dark. */
+.luxa-card {
+  background:
+    linear-gradient(180deg, hsl(var(--elevated) / 0.9), hsl(var(--card) / 0.86));
+  backdrop-filter: blur(12px);
+  box-shadow:
+    0 1px 0 hsl(var(--foreground) / 0.045) inset,
+    0 18px 40px -20px hsl(0 0% 0% / 0.9);
+  transition: box-shadow 0.35s ease;
+}
+/* Opt-in hover. Deliberately does NOT touch `transform`: most cards on this
+   page are GSAP reveal targets whose inline transform would win anyway, and
+   a half-applied lift looks worse than none. Light and edge only. */
+.luxa-card-hover {
+  transition: box-shadow 0.35s ease, background 0.35s ease;
+}
+.luxa-card-hover:hover {
+  background:
+    linear-gradient(180deg, hsl(var(--elevated)), hsl(var(--card) / 0.92));
+  box-shadow:
+    0 1px 0 hsl(var(--foreground) / 0.09) inset,
+    0 28px 60px -24px hsl(var(--primary-deep) / 0.34),
+    0 12px 28px -14px hsl(0 0% 0% / 0.9);
+}
+.luxa-card-hover:hover::before {
+  background: linear-gradient(
+    155deg,
+    hsl(var(--primary) / 0.35) 0%,
+    hsl(var(--foreground) / 0.07) 34%,
+    hsl(var(--foreground) / 0.02) 60%,
+    hsl(var(--primary) / 0.14) 100%
+  );
+}
+
+/* A hairline rule that fades at both ends — the page's section separator. */
+.luxa-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    hsl(var(--foreground) / 0.13) 22%,
+    hsl(var(--primary) / 0.28) 50%,
+    hsl(var(--foreground) / 0.13) 78%,
+    transparent
+  );
+}
+
+/* The framed-panel system that used to live here is gone. It wrapped whole
+   sections in 1280px cards with 48px corners while the sections between them
+   ran full-bleed at 1440px — seven jumps in the content edge on the way down,
+   and a hero panel that cropped the product shot. Sections are flat now; see
+   components/design-system/Section.tsx. Elevation belongs to cards only.
+   Ambient colour is applied per-section via the glow-* helpers below. */
 
 /* ------------------------------------------------------------
    Night-sky ambiance
@@ -233,6 +322,81 @@
   background-size: 20px 20px;
 }
 
+/* Aurora — a slow band of lavender/coral light drifting behind the hero.
+   Conic so the hue rotates as it turns; blurred to the point where it reads
+   as atmosphere rather than a shape. This is the page's one moving light. */
+.luxa-aurora {
+  background: conic-gradient(
+    from 200deg at 50% 50%,
+    hsl(var(--primary-deep) / 0.38),
+    hsl(var(--primary) / 0.22),
+    hsl(var(--stella) / 0.18),
+    hsl(var(--secondary) / 0.10),
+    hsl(var(--primary-deep) / 0.38)
+  );
+  filter: blur(90px);
+  will-change: transform;
+  animation: luxa-aurora-drift 26s ease-in-out infinite alternate;
+}
+
+@keyframes luxa-aurora-drift {
+  0% {
+    transform: translate3d(-5%, -3%, 0) rotate(0deg) scale(1);
+  }
+  100% {
+    transform: translate3d(5%, 4%, 0) rotate(26deg) scale(1.16);
+  }
+}
+
+/* Horizon — a perspective-less grid fading up from the bottom edge.
+   Gives the hero a floor so the phone looks placed, not floating in soup. */
+.luxa-horizon {
+  background-image:
+    linear-gradient(to right, hsl(var(--foreground) / 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--foreground) / 0.055) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(78% 100% at 50% 100%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(78% 100% at 50% 100%, #000 0%, transparent 72%);
+}
+
+/* ------------------------------------------------------------
+   Pocket meter — the app's progress bar, pixel-for-pixel
+   In Luxa a budget bar is a track, a coloured fill, and a knob that
+   rides the head of the fill with a black ring cutting it out of the
+   track. Reproducing it here is what makes the page feel like the
+   product rather than an ad for it. `currentColor` carries the pocket
+   colour (besoins / envies / epargne) so one class serves all three.
+   ------------------------------------------------------------ */
+.luxa-meter {
+  height: 6px;
+  border-radius: 999px;
+  background: hsl(var(--foreground) / 0.09);
+}
+
+.luxa-meter-fill {
+  height: 100%;
+  width: 100%;
+  transform-origin: left center;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 14px -3px currentColor;
+}
+
+/* Positioned by `left` (not scaleX) so the circle never turns into an
+   ellipse when the fill is stretched. */
+.luxa-meter-knob {
+  position: absolute;
+  top: 50%;
+  height: 13px;
+  width: 13px;
+  border-radius: 999px;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  box-shadow:
+    0 0 0 3px hsl(var(--background)),
+    0 0 16px -2px currentColor;
+}
+
 /* Ambient glows — lavender for intelligence, coral for Stella warmth,
    gold for money sparkle. The soft "living" thread down the page. */
 .glow-primary {
@@ -243,6 +407,9 @@
 }
 .glow-gold {
   background: radial-gradient(closest-side, hsl(var(--secondary) / 0.14), transparent 70%);
+}
+.glow-epargne {
+  background: radial-gradient(closest-side, hsl(var(--epargne) / 0.13), transparent 70%);
 }
 /* Legacy aliases (loader) */
 .glow-burgundy {
@@ -255,22 +422,111 @@
 /* Elevated surfaces on the night canvas */
 .shadow-premium {
   box-shadow:
-    0 1px 0 hsl(var(--foreground) / 0.04) inset,
-    0 8px 24px -8px hsl(248 30% 2% / 0.7),
-    0 2px 8px -2px hsl(248 30% 2% / 0.5);
+    0 1px 0 hsl(var(--foreground) / 0.05) inset,
+    0 10px 30px -10px hsl(0 0% 0% / 0.85),
+    0 2px 8px -2px hsl(0 0% 0% / 0.6);
 }
 .shadow-premium-hover {
   box-shadow:
-    0 1px 0 hsl(var(--foreground) / 0.06) inset,
-    0 20px 48px -12px hsl(var(--primary-deep) / 0.25),
-    0 6px 16px -4px hsl(248 30% 2% / 0.6);
+    0 1px 0 hsl(var(--foreground) / 0.08) inset,
+    0 24px 56px -14px hsl(var(--primary-deep) / 0.3),
+    0 6px 16px -4px hsl(0 0% 0% / 0.7);
 }
 /* The phone halo — a screen glowing in the dark */
 .shadow-screen {
   box-shadow:
     0 0 0 1px hsl(var(--foreground) / 0.06),
     0 0 60px -12px hsl(var(--primary-deep) / 0.45),
-    0 40px 80px -24px hsl(248 30% 2% / 0.9);
+    0 40px 80px -24px hsl(0 0% 0% / 0.95);
+}
+
+/* ------------------------------------------------------------
+   Primary action — the app's lilas button, lit
+   Flat fill like in the app, plus the two things a screen adds that a
+   phone can't: an inner top highlight and a halo on the surface below.
+   ------------------------------------------------------------ */
+.luxa-cta {
+  overflow: hidden;
+  background: linear-gradient(180deg, hsl(var(--primary)), hsl(var(--primary-deep)));
+  box-shadow:
+    0 1px 0 hsl(0 0% 100% / 0.35) inset,
+    0 0 0 1px hsl(var(--primary) / 0.5),
+    0 14px 34px -12px hsl(var(--primary-deep) / 0.75);
+  transition: box-shadow 0.3s ease, filter 0.3s ease;
+}
+.luxa-cta:hover {
+  filter: brightness(1.06);
+  box-shadow:
+    0 1px 0 hsl(0 0% 100% / 0.45) inset,
+    0 0 0 1px hsl(var(--primary) / 0.65),
+    0 18px 44px -12px hsl(var(--primary-deep) / 0.9);
+}
+/* A sheen that sweeps once on hover — the only "shiny" moment on the page. */
+.luxa-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 38%, hsl(0 0% 100% / 0.28) 50%, transparent 62%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .luxa-cta:hover::after {
+    transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateX(120%);
+  }
+}
+
+/* ------------------------------------------------------------
+   Gradient headline text
+   ------------------------------------------------------------ */
+.luxa-gradient-text {
+  /* A single lavender → coral ramp, swept back and forth. Earlier versions
+     looped a multi-stop gradient, which put two or three hue crossings
+     inside one short phrase and read as a smear. With one ramp and an
+     `alternate` sweep, the text is only ever showing part of one
+     transition — the colour moves, the idea stays still. */
+  background-image: linear-gradient(100deg, hsl(var(--primary)), hsl(var(--stella)));
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  /* The inherited headline text-shadow would paint a solid ghost of the word
+     behind the transparent fill. The gradient is the effect here; it needs no
+     halo. (A `filter` glow is not an option either — it breaks
+     background-clip:text in WebKit.) */
+  text-shadow: none;
+  animation: luxa-gradient-drift 11s ease-in-out infinite alternate;
+}
+
+@keyframes luxa-gradient-drift {
+  to {
+    background-position: 100% 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luxa-gradient-text {
+    animation: none;
+  }
+}
+
+/* Quiet action — glass, not a grey box. */
+.luxa-ghost {
+  background: hsl(var(--foreground) / 0.04);
+  box-shadow:
+    0 1px 0 hsl(var(--foreground) / 0.07) inset,
+    0 0 0 1px hsl(var(--foreground) / 0.09);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.luxa-ghost:hover {
+  background: hsl(var(--foreground) / 0.075);
+  box-shadow:
+    0 1px 0 hsl(var(--foreground) / 0.1) inset,
+    0 0 0 1px hsl(var(--primary) / 0.35);
 }
 
 /* ------------------------------------------------------------
@@ -507,6 +763,56 @@
   animation: star-twinkle 4s ease-in-out infinite;
 }
 
+/* Accordion open/close. The FAQ markup has always asked for these utilities;
+   with no Tailwind config to define them, panels were snapping open. */
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+.animate-accordion-down {
+  animation: accordion-down 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-accordion-up {
+  animation: accordion-up 0.22s cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Dialog enter/exit. The markup used to reach for tailwindcss-animate
+   utilities that this project never installed, so modals appeared and
+   vanished instantly. The transform keyframes carry the -50%/-50% centering
+   because an animated `transform` overrides the positioning utilities. */
+@keyframes luxa-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes luxa-fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+@keyframes luxa-pop-in {
+  from { opacity: 0; transform: translate(-50%, -47%) scale(0.96); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes luxa-pop-out {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -47%) scale(0.96); }
+}
+.animate-luxa-fade-in {
+  animation: luxa-fade-in 0.2s ease-out;
+}
+.animate-luxa-fade-out {
+  animation: luxa-fade-out 0.16s ease-in forwards;
+}
+.animate-luxa-pop-in {
+  animation: luxa-pop-in 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.animate-luxa-pop-out {
+  animation: luxa-pop-out 0.18s cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+
 /* Scroll-reveal elements start hidden (revealed by ScrollAnimations).
    Kept in the DOM for SEO; shown instantly for reduced-motion. */
 [data-animate] {
@@ -559,7 +865,8 @@
   .animate-stella-float,
   .animate-glow-breathe,
   .animate-glow-breathe-slow,
-  .animate-star-twinkle {
+  .animate-star-twinkle,
+  .luxa-aurora {
     animation: none !important;
     transform: none !important;
   }
@@ -581,10 +888,16 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.25);
+  background: hsl(var(--primary) / 0.28);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground) / 0.45);
+  background: hsl(var(--primary) / 0.5);
+}
+
+/* Firefox */
+html {
+  scrollbar-color: hsl(var(--primary) / 0.3) transparent;
+  scrollbar-width: thin;
 }

@@ -7,7 +7,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion'
-import { Container } from '@/components/design-system/Container'
+import { Section } from '@/components/design-system/Section'
 import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { useTranslation } from '@/lib/i18n/useTranslation'
@@ -17,8 +17,7 @@ export function FAQ() {
   const faqs = t('faq.items') as unknown as Array<{ question: string; answer: string }>
 
   return (
-    <section id="faq" className="relative isolate overflow-hidden py-16 md:py-32">
-      <Container className="relative">
+    <Section id="faq" divider>
         <div className="mx-auto flex justify-center" data-animate="stella">
           <StellaMascot mood="thinking" size="md" floating />
         </div>
@@ -36,7 +35,7 @@ export function FAQ() {
                 <AccordionItem
                   key={`faq-${index}`}
                   value={`faq-${index}`}
-                  className="rounded-2xl border border-border bg-card px-5 transition-colors hover:border-primary/30 md:px-6"
+                  className="luxa-card luxa-hairline luxa-card-hover overflow-hidden rounded-tile border-b-0 px-5 md:px-6"
                 >
                   <AccordionTrigger className="py-4 text-left text-base font-semibold text-foreground hover:no-underline md:py-5 md:text-lg">
                     {faq.question}
@@ -57,7 +56,6 @@ export function FAQ() {
             </Link>
           </p>
         </div>
-      </Container>
-    </section>
+    </Section>
   )
 }
