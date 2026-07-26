@@ -25,7 +25,10 @@ export function FAQ() {
           {t('faq.title') as string}
         </h2>
 
-        <div className="mt-10 max-w-3xl md:mt-12" data-animate="card">
+        {/* Les lignes s'étendent jusqu'au bord du Container comme le reste de
+            l'acte II ; c'est la mesure du texte de réponse qui est bridée, pas
+            la largeur des lignes. */}
+        <div className="mt-10 md:mt-12" data-animate="card">
           <Accordion type="single" collapsible className="w-full space-y-3">
             {Array.isArray(faqs) &&
               faqs.map((faq, index) => (
@@ -37,7 +40,7 @@ export function FAQ() {
                   <AccordionTrigger className="py-4 text-left text-base font-semibold text-foreground hover:no-underline md:py-5 md:text-lg">
                     {faq.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-relaxed text-muted-foreground md:text-base">
+                  <AccordionContent className="max-w-[68ch] text-sm leading-relaxed text-muted-foreground md:text-base">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

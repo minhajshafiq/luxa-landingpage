@@ -67,7 +67,11 @@ export function StatementEntry({
         {note && <StellaNote className="mt-7 max-w-[46ch] xl:hidden">{note}</StellaNote>}
       </div>
 
-      {note && <StellaNote className="hidden xl:block">{note}</StellaNote>}
+      {/* `self-start` : sans lui l'aside s'étire sur toute la hauteur de la
+          rangée de grille et son filet corail court sur 600px à côté de deux
+          lignes de texte — une seconde colonne vertébrale qui concurrence le
+          filet du relevé. */}
+      {note && <StellaNote className="hidden self-start xl:block">{note}</StellaNote>}
     </section>
   )
 }

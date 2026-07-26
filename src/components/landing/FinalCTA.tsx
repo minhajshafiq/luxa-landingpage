@@ -31,7 +31,10 @@ export function FinalCTA() {
 
           <h2
             data-animate="lead"
-            className="mt-8 max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance"
+            // La clôture enfle : même famille, même graisse, même approche et
+            // même fer à gauche que les autres titres de l'acte II, mais un
+            // cran plus grand — c'est la dernière phrase avant les boutons.
+            className="mt-8 max-w-[18ch] font-display text-[clamp(2.4rem,5vw,3.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance"
           >
             {t('final.title') as string}
           </h2>

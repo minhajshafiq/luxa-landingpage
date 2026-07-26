@@ -116,7 +116,9 @@ export function Pricing() {
         {t('pricing.subtitle') as string}
       </p>
 
-      <div className="mt-12 grid max-w-4xl items-stretch gap-6 md:grid-cols-2">
+      {/* Pas de `max-w` : l'acte II partage un seul bord droit, celui du
+          Container. Le confort de lecture vient du padding des cartes. */}
+      <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2">
         <PlanCard plan={free} />
         <PlanCard plan={plus} highlighted />
       </div>
