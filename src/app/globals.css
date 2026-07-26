@@ -208,8 +208,12 @@
 @layer components {
   .luxa-hairline,
   .luxa-cta,
-  .luxa-meter {
+  .luxa-meter,
+  .luxa-statement {
     position: relative;
+  }
+  .stmt-node {
+    position: absolute;
   }
 }
 
@@ -907,14 +911,21 @@ html {
    Trois colonnes : gouttière mono / colonne principale / marge Stella.
    Un seul filet vertical traverse toute la pile d'entrées : c'est lui
    qui fait un document plutôt que des blocs empilés.
+   Point de rupture à trois colonnes aligné sur `xl` (1280px) de Tailwind,
+   pas sur une valeur custom : le Container plafonne à 1200px, donc la
+   marge Stella ne respire vraiment qu'à partir de 1280px — et le composant
+   utilise déjà `xl:` pour la même bascule. `position: relative` vit dans
+   @layer components plus haut (avec .luxa-hairline etc.), pas ici : en
+   dehors d'un layer elle battrait `.fixed`/`.absolute`/`.sticky`.
    ------------------------------------------------------------ */
 .luxa-statement {
-  position: relative;
+  --stmt-gutter: 132px;
+  --stmt-margin: 260px;
 }
 
 /* Le filet. Il vit sur le conteneur, pas sur les entrées, pour rester
    continu d'un bout à l'autre de l'acte I. */
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .luxa-statement::before {
     content: '';
     position: absolute;
@@ -933,11 +944,6 @@ html {
   }
 }
 
-.luxa-statement {
-  --stmt-gutter: 132px;
-  --stmt-margin: 260px;
-}
-
 .stmt-entry {
   display: grid;
   gap: 24px;
@@ -948,26 +954,27 @@ html {
   border-top: 1px solid hsl(var(--foreground) / 0.07);
 }
 
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .stmt-entry {
     grid-template-columns: var(--stmt-gutter) minmax(0, 1fr);
     column-gap: 40px;
   }
 }
-@media (min-width: 1100px) {
+@media (min-width: 1280px) {
   .stmt-entry {
     grid-template-columns: var(--stmt-gutter) minmax(0, 1fr) var(--stmt-margin);
   }
 }
 
-/* Le nœud sur le filet, en face de chaque entrée. */
+/* Le nœud sur le filet, en face de chaque entrée. `position: absolute` vit
+   dans @layer components plus haut, avec .stmt-node, pour ne jamais battre
+   un utilitaire `.absolute`/`.fixed`/`.sticky` posé sur le même élément. */
 .stmt-node {
   display: none;
 }
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .stmt-node {
     display: block;
-    position: absolute;
     left: var(--stmt-gutter);
     width: 7px;
     height: 7px;
@@ -988,28 +995,33 @@ html {
 .stmt-gutter {
   line-height: 1.6;
 }
-@media (min-width: 760px) {
+@media (min-width: 768px) {
   .stmt-gutter {
     text-align: right;
     padding-right: 18px;
   }
 }
-/* Sous 760px la gouttière devient un tampon horizontal au-dessus du bloc. */
-@media (max-width: 759px) {
-  .stmt-gutter {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    gap: 12px;
+/* Sous 768px la gouttière devient un tampon horizontal au-dessus du bloc.
+   `display: grid` reste dans @layer components : sans quoi, en dehors d'un
+   layer, elle battrait un utilitaire `hidden`/`flex` posé sur le même
+   élément — la même trappe de cascade que `position` ci-dessus. */
+@layer components {
+  @media (max-width: 767px) {
+    .stmt-gutter {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 12px;
+    }
+    .stmt-gutter::after {
+      content: '';
+      height: 1px;
+      background: hsl(var(--foreground) / 0.14);
+      order: 2;
+    }
+    .stmt-gutter .stmt-amount { order: 3; }
+    .stmt-gutter .stmt-tag { display: none; }
   }
-  .stmt-gutter::after {
-    content: '';
-    height: 1px;
-    background: hsl(var(--foreground) / 0.14);
-    order: 2;
-  }
-  .stmt-gutter .stmt-amount { order: 3; }
-  .stmt-gutter .stmt-tag { display: none; }
 }
 
 .stmt-stamp {
@@ -1024,7 +1036,7 @@ html {
   font-weight: 500;
   margin-top: 6px;
 }
-@media (max-width: 759px) {
+@media (max-width: 767px) {
   .stmt-amount { margin-top: 0; }
 }
 .stmt-amount[data-tone='out'] { color: hsl(var(--destructive)); }
@@ -1053,6 +1065,11 @@ html {
 }
 
 /* --- La césure -------------------------------------------------- */
+/* NOTE POLICE : ne pas écrire `font-family: var(--font-mono)` ici. Tailwind v4
+   déclare `--font-mono` dans `@theme inline`, qui inline la valeur dans les
+   utilitaires SANS émettre la custom property sur :root — la règle tomberait
+   silencieusement en fallback sans-serif. Le monospace s'applique via la
+   classe utilitaire `font-mono` dans les composants. */
 .stmt-close {
   font-size: 11px;
   letter-spacing: 0.24em;
