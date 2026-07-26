@@ -16,6 +16,7 @@ export function DayStella() {
 
   return (
     <StatementEntry
+      id="stella"
       className="stmt-entry--voice"
       stamp={d.stamp}
       amount={d.amount}

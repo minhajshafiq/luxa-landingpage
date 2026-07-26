@@ -129,6 +129,7 @@ export function DayIncome() {
   return (
     <div ref={rootRef}>
       <StatementEntry
+        id="pockets"
         stamp={d.stamp}
         amount={d.amount}
         tag={d.tag}

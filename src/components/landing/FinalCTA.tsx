@@ -24,23 +24,23 @@ export function FinalCTA() {
       <span aria-hidden="true" className="animate-star-twinkle absolute right-[20%] top-[30%] text-xs text-primary/70" style={{ animationDelay: '1.4s' }}>✦</span>
       <span aria-hidden="true" className="animate-star-twinkle absolute left-[30%] bottom-[24%] text-xs text-stella/70" style={{ animationDelay: '2.6s' }}>✦</span>
 
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="flex justify-center" data-animate="stella">
+        <div className="max-w-2xl">
+          <div className="flex" data-animate="stella">
             <StellaMascot mood="sleepy" size="lg" floating />
           </div>
 
           <h2
             data-animate="lead"
-            className="mt-8 font-display text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl text-balance"
+            className="mt-8 max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance"
           >
             {t('final.title') as string}
           </h2>
 
-          <p data-animate="lead" className="mx-auto mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p data-animate="lead" className="mt-5 max-w-[58ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
             {t('final.subtitle') as string}
           </p>
 
-          <div data-animate="cta" className="mt-9 flex flex-col items-center gap-4">
+          <div data-animate="cta" className="mt-9 flex flex-col items-start gap-4">
             <RatingBadge />
             <AppStoreButtons
               downloadLabel={t('final.ctaDownload') as string}

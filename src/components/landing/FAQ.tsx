@@ -8,7 +8,6 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { Section } from '@/components/design-system/Section'
-import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { useTranslation } from '@/lib/i18n/useTranslation'
 
@@ -18,17 +17,15 @@ export function FAQ() {
 
   return (
     <Section id="faq" divider>
-        <div className="mx-auto flex justify-center" data-animate="stella">
+        <div className="flex" data-animate="stella">
           <StellaMascot mood="thinking" size="md" floating />
         </div>
 
-        <SectionHeading
-          eyebrow={t('faq.eyebrow') as string}
-          title={t('faq.title') as string}
-          className="mt-6 mb-10 md:mb-12"
-        />
+        <h2 className="mt-6 max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
+          {t('faq.title') as string}
+        </h2>
 
-        <div className="mx-auto max-w-3xl" data-animate="card">
+        <div className="mt-10 max-w-3xl md:mt-12" data-animate="card">
           <Accordion type="single" collapsible className="w-full space-y-3">
             {Array.isArray(faqs) &&
               faqs.map((faq, index) => (
@@ -47,7 +44,7 @@ export function FAQ() {
               ))}
           </Accordion>
 
-          <p className="mt-8 text-center text-sm text-muted-foreground">
+          <p className="mt-8 text-sm text-muted-foreground">
             <Link
               href="/contact"
               className="underline decoration-primary/40 underline-offset-4 transition-colors hover:text-foreground hover:decoration-primary"

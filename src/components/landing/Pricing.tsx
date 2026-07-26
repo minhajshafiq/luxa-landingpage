@@ -2,7 +2,6 @@
 
 import { AppleLogo } from '@/components/ui/apple-logo'
 import { Section } from '@/components/design-system/Section'
-import { SectionHeading } from '@/components/design-system/SectionHeading'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { AnimatedButton } from '@/components/design-system/AnimatedButton'
 import { APP_STORE_URL } from '@/constants/site'
@@ -109,17 +108,18 @@ export function Pricing() {
 
   return (
     <Section id="pricing" tone="primary" divider>
-        <SectionHeading
-          eyebrow={t('pricing.eyebrow') as string}
-          title={t('pricing.title') as string}
-          titleHighlight={t('pricing.titleHighlight') as string}
-          lead={t('pricing.subtitle') as string}
-        />
+      <h2 className="max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
+        {t('pricing.title') as string}{' '}
+        <span className="text-primary">{t('pricing.titleHighlight') as string}</span>
+      </h2>
+      <p className="mt-5 max-w-[58ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
+        {t('pricing.subtitle') as string}
+      </p>
 
-        <div className="mx-auto grid max-w-4xl items-stretch gap-6 md:grid-cols-2">
-          <PlanCard plan={free} />
-          <PlanCard plan={plus} highlighted />
-        </div>
+      <div className="mt-12 grid max-w-4xl items-stretch gap-6 md:grid-cols-2">
+        <PlanCard plan={free} />
+        <PlanCard plan={plus} highlighted />
+      </div>
     </Section>
   )
 }
