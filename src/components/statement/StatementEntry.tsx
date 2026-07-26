@@ -63,7 +63,7 @@ export function StatementEntry({
         )}
         {children}
 
-        {/* Sous 1100px la marge n'existe plus : la note revient dans le flux. */}
+        {/* Sous 1280px (xl) la marge n'existe plus : la note revient dans le flux. */}
         {note && <StellaNote className="mt-7 max-w-[46ch] xl:hidden">{note}</StellaNote>}
       </div>
 

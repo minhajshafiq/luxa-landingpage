@@ -370,7 +370,7 @@ export function Hero() {
             <div ref={phoneRef} className="relative will-change-transform">
               <PhoneFrame
                 src="/dashboard.png"
-                alt="Luxa — dashboard: balance, weekly spending, recent transactions"
+                alt={t('hero.alt') as string}
                 sizes="(max-width: 767px) 80vw, (max-width: 1023px) 360px, 420px"
                 priority
               />

@@ -4,7 +4,7 @@ import { StatementEntry } from '@/components/statement/StatementEntry'
 import { PhoneFrame } from '@/components/design-system/PhoneFrame'
 import { useTranslation } from '@/lib/i18n/useTranslation'
 
-type Day = { stamp: string; amount: string; tag: string; title: string; body: string; note: string }
+type Day = { stamp: string; amount: string; tag: string; title: string; body: string; note: string; alt: string }
 
 export function DayRemaining() {
   const { t } = useTranslation()
@@ -23,7 +23,7 @@ export function DayRemaining() {
       <div className="mt-8 w-[220px]">
         <PhoneFrame
           src="/stats.png"
-          alt="Luxa — statistiques : santé du budget, dépenses de la semaine, moyenne journalière"
+          alt={d.alt}
           sizes="220px"
         />
       </div>

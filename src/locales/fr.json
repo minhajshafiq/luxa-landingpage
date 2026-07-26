@@ -43,7 +43,8 @@
     "savingsChip": {
       "label": "Épargne",
       "value": "21 % ce mois-ci"
-    }
+    },
+    "alt": "Luxa — tableau de bord : solde, dépenses de la semaine, transactions récentes"
   },
   "month": {
     "d01": {
@@ -73,7 +74,8 @@
       "tag": "prélèvements",
       "title": "Le 8, six prélèvements tombent. Tu en avais oublié la moitié.",
       "body": "Netflix, la salle, la box, l'assurance, le cloud, l'appli de sport de janvier. Chacun est petit. Ensemble, ils pèsent plus que tes courses.",
-      "note": "3 se renouvellent avant vendredi. Environ 49 € à prévoir."
+      "note": "3 se renouvellent avant vendredi. Environ 49 € à prévoir.",
+      "alt": "Luxa — dépenses récurrentes regroupées avec leur total mensuel"
     },
     "d12": {
       "stamp": "12 juil.",
@@ -96,7 +98,8 @@
       "tag": "reste à dépenser",
       "title": "Le 28, la question n'est plus où est parti l'argent. C'est ce qu'il te reste.",
       "body": "62,96 € dans Envies, 255 € dans Besoins. Tu sais si tu peux dire oui au resto de vendredi.",
-      "note": "À ce rythme, tu finis le mois à +471 €."
+      "note": "À ce rythme, tu finis le mois à +471 €.",
+      "alt": "Luxa — statistiques : santé du budget, dépenses de la semaine, moyenne journalière"
     },
     "d31": {
       "stamp": "31 juil.",

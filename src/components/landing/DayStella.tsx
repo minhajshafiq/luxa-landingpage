@@ -26,9 +26,9 @@ export function DayStella() {
       <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8">
         <StellaMascot mood="thinking" size="md" floating className="shrink-0" />
         <blockquote>
-          <p className="font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
+          <h2 className="font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
             {d.title}
-          </p>
+          </h2>
           <p className="mt-5 max-w-[58ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
             {d.body}
           </p>

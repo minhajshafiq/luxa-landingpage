@@ -43,7 +43,8 @@
     "savingsChip": {
       "label": "Savings",
       "value": "21% this month"
-    }
+    },
+    "alt": "Luxa — dashboard: balance, weekly spending, recent transactions"
   },
   "month": {
     "d01": {
@@ -73,7 +74,8 @@
       "tag": "direct debits",
       "title": "On the 8th six debits land. You'd forgotten half of them.",
       "body": "Netflix, the gym, broadband, insurance, cloud storage, that fitness app from January. Each one is small. Together they cost more than your groceries.",
-      "note": "3 renew before Friday. Around 49 € to plan for."
+      "note": "3 renew before Friday. Around 49 € to plan for.",
+      "alt": "Luxa — recurring expenses grouped with their monthly total"
     },
     "d12": {
       "stamp": "Jul 12",
@@ -96,7 +98,8 @@
       "tag": "left to spend",
       "title": "By the 28th the question isn't where the money went. It's what's left.",
       "body": "62.96 € in Wants, 255 € in Needs. You know whether you can say yes to dinner on Friday.",
-      "note": "At this pace you finish the month at +471 €."
+      "note": "At this pace you finish the month at +471 €.",
+      "alt": "Luxa — stats: budget health, weekly spending, daily average"
     },
     "d31": {
       "stamp": "Jul 31",

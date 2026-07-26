@@ -16,13 +16,21 @@ export function Trust() {
     <Section tone="epargne" divider>
       <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
         <div>
-          <h2 className="max-w-[16ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
+          <h2
+            data-animate="lead"
+            className="max-w-[16ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance"
+          >
             {t('trust.title') as string}
           </h2>
-          <p className="mt-5 max-w-[58ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
+          <p
+            data-animate="lead"
+            className="mt-5 max-w-[58ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base"
+          >
             {t('trust.body') as string}
           </p>
-          <StellaMascot mood="love" size="md" floating className="mt-10" />
+          <div className="mt-10 flex" data-animate="stella">
+            <StellaMascot mood="love" size="md" floating />
+          </div>
         </div>
 
         <div className="grid gap-3 self-center">
@@ -39,7 +47,7 @@ export function Trust() {
                     <Icon className="h-4 w-4" />
                   </span>
                   <div>
-                    <p className="font-semibold text-foreground">{bullet.title}</p>
+                    <h3 className="font-semibold text-foreground">{bullet.title}</h3>
                     <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                       {bullet.description}
                     </p>
