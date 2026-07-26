@@ -901,3 +901,161 @@ html {
   scrollbar-color: hsl(var(--primary) / 0.3) transparent;
   scrollbar-width: thin;
 }
+
+/* ------------------------------------------------------------
+   Le relevé — la grammaire de l'acte I
+   Trois colonnes : gouttière mono / colonne principale / marge Stella.
+   Un seul filet vertical traverse toute la pile d'entrées : c'est lui
+   qui fait un document plutôt que des blocs empilés.
+   ------------------------------------------------------------ */
+.luxa-statement {
+  position: relative;
+}
+
+/* Le filet. Il vit sur le conteneur, pas sur les entrées, pour rester
+   continu d'un bout à l'autre de l'acte I. */
+@media (min-width: 760px) {
+  .luxa-statement::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--stmt-gutter);
+    width: 1px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      hsl(var(--foreground) / 0.16) 4%,
+      hsl(var(--foreground) / 0.16) 96%,
+      transparent
+    );
+    pointer-events: none;
+  }
+}
+
+.luxa-statement {
+  --stmt-gutter: 132px;
+  --stmt-margin: 260px;
+}
+
+.stmt-entry {
+  display: grid;
+  gap: 24px;
+  padding: 56px 0;
+  grid-template-columns: 1fr;
+}
+.stmt-entry + .stmt-entry {
+  border-top: 1px solid hsl(var(--foreground) / 0.07);
+}
+
+@media (min-width: 760px) {
+  .stmt-entry {
+    grid-template-columns: var(--stmt-gutter) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+}
+@media (min-width: 1100px) {
+  .stmt-entry {
+    grid-template-columns: var(--stmt-gutter) minmax(0, 1fr) var(--stmt-margin);
+  }
+}
+
+/* Le nœud sur le filet, en face de chaque entrée. */
+.stmt-node {
+  display: none;
+}
+@media (min-width: 760px) {
+  .stmt-node {
+    display: block;
+    position: absolute;
+    left: var(--stmt-gutter);
+    width: 7px;
+    height: 7px;
+    border-radius: 999px;
+    background: hsl(var(--primary));
+    transform: translate(-50%, 0);
+    margin-top: 62px;
+    box-shadow: 0 0 0 4px hsl(var(--background)), 0 0 14px hsl(var(--primary) / 0.8);
+  }
+}
+
+/* --- Gouttière ------------------------------------------------- */
+/* NOTE POLICE : ne pas écrire `font-family: var(--font-mono)` ici. Tailwind v4
+   déclare `--font-mono` dans `@theme inline`, qui inline la valeur dans les
+   utilitaires SANS émettre la custom property sur :root — la règle tomberait
+   silencieusement en fallback sans-serif. Le monospace s'applique via la
+   classe utilitaire `font-mono` dans les composants. */
+.stmt-gutter {
+  line-height: 1.6;
+}
+@media (min-width: 760px) {
+  .stmt-gutter {
+    text-align: right;
+    padding-right: 18px;
+  }
+}
+/* Sous 760px la gouttière devient un tampon horizontal au-dessus du bloc. */
+@media (max-width: 759px) {
+  .stmt-gutter {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+  .stmt-gutter::after {
+    content: '';
+    height: 1px;
+    background: hsl(var(--foreground) / 0.14);
+    order: 2;
+  }
+  .stmt-gutter .stmt-amount { order: 3; }
+  .stmt-gutter .stmt-tag { display: none; }
+}
+
+.stmt-stamp {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground) / 0.75);
+}
+.stmt-amount {
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  margin-top: 6px;
+}
+@media (max-width: 759px) {
+  .stmt-amount { margin-top: 0; }
+}
+.stmt-amount[data-tone='out'] { color: hsl(var(--destructive)); }
+.stmt-amount[data-tone='in'] { color: hsl(var(--epargne)); }
+.stmt-amount[data-tone='neutral'] { color: hsl(var(--primary)); }
+.stmt-tag {
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground) / 0.55);
+  margin-top: 10px;
+}
+
+/* --- Marge Stella ---------------------------------------------- */
+.stmt-note {
+  border-left: 2px solid hsl(var(--stella));
+  padding-left: 14px;
+}
+.stmt-note-who {
+  display: block;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: hsl(var(--stella));
+  margin-bottom: 6px;
+}
+
+/* --- La césure -------------------------------------------------- */
+.stmt-close {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+}
