@@ -246,7 +246,7 @@ export function Hero() {
           {/* Headline */}
           <h1
             ref={titleRef}
-            className="mx-auto max-w-[16ch] font-display text-[clamp(2.6rem,7.2vw,5rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-foreground"
+            className="mt-7 mx-auto max-w-[20ch] font-display text-[clamp(2.4rem,6.4vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-foreground [text-shadow:0_0_60px_hsl(var(--primary)/0.25)]"
           >
             {titleWords.map((word, index) => (
               <span key={`title-${index}`}>
