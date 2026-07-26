@@ -20,9 +20,9 @@
   },
   "hero": {
     "badge": "Disponible sur iOS · Android en bêta",
-    "title": "Ton argent,",
-    "titleHighlight": "enfin lisible.",
-    "subtitle": "Luxa transforme le bruit de tes dépenses en une image calme : des pockets pour chaque euro, tes abonnements sous contrôle, et Stella — une petite étoile qui remarque ce qui compte.",
+    "title": "Tu paies 1 276 € d'abonnements par mois.",
+    "titleHighlight": "Tu en connais trois.",
+    "subtitle": "Luxa lit ton relevé, retrouve tout ce qui se prélève en silence, et range le reste de ton budget. Sans connexion bancaire.",
     "ctaDownload": "Télécharger sur l'App Store",
     "ctaAndroidBeta": "Android · rejoindre la bêta",
     "trust": {
@@ -44,6 +44,74 @@
       "label": "Épargne",
       "value": "21 % ce mois-ci"
     }
+  },
+  "month": {
+    "d01": {
+      "stamp": "01 juil.",
+      "amount": "3 305,00",
+      "tag": "entrée",
+      "title": "Le 1er, ton salaire arrive. Il a déjà sa place.",
+      "body": "Luxa le découpe en trois : ce que tu dois payer, ce qui te fait plaisir, ce que tu gardes. C'est la méthode 50/30/20 — et tu changes les proportions quand tu veux.",
+      "note": "Ton loyer tombe le 5. J'ai gardé 980 € dans Besoins.",
+      "slices": [
+        {"name": "Besoins", "detail": "Loyer, courses, transports, factures."},
+        {"name": "Envies", "detail": "Restos, sorties, abonnements."},
+        {"name": "Épargne", "detail": "Projets, imprévus."}
+      ]
+    },
+    "d03": {
+      "stamp": "03 juil.",
+      "amount": "4 pages",
+      "tag": "relevé lu",
+      "title": "Tu déposes ton relevé PDF. Luxa le lit.",
+      "body": "Pas de connexion bancaire, aucun identifiant à donner. Tu exportes ton relevé depuis ta banque, tu le déposes ici, et chaque ligne est classée en quelques secondes.",
+      "note": "128 opérations lues. J'en ai classé 124 toute seule."
+    },
+    "d08": {
+      "stamp": "08 juil.",
+      "amount": "−1 276,00",
+      "tag": "prélèvements",
+      "title": "Le 8, six prélèvements tombent. Tu en avais oublié la moitié.",
+      "body": "Netflix, la salle, la box, l'assurance, le cloud, l'appli de sport de janvier. Chacun est petit. Ensemble, ils pèsent plus que tes courses.",
+      "note": "3 se renouvellent avant vendredi. Environ 49 € à prévoir."
+    },
+    "d12": {
+      "stamp": "12 juil.",
+      "amount": "64,20",
+      "tag": "traduit",
+      "title": "Ta banque écrit CB CARREFOUR 64,20. Luxa écrit ce que ça veut dire.",
+      "body": "Une ligne de relevé ne t'apprend rien. Luxa la range dans un pocket, la compare à ton mois, et te dit si tu es dans les clous.",
+      "note": "Courses : 87 % du budget tenu. Tu peux souffler."
+    },
+    "d17": {
+      "stamp": "17 juil.",
+      "amount": "+18 %",
+      "tag": "restos",
+      "title": "Les restos montent de 18 % cette semaine.",
+      "body": "Ce n'est pas une alerte. C'est une phrase, au moment où tu peux encore décider — le 17, pas le 30. Stella regarde ton mois et te dit ce qui change, sans jargon et sans te faire la morale."
+    },
+    "d28": {
+      "stamp": "28 juil.",
+      "amount": "62,96",
+      "tag": "reste à dépenser",
+      "title": "Le 28, la question n'est plus où est parti l'argent. C'est ce qu'il te reste.",
+      "body": "62,96 € dans Envies, 255 € dans Besoins. Tu sais si tu peux dire oui au resto de vendredi.",
+      "note": "À ce rythme, tu finis le mois à +471 €."
+    },
+    "d31": {
+      "stamp": "31 juil.",
+      "amount": "+471,89",
+      "tag": "lisible",
+      "title": "Fin du mois. Pour la première fois, tu sais où il est passé.",
+      "body": "Pas de tableur, pas de rappel à noter, pas de culpabilité. Juste un mois que tu peux lire."
+    }
+  },
+  "close": {
+    "label": "Fin du mois."
+  },
+  "trust": {
+    "title": "Luxa ne touche jamais à ton argent.",
+    "body": "Aucune connexion à ta banque, aucun identifiant, aucune revente de données. Tu importes ce que tu veux, quand tu veux, et tout reste chiffré sur une infrastructure européenne."
   },
   "disperse": {
     "eyebrow": "Le vrai problème",
