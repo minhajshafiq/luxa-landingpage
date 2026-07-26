@@ -246,14 +246,14 @@ export function Hero() {
           {/* Headline */}
           <h1
             ref={titleRef}
-            className="mt-6 font-display text-[clamp(2.9rem,8.4vw,6rem)] leading-[0.98] font-semibold tracking-[-0.05em] text-foreground [text-shadow:0_0_60px_hsl(var(--primary)/0.25)]"
+            className="mx-auto max-w-[16ch] font-display text-[clamp(2.6rem,7.2vw,5rem)] font-semibold leading-[0.98] tracking-[-0.05em] text-foreground"
           >
             {titleWords.map((word, index) => (
               <span key={`title-${index}`}>
                 <span className="word inline-block">{word}</span>{' '}
               </span>
             ))}
-            <span className="whitespace-nowrap">
+            <span className="block">
               {highlightWords.map((word, index) => (
                 <span key={`highlight-${index}`}>
                   <span className="word inline-block">
@@ -388,7 +388,6 @@ export function Hero() {
 
       {/* Fade the phone into the next section — no hard seam */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-40 bg-gradient-to-t from-background to-transparent" />
-      <div aria-hidden="true" className="luxa-rule absolute inset-x-0 bottom-0 z-20 mx-auto w-full max-w-[1200px] px-4 opacity-70 sm:px-6 lg:px-8" />
     </section>
   )
 }
