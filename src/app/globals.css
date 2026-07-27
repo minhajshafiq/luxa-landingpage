@@ -942,6 +942,35 @@ html {
     );
     pointer-events: none;
   }
+
+  /* The ink: a brighter lavender line drawn over the dim hairline, scaled
+     from the top as you read. The hairline shows where the statement goes;
+     the ink shows how far you have got. Layered so a positioning utility
+     can still override it — see the note at the top of this file. */
+  .luxa-statement-ink {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--stmt-gutter);
+    width: 1px;
+    transform-origin: top center;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--primary) / 0.75),
+      hsl(var(--primary) / 0.45) 70%,
+      hsl(var(--primary) / 0.15)
+    );
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.35);
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 767px) {
+  /* No spine on mobile — the gutter is a horizontal stamp there, so a
+     vertical progress line would point at nothing. */
+  .luxa-statement-ink {
+    display: none;
+  }
 }
 
 .stmt-entry {
