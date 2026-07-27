@@ -11,8 +11,8 @@
     "appStore": "Voir sur l'App Store"
   },
   "meta": {
-    "title": "Luxa — Ton argent, enfin lisible",
-    "description": "Luxa transforme le bruit de tes dépenses en une image calme : des pockets pour chaque euro, tes abonnements sous contrôle, et Stella, une petite étoile qui remarque ce qui compte. Sans connexion bancaire.",
+    "title": "Application budget 50/30/20 et suivi d'abonnements | Luxa",
+    "description": "Luxa range chaque euro dans un pocket, retrouve tes abonnements et te dit ce qui reste. Sans connexion bancaire, sans tableur.",
     "ogDescription": "Des pockets pour chaque euro, tes abonnements sous contrôle, et Stella qui remarque ce qui compte. Un budget calme, clair et humain.",
     "notFoundTitle": "Cette page s'est perdue dans la nuit",
     "notFoundLead": "Le lien que tu as suivi ne mène nulle part. Stella te ramène à la maison.",
@@ -56,7 +56,7 @@
       "label": "Épargne",
       "value": "21 % ce mois-ci"
     },
-    "alt": "Luxa — tableau de bord : solde, dépenses de la semaine, transactions récentes"
+    "alt": "Tableau de bord Luxa : solde, dépenses de la semaine, transactions récentes"
   },
   "month": {
     "d01": {
@@ -64,7 +64,7 @@
       "amount": "3 305,00",
       "tag": "entrée",
       "title": "Le 1er, ton salaire arrive. Il a déjà sa place.",
-      "body": "Luxa le découpe en trois : ce que tu dois payer, ce qui te fait plaisir, ce que tu gardes. C'est la méthode 50/30/20 — et tu changes les proportions quand tu veux.",
+      "body": "Luxa le découpe en trois : ce que tu dois payer, ce qui te fait plaisir, ce que tu gardes. C'est la méthode 50/30/20, et tu changes les proportions quand tu veux.",
       "note": "Ton loyer tombe le 5. J'ai gardé 980 € dans Besoins.",
       "slices": [
         {
@@ -98,7 +98,7 @@
       "title": "Le 8, six prélèvements tombent. Tu en avais oublié la moitié.",
       "body": "Netflix, la salle, la box, l'assurance, le cloud, l'appli de sport de janvier. Chacun est petit. Ensemble, ils pèsent plus que tes courses.",
       "note": "3 se renouvellent avant vendredi. Environ 49 € à prévoir.",
-      "alt": "Luxa — dépenses récurrentes regroupées avec leur total mensuel"
+      "alt": "Abonnements Luxa : dépenses récurrentes regroupées avec leur total mensuel"
     },
     "d12": {
       "stamp": "12 juil.",
@@ -113,7 +113,7 @@
       "amount": "+18 %",
       "tag": "restos",
       "title": "Les restos montent de 18 % cette semaine.",
-      "body": "Ce n'est pas une alerte. C'est une phrase, au moment où tu peux encore décider — le 17, pas le 30. Stella regarde ton mois et te dit ce qui change, sans jargon et sans te faire la morale."
+      "body": "Ce n'est pas une alerte. C'est une phrase, au moment où tu peux encore décider : le 17, pas le 30. Stella regarde ton mois et te dit ce qui change, sans jargon et sans te faire la morale."
     },
     "d28": {
       "stamp": "28 juil.",
@@ -122,7 +122,7 @@
       "title": "Le 28, la question n'est plus où est parti l'argent. C'est ce qu'il te reste.",
       "body": "62,96 € dans Envies, 255 € dans Besoins. Tu sais si tu peux dire oui au resto de vendredi.",
       "note": "À ce rythme, tu finis le mois à +471 €.",
-      "alt": "Luxa — statistiques : santé du budget, dépenses de la semaine, moyenne journalière"
+      "alt": "Statistiques Luxa : santé du budget, dépenses de la semaine, moyenne journalière"
     },
     "d31": {
       "stamp": "31 juil.",
@@ -351,7 +351,7 @@
       "badge": "Aide active",
       "price": "6,99 €",
       "period": "par mois",
-      "note": "ou 35,99 € / an — mêmes fonctionnalités",
+      "note": "ou 35,99 € / an, mêmes fonctionnalités",
       "tagline": "Stella au complet, à tes côtés",
       "features": [
         "Analyses complètes de Stella et insights approfondis",
@@ -370,7 +370,7 @@
     "items": [
       {
         "question": "Luxa est-elle une banque ?",
-        "answer": "Non — et elle n'essaie pas de l'être. Luxa ne touche pas ton argent : c'est un espace calme au-dessus de tes comptes, où tu comprends et organises ce qui se passe. Ta banque exécute ; Luxa explique."
+        "answer": "Non, et elle n'essaie pas de l'être. Luxa ne touche pas ton argent : c'est un espace calme au-dessus de tes comptes, où tu comprends et organises ce qui se passe. Ta banque exécute ; Luxa explique."
       },
       {
         "question": "Dois-je connecter mon compte bancaire ?",
@@ -390,7 +390,7 @@
       },
       {
         "question": "Luxa existe-t-elle sur Android ?",
-        "answer": "Luxa est disponible sur iOS dès aujourd'hui. La version Android arrive — inscris-toi à la bêta pour être prévenu·e dès l'ouverture."
+        "answer": "Luxa est disponible sur iOS dès aujourd'hui. La version Android arrive : inscris-toi à la bêta pour être prévenu au lancement."
       },
       {
         "question": "Que m'apporte Luxa Plus ?",

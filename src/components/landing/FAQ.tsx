@@ -17,11 +17,14 @@ export function FAQ() {
 
   return (
     <Section id="faq" divider>
-        <div className="flex" data-animate="stella">
+        {/* La FAQ et la clôture sont les deux moments de fin de la page,
+            pas du contenu documentaire : elles se centrent. Les lignes de
+            l'accordéon gardent le bord partagé de l'acte II. */}
+        <div className="flex justify-center" data-animate="stella">
           <StellaMascot mood="thinking" size="md" floating />
         </div>
 
-        <h2 data-animate="lead" className="mt-6 max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
+        <h2 data-animate="lead" className="mx-auto mt-6 max-w-[18ch] text-center font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
           {t('faq.title') as string}
         </h2>
 
@@ -47,7 +50,7 @@ export function FAQ() {
               ))}
           </Accordion>
 
-          <p className="mt-8 text-sm text-muted-foreground">
+          <p className="mt-8 text-center text-sm text-muted-foreground">
             <Link
               href="/contact"
               className="underline decoration-primary/40 underline-offset-4 transition-colors hover:text-foreground hover:decoration-primary"

@@ -2,7 +2,7 @@ import { ImageResponse } from 'next/og'
 import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
-export const alt = 'Luxa — pockets for every euro, subscriptions under control'
+export const alt = 'Luxa : des pockets pour chaque euro, tes abonnements sous contrôle'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -12,14 +12,17 @@ export const contentType = 'image/png'
  * --background / --primary / --stella / --epargne in globals.css (ImageResponse
  * has no access to CSS custom properties).
  *
- * Deliberately light on words: this image is served to every locale, so it
- * leans on the wordmark and the three claims that carry the product.
+ * Written in French. The product is French-first — every locale key is authored
+ * in fr.json and translated outward — and this card is what a shared link shows
+ * on X, which is the channel this hook was chosen for. An English card on a
+ * French page was the previous state and made the share look like someone
+ * else's product.
  */
 export default async function OpengraphImage() {
   const icon = await readFile(join(process.cwd(), 'public', 'icon.png'))
   const iconSrc = `data:image/png;base64,${icon.toString('base64')}`
 
-  const claims = ['Free to start', 'No bank connection', 'Your data stays yours']
+  const claims = ['Gratuit pour commencer', 'Sans connexion bancaire', 'Tes données restent à toi']
 
   return new ImageResponse(
     (
@@ -56,7 +59,7 @@ export default async function OpengraphImage() {
             maxWidth: '900px',
           }}
         >
-          Make your money feel clear again.
+          Tu paies 1 276 € d'abonnements par mois.
         </div>
 
         <div style={{ display: 'flex', gap: '18px', marginTop: '52px' }}>

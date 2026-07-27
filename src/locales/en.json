@@ -11,8 +11,8 @@
     "appStore": "See on the App Store"
   },
   "meta": {
-    "title": "Luxa — Make your money feel clear again",
-    "description": "Luxa turns the noise of your spending into a calm picture: pockets for every euro, subscriptions under control, and Stella, a small star who notices what matters. No bank connection required.",
+    "title": "Budget app with 50/30/20 pockets and subscription tracking | Luxa",
+    "description": "Luxa files every euro into a pocket, finds your subscriptions and tells you what is left. No bank connection, no spreadsheet.",
     "ogDescription": "Pockets for every euro, subscriptions under control, and Stella who notices what matters. Budgeting that feels calm, clear and human.",
     "notFoundTitle": "This page got lost in the night",
     "notFoundLead": "The link you followed doesn't lead anywhere. Stella will walk you back home.",
@@ -56,7 +56,7 @@
       "label": "Savings",
       "value": "21% this month"
     },
-    "alt": "Luxa — dashboard: balance, weekly spending, recent transactions"
+    "alt": "Luxa dashboard: balance, weekly spending, recent transactions"
   },
   "month": {
     "d01": {
@@ -64,7 +64,7 @@
       "amount": "3,305.00",
       "tag": "income",
       "title": "On the 1st your pay lands. It already has a place.",
-      "body": "Luxa splits it three ways: what you owe, what you enjoy, what you keep. That's the 50/30/20 method — and you can move the proportions whenever you like.",
+      "body": "Luxa splits it three ways: what you owe, what you enjoy, what you keep. That's the 50/30/20 method, and you can move the proportions whenever you like.",
       "note": "Rent goes out on the 5th. I've held 980 € in Needs.",
       "slices": [
         {
@@ -98,7 +98,7 @@
       "title": "On the 8th six debits land. You'd forgotten half of them.",
       "body": "Netflix, the gym, broadband, insurance, cloud storage, that fitness app from January. Each one is small. Together they cost more than your groceries.",
       "note": "3 renew before Friday. Around 49 € to plan for.",
-      "alt": "Luxa — recurring expenses grouped with their monthly total"
+      "alt": "Luxa subscriptions: recurring expenses grouped with their monthly total"
     },
     "d12": {
       "stamp": "Jul 12",
@@ -113,7 +113,7 @@
       "amount": "+18 %",
       "tag": "eating out",
       "title": "Eating out is up 18 % this week.",
-      "body": "It isn't an alert. It's one sentence, at the moment you can still decide — the 17th, not the 30th. Stella watches your month and tells you what changed, without jargon and without lecturing you."
+      "body": "It isn't an alert. It's one sentence, at the moment you can still decide: the 17th, not the 30th. Stella watches your month and tells you what changed, without jargon and without lecturing you."
     },
     "d28": {
       "stamp": "Jul 28",
@@ -122,7 +122,7 @@
       "title": "By the 28th the question isn't where the money went. It's what's left.",
       "body": "62.96 € in Wants, 255 € in Needs. You know whether you can say yes to dinner on Friday.",
       "note": "At this pace you finish the month at +471 €.",
-      "alt": "Luxa — stats: budget health, weekly spending, daily average"
+      "alt": "Luxa statistics: budget health, weekly spending, daily average"
     },
     "d31": {
       "stamp": "Jul 31",
