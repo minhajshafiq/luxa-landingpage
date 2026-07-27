@@ -10,6 +10,7 @@ import { RatingBadge } from '@/components/design-system/RatingBadge'
 import { StellaMascot } from '@/components/design-system/StellaMascot'
 import { AmountChip } from '@/components/design-system/AmountChip'
 import { LUXA_LOADER_COMPLETE_EVENT, hasSeenLuxaLoader } from '@/components/loader-provider'
+import { SHOW_RATING } from '@/constants/site'
 import { gsap, ScrollTrigger, EASE, prefersReducedMotion, useIsomorphicLayoutEffect } from '@/lib/motion'
 import { cn } from '@/lib/utils'
 import { useTranslation } from '@/lib/i18n/useTranslation'
@@ -119,14 +120,9 @@ export function Hero() {
           const { desktop } = context.conditions as { desktop: boolean; mobile: boolean }
           const chipsEls = gsap.utils.toArray<HTMLElement>('.hero-chip')
 
-          // --- Ambient -------------------------------------------------------
-          gsap.to('.hero-glow', {
-            opacity: 0.9,
-            duration: 5,
-            ease: EASE.sine,
-            yoyo: true,
-            repeat: -1,
-          })
+          // Ambient breathing is CSS (.animate-glow-breathe on the elements
+          // themselves): an infinite GSAP tween keeps the ticker running at
+          // 60fps for the entire session, thousands of pixels past the hero.
 
           // --- Scroll --------------------------------------------------------
           if (desktop) {
@@ -214,37 +210,43 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="luxa-hero-shell relative isolate mx-auto mb-8 min-h-screen w-[calc(100%-1rem)] max-w-7xl overflow-hidden flex flex-col items-center pt-32 pb-0 md:mb-14 md:pt-40"
+      // `overflow-clip`, not `overflow-x-clip`: the scroll dive scales the
+      // phone to 1.35 and pushes it down 8vh, so with only the horizontal
+      // axis clipped it grew straight out of the hero and collided with the
+      // first statement entry — the product shot ended up sitting behind
+      // "Le 1er, ton salaire arrive." The hero must contain its own dive.
+      // `clip` rather than `hidden` so no scroll container is created.
+      className="relative isolate flex min-h-screen w-full flex-col items-center overflow-clip pt-32 pb-16 md:pt-40 md:pb-24"
     >
-      {/* Night ambiance: stars + a screen-like lavender glow rising from below */}
+      {/* Night ambiance, back to front: a drifting aurora, the starfield on
+          top of it, a screen-like lavender glow, and a grid floor so the
+          phone reads as standing somewhere rather than floating in soup. */}
+      <div className="luxa-aurora pointer-events-none absolute -top-[34%] left-1/2 h-[620px] w-[120%] -translate-x-1/2 opacity-25 md:opacity-30" />
       <div className="starfield pointer-events-none absolute inset-0 opacity-70" />
-      <div className="hero-glow glow-primary pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 blur-[60px] opacity-60" />
-      <div className="hero-glow glow-stella pointer-events-none absolute top-1/2 -right-32 h-96 w-96 blur-3xl opacity-40" />
+      <div className="hero-glow animate-glow-breathe glow-primary pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 blur-[60px] opacity-60" />
+      <div className="hero-glow animate-glow-breathe-slow glow-stella pointer-events-none absolute top-1/2 -right-32 h-96 w-96 blur-3xl opacity-40" />
+      <div className="luxa-horizon pointer-events-none absolute inset-x-0 bottom-0 h-[420px] opacity-70" />
 
       <Container className="relative z-10">
         <div ref={contentRef} className="mx-auto max-w-4xl text-center">
-          {/* Availability + rating, one badge instead of two side by side */}
-          <p className="hero-lead inline-flex items-center gap-2 rounded-xl border border-border bg-card/70 px-3.5 py-1.5 font-mono text-[10px] tracking-[0.12em] md:px-4 md:text-xs md:tracking-[0.18em] uppercase text-muted-foreground backdrop-blur">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-epargne/60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-epargne" />
-            </span>
-            {t('hero.badge') as string}
-            <span className="text-border">·</span>
-            <RatingBadge bare />
-          </p>
+          {/* No availability pill here. A rounded badge with a pulsing green
+              dot is the single most-cloned landing-page element of the last
+              few years, and this one was redundant on top: the App Store badge
+              below already says iOS and the Play badge says Android. The beta
+              caveat moved onto the Android button, which is where someone
+              actually needs it. */}
 
           {/* Headline */}
           <h1
             ref={titleRef}
-            className="mt-6 font-display text-[3rem] leading-[1.01] font-semibold tracking-[-0.045em] text-foreground sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+            className="mx-auto max-w-[20ch] font-display text-[clamp(2.4rem,6.4vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-foreground [text-shadow:0_0_60px_hsl(var(--primary)/0.25)]"
           >
             {titleWords.map((word, index) => (
               <span key={`title-${index}`}>
                 <span className="word inline-block">{word}</span>{' '}
               </span>
             ))}
-            <span className="whitespace-nowrap">
+            <span className="block">
               {highlightWords.map((word, index) => (
                 <span key={`highlight-${index}`}>
                   <span className="word inline-block">
@@ -267,20 +269,30 @@ export function Hero() {
               downloadLabel={t('hero.ctaDownload') as string}
               androidLabel={t('hero.ctaAndroidBeta') as string}
             />
-            {/* Trust line */}
-            <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs md:text-sm text-muted-foreground/80">
+            {/* The three claims, set in the statement's own voice: mono,
+                uppercase, wide-tracked, separated by the middot the app itself
+                uses ("70% used · 30 days left"). The ✦ that used to sit here
+                was SectionHeading's ornament — that component is gone and its
+                decoration went with it. */}
+            <p className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/75 md:text-[11px]">
               <span>{t('hero.trust.free') as string}</span>
-              <span aria-hidden="true" className="text-stella">✦</span>
+              <span aria-hidden="true" className="text-muted-foreground/35">·</span>
               <span>{t('hero.trust.noBank') as string}</span>
-              <span aria-hidden="true" className="text-stella">✦</span>
+              <span aria-hidden="true" className="text-muted-foreground/35">·</span>
               <span>{t('hero.trust.private') as string}</span>
+              {SHOW_RATING && (
+                <>
+                  <span aria-hidden="true" className="text-muted-foreground/35">·</span>
+                  <RatingBadge bare />
+                </>
+              )}
             </p>
           </div>
         </div>
 
         {/* Product stage: one phone glowing in the night, transactions orbiting */}
         <div ref={stageRef} className="relative mx-auto mt-10 max-w-5xl md:mt-14">
-          <div className="hero-glow glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[440px] w-[720px] -translate-x-1/2 -translate-y-1/2 blur-[70px] opacity-70" />
+          <div className="hero-glow animate-glow-breathe glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[440px] w-[720px] -translate-x-1/2 -translate-y-1/2 blur-[70px] opacity-70" />
 
           {/* Orbiting transaction chips (desktop) */}
           {Array.isArray(chips) &&
@@ -314,7 +326,7 @@ export function Hero() {
           >
             <div className="hero-chip-in">
               <div className="animate-luxa-float" style={{ animationDuration: '6s' }}>
-                <div className="flex items-center gap-2.5 rounded-2xl border border-stella/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
+                <div className="flex items-center gap-2.5 rounded-tile border border-stella/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-stella/15">
                     <Sparkles className="h-4 w-4 text-stella" />
                   </div>
@@ -337,7 +349,7 @@ export function Hero() {
           >
             <div className="hero-chip-in">
               <div className="animate-luxa-float" style={{ animationDelay: '2.8s', animationDuration: '5s' }}>
-                <div className="flex items-center gap-2.5 rounded-2xl border border-epargne/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
+                <div className="flex items-center gap-2.5 rounded-tile border border-epargne/25 bg-card/95 px-3.5 py-2.5 shadow-premium backdrop-blur-md">
                   <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-epargne/15">
                     <span className="font-mono text-xs font-bold text-epargne">%</span>
                   </div>
@@ -361,7 +373,7 @@ export function Hero() {
             <div ref={phoneRef} className="relative will-change-transform">
               <PhoneFrame
                 src="/dashboard.png"
-                alt="Luxa — dashboard: balance, weekly spending, recent transactions"
+                alt={t('hero.alt') as string}
                 sizes="(max-width: 767px) 80vw, (max-width: 1023px) 360px, 420px"
                 priority
               />

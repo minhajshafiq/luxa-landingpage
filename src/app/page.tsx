@@ -1,24 +1,25 @@
 import { Header } from "@/components/landing/Header"
 import { Footer } from "@/components/landing/Footer"
 import { Hero } from "@/components/landing/Hero"
-import { ProductProof } from "@/components/landing/ProductProof"
-import { Disperse } from "@/components/landing/Disperse"
-import { AppTour } from "@/components/landing/AppTour"
-import { Stella } from "@/components/landing/Stella"
-import { Subscriptions } from "@/components/landing/Subscriptions"
-import { Benefits } from "@/components/landing/Benefits"
-import { Difference } from "@/components/landing/Difference"
-import { Privacy } from "@/components/landing/Privacy"
+import { Statement } from "@/components/statement/Statement"
+import { StatementCloseSlot } from "@/components/statement/StatementCloseSlot"
+import { DayIncome } from "@/components/landing/DayIncome"
+import { DayImport } from "@/components/landing/DayImport"
+import { DaySubscriptions } from "@/components/landing/DaySubscriptions"
+import { DayTranslate } from "@/components/landing/DayTranslate"
+import { DayStella } from "@/components/landing/DayStella"
+import { DayRemaining } from "@/components/landing/DayRemaining"
+import { DayClose } from "@/components/landing/DayClose"
+import { Trust } from "@/components/landing/Trust"
 import { Pricing } from "@/components/landing/Pricing"
 import { FAQ } from "@/components/landing/FAQ"
 import { FinalCTA } from "@/components/landing/FinalCTA"
 import { ScrollAnimations } from "@/components/motion/ScrollAnimations"
 
 /**
- * The page is a journey, not a stack of blocks:
- * night sky (hero) → the problem (money scatters) → the answer (pockets)
- * → the companion (Stella) → the silent leak (subscriptions) → daily life
- * → why not a bank → trust → price → questions → calm.
+ * Deux actes. L'acte I est un relevé qu'on lit du 1er au 31, annoté par Stella
+ * dans la marge — il démontre le produit. La césure arrête le filet. L'acte II
+ * traite la décision : confiance, prix, objections, téléchargement.
  */
 export default function Home() {
   return (
@@ -27,14 +28,20 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <Hero />
-        <ProductProof />
-        <Disperse />
-        <AppTour />
-        <Stella />
-        <Subscriptions />
-        <Benefits />
-        <Difference />
-        <Privacy />
+
+        <Statement>
+          <DayIncome />
+          <DayImport />
+          <DaySubscriptions />
+          <DayTranslate />
+          <DayStella />
+          <DayRemaining />
+          <DayClose />
+        </Statement>
+
+        <StatementCloseSlot />
+
+        <Trust />
         <Pricing />
         <FAQ />
         <FinalCTA />

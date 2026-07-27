@@ -15,7 +15,7 @@ export function AnimatedButton({ children, className, wrapperClassName, ...props
   return (
     <motion.div
       {...buttonSpring}
-      className={cn('inline-block rounded-xl', wrapperClassName)}
+      className={cn('inline-block', wrapperClassName)}
     >
       <Button className={className} {...props}>
         {children}

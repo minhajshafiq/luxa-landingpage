@@ -6,11 +6,18 @@
     "faq": "FAQ",
     "downloadApp": "Download"
   },
+  "meta": {
+    "title": "Budget app with 50/30/20 pockets and subscription tracking | Luxa",
+    "description": "Luxa files every euro into a pocket, finds your subscriptions and tells you what is left. No bank connection, no spreadsheet.",
+    "ogDescription": "Pockets for every euro, subscriptions under control, and Stella who notices what matters. Budgeting that feels calm, clear and human.",
+    "notFoundTitle": "This page got lost in the night",
+    "notFoundLead": "The link you followed doesn't lead anywhere. Stella will walk you back home.",
+    "notFoundCta": "Back to home"
+  },
   "hero": {
-    "badge": "Available on iOS · Android in beta",
-    "title": "Your money,",
-    "titleHighlight": "finally clear.",
-    "subtitle": "Luxa turns the noise of your spending into a calm picture: pockets for every euro, subscriptions under control, and Stella — a small star who notices what matters.",
+    "title": "You pay 1,276 € a month in subscriptions.",
+    "titleHighlight": "You can name three.",
+    "subtitle": "Luxa reads your statement, finds everything that quietly bills you, and files the rest of your budget. No bank connection.",
     "ctaDownload": "Download on the App Store",
     "ctaAndroidBeta": "Android · join the beta",
     "trust": {
@@ -19,10 +26,22 @@
       "private": "Your data stays yours"
     },
     "chips": [
-      { "label": "Rent", "amount": "−€980" },
-      { "label": "Spotify", "amount": "−€10.99" },
-      { "label": "Groceries", "amount": "−€64.20" },
-      { "label": "Salary", "amount": "+€2,480" }
+      {
+        "label": "Rent",
+        "amount": "−€980"
+      },
+      {
+        "label": "Spotify",
+        "amount": "−€10.99"
+      },
+      {
+        "label": "Groceries",
+        "amount": "−€64.20"
+      },
+      {
+        "label": "Salary",
+        "amount": "+€2,480"
+      }
     ],
     "insightChip": {
       "label": "Stella noticed",
@@ -31,121 +50,134 @@
     "savingsChip": {
       "label": "Savings",
       "value": "21% this month"
+    },
+    "alt": "Luxa dashboard: balance, weekly spending, recent transactions"
+  },
+  "month": {
+    "d01": {
+      "stamp": "Jul 01",
+      "amount": "3,305.00",
+      "tag": "income",
+      "title": "On the 1st your pay lands. It already has a place.",
+      "body": "Luxa splits it three ways: what you owe, what you enjoy, what you keep. That's the 50/30/20 method, and you can move the proportions whenever you like.",
+      "note": "Rent goes out on the 5th. I've held 980 € in Needs.",
+      "slices": [
+        {
+          "name": "Needs",
+          "detail": "Rent, groceries, transport, bills."
+        },
+        {
+          "name": "Wants",
+          "detail": "Eating out, going out, subscriptions."
+        },
+        {
+          "name": "Savings",
+          "detail": "Projects, the unexpected."
+        }
+      ]
+    },
+    "d03": {
+      "stamp": "Jul 03",
+      "amount": "4 pages",
+      "tag": "statement read",
+      "file": "statement-july.pdf",
+      "reading": "transactions read",
+      "title": "You drop in your PDF statement. Luxa reads it.",
+      "body": "No bank connection, no credentials to hand over. Export your statement from your bank, drop it here, and every line is sorted in seconds.",
+      "note": "128 transactions read. I sorted 124 on my own."
+    },
+    "d08": {
+      "stamp": "Jul 08",
+      "amount": "−1,276.00",
+      "tag": "direct debits",
+      "title": "On the 8th six debits land. You'd forgotten half of them.",
+      "body": "Netflix, the gym, broadband, insurance, cloud storage, that fitness app from January. Each one is small. Together they cost more than your groceries.",
+      "note": "3 renew before Friday. Around 49 € to plan for.",
+      "alt": "Luxa subscriptions: recurring expenses grouped with their monthly total"
+    },
+    "d12": {
+      "stamp": "Jul 12",
+      "amount": "64.20",
+      "tag": "translated",
+      "title": "Your bank writes CB CARREFOUR 64.20. Luxa writes what it means.",
+      "body": "A statement line teaches you nothing. Luxa files it in a pocket, weighs it against your month, and tells you whether you're on track.",
+      "note": "Groceries: 87 % of budget held. You can breathe."
+    },
+    "d17": {
+      "stamp": "Jul 17",
+      "amount": "+18 %",
+      "tag": "eating out",
+      "title": "Eating out is up 18 % this week.",
+      "body": "It isn't an alert. It's one sentence, at the moment you can still decide: the 17th, not the 30th. Stella watches your month and tells you what changed, without jargon and without lecturing you."
+    },
+    "d28": {
+      "stamp": "Jul 28",
+      "amount": "62.96",
+      "tag": "left to spend",
+      "title": "By the 28th the question isn't where the money went. It's what's left.",
+      "body": "62.96 € in Wants, 255 € in Needs. You know whether you can say yes to dinner on Friday.",
+      "note": "At this pace you finish the month at +471 €.",
+      "alt": "Luxa statistics: budget health, weekly spending, daily average"
+    },
+    "d31": {
+      "stamp": "Jul 31",
+      "amount": "+471.89",
+      "tag": "readable",
+      "title": "The month is read. You finally know where it went.",
+      "body": "No spreadsheet, no reminder to set, no guilt. Just a month you can read."
     }
+  },
+  "close": {
+    "label": "End of the month."
+  },
+  "trust": {
+    "title": "Luxa never touches your money.",
+    "body": "No bank connection, no credentials, no data resold. You import what you want, when you want, and everything stays encrypted on European infrastructure."
   },
   "disperse": {
-    "eyebrow": "The real problem",
-    "title": "Your money doesn't vanish.",
-    "titleHighlight": "It scatters.",
-    "lead": "A coffee here, a subscription there, three online orders, a bill that lands… By the end of the month nothing dramatic happened — and yet you can't say where it all went.",
     "chips": [
-      { "label": "Coffee", "amount": "−€2.80" },
-      { "label": "Uber Eats", "amount": "−€18.90" },
-      { "label": "Netflix", "amount": "−€13.49" },
-      { "label": "Pharmacy", "amount": "−€12.30" },
-      { "label": "Amazon", "amount": "−€27.99" },
-      { "label": "Fuel", "amount": "−€58.00" },
-      { "label": "Zara", "amount": "−€49.90" },
-      { "label": "Rent", "amount": "−€980" }
-    ],
-    "pockets": [
-      { "name": "Needs", "target": "50%" },
-      { "name": "Wants", "target": "30%" },
-      { "name": "Savings", "target": "20%" }
-    ],
-    "after": {
-      "title": "Luxa sorts. You breathe.",
-      "lead": "Every expense finds its place. The mess becomes a picture you can read at a glance."
-    }
-  },
-  "pockets": {
-    "eyebrow": "Pockets",
-    "title": "Give every euro a place.",
-    "lead": "Rent, groceries, nights out, projects: every pocket has its budget. You see what's left, what's overflowing, and what you can afford — no spreadsheet, no mental math.",
-    "bullets": [
       {
-        "title": "The 50/30/20 method, ready to use",
-        "description": "Needs, wants, savings. A simple frame that structures your month from day one — and bends to fit your life."
+        "label": "Coffee",
+        "amount": "−€2.80"
       },
       {
-        "title": "Budgets that live in real time",
-        "description": "Each pocket fills as you spend. You feel the month moving instead of enduring it."
+        "label": "Uber Eats",
+        "amount": "−€18.90"
       },
       {
-        "title": "Left-to-spend, always visible",
-        "description": "The only question that matters — \"can I?\" — finally has a clear answer, any time."
+        "label": "Netflix",
+        "amount": "−€13.49"
+      },
+      {
+        "label": "Pharmacy",
+        "amount": "−€12.30"
+      },
+      {
+        "label": "Amazon",
+        "amount": "−€27.99"
+      },
+      {
+        "label": "Fuel",
+        "amount": "−€58.00"
+      },
+      {
+        "label": "Zara",
+        "amount": "−€49.90"
+      },
+      {
+        "label": "Rent",
+        "amount": "−€980"
       }
-    ],
-    "callout": {
-      "label": "Left to spend",
-      "value": "€62.96"
-    }
-  },
-  "stella": {
-    "eyebrow": "Stella",
-    "title": "A small star watching over your budget.",
-    "lead": "Stella isn't a cold chatbot. She looks at your month, notices what's changing, and tells you simply — no jargon, no judgment.",
-    "insights": [
-      {
-        "title": "Dining out is up 18% this week",
-        "description": "Nothing serious — but better to know now than on the 28th."
-      },
-      {
-        "title": "3 subscriptions renew before Friday",
-        "description": "Netflix, Spotify and your gym. About €49 to plan for."
-      },
-      {
-        "title": "Your savings rate hit 21% this month",
-        "description": "Your best month since January. Keep it up."
-      }
-    ],
-    "weekly": {
-      "title": "Every Sunday, your week in plain words",
-      "description": "A gentle recap: what came in, what went out, and how it compares to last week."
-    }
+    ]
   },
   "subs": {
-    "eyebrow": "Subscriptions",
     "title": "See what drains you in silence.",
-    "lead": "Streaming, gym, internet box, rent… Luxa gathers everything that recurs each month and shows you the real total. Some months, it's a revelation.",
     "totalLabel": "The real total, every month",
     "total": "−€1,276",
     "perMonth": "/ month",
     "note": "With Luxa Plus, Stella warns you before every debit."
   },
-  "benefits": {
-    "eyebrow": "Everyday",
-    "title": "Built for real life, not spreadsheets.",
-    "subtitle": "Everything you need to keep the month readable — nothing more.",
-    "items": [
-      {
-        "tag": "3 sec",
-        "title": "Adding an expense takes three seconds",
-        "description": "Amount, category, done. Fast enough to do it in the supermarket queue."
-      },
-      {
-        "tag": "PDF",
-        "title": "Import statements, Luxa reads them for you",
-        "description": "One PDF bank statement, and your transactions are extracted, checked and filed."
-      },
-      {
-        "tag": "Day / day",
-        "title": "Replay your month, day by day",
-        "description": "A calendar of your spending to find any purchase — and watch your habits take shape."
-      },
-      {
-        "tag": "Trends",
-        "title": "Understand habits before they become problems",
-        "description": "Categories, trends, averages: you see what's rising while there's still time to adjust."
-      }
-    ]
-  },
   "difference": {
-    "eyebrow": "The difference",
-    "title": "Your bank shows lines.",
-    "titleHighlight": "Luxa tells you what they mean.",
-    "bankTitle": "Your statement",
-    "luxaTitle": "With Luxa",
     "rows": [
       {
         "bank": "SEPA DD NETFLIX.COM €13.49",
@@ -167,13 +199,9 @@
         "luxa": "Split: 50% needs · 30% wants · 20% savings",
         "tone": "primary"
       }
-    ],
-    "punch": "You already had the numbers. What was missing was the meaning."
+    ]
   },
   "privacy": {
-    "eyebrow": "Trust",
-    "title": "Your budget is nobody's business but yours.",
-    "lead": "Luxa is designed as an intimate space, not an advertising product.",
     "bullets": [
       {
         "title": "No bank connection required",
@@ -190,7 +218,6 @@
     ]
   },
   "pricing": {
-    "eyebrow": "Pricing",
     "title": "Start free.",
     "titleHighlight": "Unlock more with Luxa Plus.",
     "subtitle": "The essentials are free, forever. Luxa Plus adds active help: full Stella, projections, and reminders before every debit.",
@@ -225,7 +252,6 @@
     }
   },
   "faq": {
-    "eyebrow": "FAQ",
     "title": "Questions people actually ask us",
     "subtitle": "Something else on your mind? Write to us — we answer fast.",
     "items": [
@@ -289,6 +315,19 @@
     "submit": "Join the Android beta",
     "submitting": "Joining…",
     "checkEmail": "Check your inbox!",
-    "disclaimer": "By signing up, you agree to receive emails from Luxa about the Android beta. You can unsubscribe at any time."
+    "disclaimer": "By signing up, you agree to receive emails from Luxa about the Android beta. You can unsubscribe at any time.",
+    "errorNetwork": "Could not connect. Check your internet connection.",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "stellaAlt": {
+    "happy": "Stella, the little star of Luxa, celebrating",
+    "budgeting": "Stella holding a bag of savings",
+    "thinking": "Stella wondering, surrounded by question marks",
+    "reading": "Stella reading a bank statement with a magnifier",
+    "surprised": "Stella surprised by the total of subscriptions",
+    "sleepy": "Stella asleep on a crescent moon, at peace",
+    "love": "Stella hugging a heart",
+    "angry": "Stella pouting at an over-budget pocket",
+    "sad": "Stella sad about a messy month"
   }
 }

@@ -138,8 +138,8 @@ export default function Privacy() {
                   <h2 className="text-2xl font-semibold mb-4">4. PARTAGE DE DONNÉES</h2>
                   
                   <div className="space-y-4">
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                      <h3 className="text-xl font-medium mb-2 text-red-800">4.1 Nous ne vendons JAMAIS vos données personnelles ou financières</h3>
+                    <div className="rounded-tile border border-destructive/25 bg-destructive/[0.08] p-4">
+                      <h3 className="text-xl font-medium mb-2 text-destructive">4.1 Nous ne vendons JAMAIS vos données personnelles ou financières</h3>
                     </div>
 
                     <div>
@@ -356,11 +356,11 @@ export default function Privacy() {
                   </div>
                 </section>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mt-8">
-                  <p className="text-blue-800 font-medium text-center">
+                <div className="luxa-card luxa-hairline rounded-tile p-6 mt-8">
+                  <p className="text-foreground font-medium text-center">
                     <strong>Luxa s&apos;engage à protéger votre vie privée et à traiter vos données avec le plus grand respect et la plus grande sécurité.</strong>
                   </p>
-                  <p className="text-blue-600 text-center mt-2 italic">
+                  <p className="text-muted-foreground text-center mt-2 italic">
                     Cette politique de confidentialité est effective depuis le 15 janvier 2025.
                   </p>
                 </div>

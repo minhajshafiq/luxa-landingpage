@@ -77,7 +77,7 @@ export default function ContactPage() {
 
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 md:gap-8">
               {/* Form */}
-              <Card className="lg:col-span-3 border border-border/50 shadow-sm">
+              <Card className="luxa-card luxa-hairline lg:col-span-3 rounded-card border-0">
                 <CardContent className="p-6 md:p-8">
                   {!isSuccess ? (
                     <form onSubmit={handleSubmit} className="space-y-5" noValidate>
@@ -167,7 +167,7 @@ export default function ContactPage() {
                       <Button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full h-12 text-base font-semibold bg-primary hover:bg-primary/90 text-primary-foreground"
+                        className="luxa-cta w-full h-12 rounded-button text-base font-semibold text-primary-foreground"
                       >
                         {isSubmitting ? (
                           <>
@@ -199,10 +199,10 @@ export default function ContactPage() {
 
               {/* Direct contact info */}
               <div className="lg:col-span-2">
-                <Card className="border border-border/50 shadow-sm h-full">
+                <Card className="luxa-card luxa-hairline h-full rounded-card border-0">
                   <CardContent className="p-6 md:p-8 space-y-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <div className="w-11 h-11 rounded-tile bg-primary/10 flex items-center justify-center flex-shrink-0">
                         <Mail className="w-5 h-5 text-primary" />
                       </div>
                       <div>
@@ -217,7 +217,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-epargne/10 flex items-center justify-center flex-shrink-0">
+                      <div className="w-11 h-11 rounded-tile bg-epargne/10 flex items-center justify-center flex-shrink-0">
                         <Clock className="w-5 h-5 text-epargne" />
                       </div>
                       <div>
@@ -227,7 +227,7 @@ export default function ContactPage() {
                     </div>
 
                     <div className="flex items-start gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-secondary/15 flex items-center justify-center flex-shrink-0">
+                      <div className="w-11 h-11 rounded-tile bg-secondary/15 flex items-center justify-center flex-shrink-0">
                         <MessageCircle className="w-5 h-5 text-secondary" />
                       </div>
                       <div className="flex-1">
@@ -242,7 +242,7 @@ export default function ContactPage() {
                                 target="_blank"
                                 rel="noreferrer"
                                 aria-label={link.name}
-                                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-colors"
+                                className="p-2 rounded-tag text-muted-foreground hover:text-foreground hover:bg-primary/10 transition-colors"
                               >
                                 <Icon className="h-4 w-4" />
                               </a>

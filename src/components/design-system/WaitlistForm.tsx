@@ -46,11 +46,11 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
       try {
         data = await response.json()
       } catch {
-        throw new Error('Erreur de connexion. Vérifiez votre connexion internet.')
+        throw new Error(t('androidBeta.errorNetwork') as string)
       }
 
       if (!response.ok) {
-        const errorMessage = data.error || data.details || 'Une erreur est survenue. Veuillez réessayer.'
+        const errorMessage = data.error || data.details || (t('androidBeta.errorGeneric') as string)
         throw new Error(errorMessage)
       }
 
@@ -67,7 +67,7 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
       }, 3000)
     } catch (error) {
       setIsSubmitting(false)
-      setError(error instanceof Error ? error.message : 'Une erreur est survenue. Veuillez réessayer.')
+      setError(error instanceof Error ? error.message : (t('androidBeta.errorGeneric') as string))
     }
   }
 
@@ -83,10 +83,10 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 shadow-[0_0_36px_-10px_hsl(var(--primary))]">
             <Smartphone className="h-8 w-8 text-primary" />
           </div>
-          <DialogTitle className="text-center text-2xl md:text-3xl font-bold">
+          <DialogTitle className="text-center font-display text-2xl md:text-3xl font-semibold tracking-tight">
             {isSuccess ? (t('androidBeta.successTitle') as string) : (t('androidBeta.title') as string)}
           </DialogTitle>
           <DialogDescription className="text-center text-base">
@@ -145,9 +145,8 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
             <Button
               type="submit"
               className={cn(
-                'w-full h-12 text-base font-semibold',
-                'bg-primary hover:bg-primary/90 text-primary-foreground',
-                'transition-all duration-300'
+                'luxa-cta w-full h-12 rounded-button text-base font-semibold',
+                'text-primary-foreground'
               )}
               disabled={isSubmitting}
             >
@@ -174,8 +173,10 @@ export function WaitlistForm({ children }: WaitlistFormProps) {
             animate={{ scale: 1, opacity: 1 }}
             className="flex flex-col items-center justify-center py-8"
           >
-            <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 dark:bg-green-950">
-              <Check className="h-10 w-10 text-green-600 dark:text-green-400" />
+            {/* The page has no light mode — success uses the app's own
+                "saved" green (--epargne), not Tailwind's light-mode palette. */}
+            <div className="mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-epargne/15">
+              <Check className="h-10 w-10 text-epargne" />
             </div>
             <p className="text-lg font-semibold text-foreground mb-2">
               {t('androidBeta.checkEmail') as string}

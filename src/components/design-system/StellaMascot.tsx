@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
+import { useTranslation } from '@/lib/i18n/useTranslation'
 
 /**
  * Stella is Luxa's emotional thread. Each mood maps to a real expression
@@ -31,17 +34,9 @@ export const stellaMoods: Record<StellaMood, string> = {
   sad: '/mascot/cryluxa.webp',
 }
 
-const moodAlt: Record<StellaMood, string> = {
-  happy: 'Stella, the little star of Luxa, celebrating',
-  budgeting: 'Stella holding a bag of savings',
-  thinking: 'Stella wondering, surrounded by question marks',
-  reading: 'Stella reading a bank statement with a magnifier',
-  surprised: 'Stella surprised by the total of subscriptions',
-  sleepy: 'Stella asleep on a crescent moon, at peace',
-  love: 'Stella hugging a heart',
-  angry: 'Stella pouting at an over-budget pocket',
-  sad: 'Stella sad about a messy month',
-}
+// Alt text is content — a screen reader reads it aloud — so it lives in the
+// locales like every other visible string. It used to be a hardcoded English
+// table shipped on a French page, on the most-repeated image of the site.
 
 // Rendered pixel box per size (keeps intrinsic ratio, avoids layout shift).
 const sizePx: Record<StellaSize, number> = {
@@ -78,6 +73,7 @@ export function StellaMascot({
   className,
   alt,
 }: StellaMascotProps) {
+  const { t } = useTranslation()
   const src = stellaMoods[mood]
   if (!src) return null
 
@@ -94,12 +90,12 @@ export function StellaMascot({
     >
       <Image
         src={src}
-        alt={alt ?? moodAlt[mood]}
+        alt={alt ?? (t(`stellaAlt.${mood}`) as string)}
         width={px}
         height={px}
         priority={priority}
         loading={priority ? undefined : 'lazy'}
-        className="h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(246,112,98,0.25)]"
+        className="h-full w-full object-contain drop-shadow-[0_12px_28px_rgba(239,139,124,0.3)]"
         sizes={`${px}px`}
       />
     </div>

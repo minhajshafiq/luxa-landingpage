@@ -18,10 +18,10 @@ export function AmountChip({ label, amount, className, muted = false }: AmountCh
   return (
     <div
       className={cn(
-        'inline-flex items-center gap-2.5 rounded-full border px-3.5 py-2 backdrop-blur-md',
+        'inline-flex items-center gap-2.5 whitespace-nowrap rounded-full px-3.5 py-2 backdrop-blur-md',
         muted
-          ? 'border-border/60 bg-card/50'
-          : 'border-border bg-card/90 shadow-premium',
+          ? 'border border-border/60 bg-card/50'
+          : 'luxa-hairline bg-card/90 shadow-premium',
         className
       )}
     >

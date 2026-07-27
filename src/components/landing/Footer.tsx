@@ -33,7 +33,18 @@ export function Footer() {
   ]
 
   return (
-    <footer className="relative border-t border-border/60 bg-card/40">
+    <footer className="relative isolate overflow-hidden border-t border-border/60 bg-gradient-to-b from-card/40 to-background">
+      {/* The wordmark as architecture: oversized, clipped by the bottom edge,
+          barely brighter than the canvas. It closes the page the way a
+          colophon closes a book. */}
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -bottom-[0.22em] left-1/2 -z-10 w-full -translate-x-1/2 select-none text-center font-display text-[26vw] font-semibold leading-none tracking-[-0.06em] text-foreground/[0.035]"
+      >
+        Luxa
+      </span>
+      <div className="luxa-rule absolute inset-x-0 top-0 opacity-60" />
+
       <Container className="py-10 md:py-14">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8">
           {/* Brand */}
@@ -54,8 +65,8 @@ export function Footer() {
                     target="_blank"
                     rel="noreferrer"
                     className={cn(
-                      'p-2 rounded-lg text-muted-foreground hover:text-foreground',
-                      'hover:bg-accent transition-all duration-300 cursor-pointer'
+                      'luxa-ghost flex h-10 w-10 items-center justify-center rounded-full',
+                      'text-muted-foreground hover:text-primary transition-colors duration-300 cursor-pointer'
                     )}
                     aria-label={link.name}
                   >
