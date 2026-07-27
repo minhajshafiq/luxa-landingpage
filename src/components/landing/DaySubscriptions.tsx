@@ -69,6 +69,7 @@ export function DaySubscriptions() {
           </div>
           <div className="w-[190px] justify-self-start sm:justify-self-end">
             <PhoneFrame
+            parallax
               src="/subscriptions.png"
               alt={d.alt}
               sizes="190px"

@@ -22,6 +22,7 @@ export function DayRemaining() {
     >
       <div className="mt-8 w-[220px]">
         <PhoneFrame
+            parallax
           src="/stats.png"
           alt={d.alt}
           sizes="220px"

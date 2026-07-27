@@ -1158,3 +1158,86 @@ html {
 @media (min-width: 700px) {
   .ratio-sky { height: 190px; }
 }
+
+/* ------------------------------------------------------------
+   Vie ambiante de l'acte I
+   Le relevé était juste : lisible, rigoureux, et complètement inerte.
+   Tout y était une animation d'arrivée — déclenchée une fois puis figée —
+   donc dès qu'un bloc était passé, la page redevenait une image fixe. Il
+   manquait ce qui bouge tout le temps, et ce qui a de la profondeur.
+   ------------------------------------------------------------ */
+
+/* Une nappe lilas qui dérive lentement derrière tout le relevé. Assez
+   faible pour ne jamais concurrencer le texte, assez large pour que le
+   noir cesse d'être plat. */
+@keyframes luxa-drift {
+  0%   { transform: translate3d(-7%, 2%, 0) scale(1); }
+  50%  { transform: translate3d(7%, -5%, 0) scale(1.18); }
+  100% { transform: translate3d(-7%, 2%, 0) scale(1); }
+}
+.luxa-drift {
+  will-change: transform;
+  animation: luxa-drift 34s ease-in-out infinite;
+}
+
+/* Une impulsion qui descend la colonne vertébrale, comme un signal dans une
+   veine. C'est le seul élément de la page qui bouge en permanence sans
+   dépendre du scroll — ce qui suffit à faire respirer tout l'acte. */
+@keyframes luxa-pulse-travel {
+  0%        { transform: translateY(0); opacity: 0; }
+  8%        { opacity: 1; }
+  92%       { opacity: 1; }
+  100%      { transform: translateY(var(--pulse-distance, 3000px)); opacity: 0; }
+}
+.luxa-statement-pulse {
+  position: absolute;
+  top: 0;
+  left: var(--stmt-gutter);
+  width: 1px;
+  height: 96px;
+  margin-left: -0.5px;
+  border-radius: 999px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    hsl(var(--primary) / 0.9) 45%,
+    hsl(var(--stella) / 0.7) 70%,
+    transparent
+  );
+  filter: blur(0.5px);
+  box-shadow: 0 0 12px hsl(var(--primary) / 0.5);
+  pointer-events: none;
+  will-change: transform;
+  animation: luxa-pulse-travel 9s linear infinite;
+}
+@media (max-width: 767px) {
+  /* La gouttière est horizontale sous 768px : une impulsion verticale n'y
+     aurait rien à parcourir. */
+  .luxa-statement-pulse { display: none; }
+}
+
+/* Une entrée réagit au survol : son nœud s'intensifie et sa gouttière
+   s'éclaircit. La page cesse d'être un document pour devenir une surface. */
+.stmt-entry .stmt-node,
+.stmt-entry .stmt-stamp,
+.stmt-entry .stmt-tag {
+  transition: color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
+}
+@media (hover: hover) {
+  .stmt-entry:hover .stmt-node {
+    box-shadow: 0 0 0 4px hsl(var(--background)), 0 0 22px hsl(var(--primary));
+    transform: translate(-50%, 0) scale(1.25);
+  }
+  .stmt-entry:hover .stmt-stamp,
+  .stmt-entry:hover .stmt-tag {
+    color: hsl(var(--foreground) / 0.85);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .luxa-drift,
+  .luxa-statement-pulse {
+    animation: none !important;
+  }
+  .luxa-statement-pulse { display: none; }
+}
