@@ -215,7 +215,13 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative isolate flex min-h-screen w-full flex-col items-center overflow-x-clip pt-32 pb-16 md:pt-40 md:pb-24"
+      // `overflow-clip`, not `overflow-x-clip`: the scroll dive scales the
+      // phone to 1.35 and pushes it down 8vh, so with only the horizontal
+      // axis clipped it grew straight out of the hero and collided with the
+      // first statement entry — the product shot ended up sitting behind
+      // "Le 1er, ton salaire arrive." The hero must contain its own dive.
+      // `clip` rather than `hidden` so no scroll container is created.
+      className="relative isolate flex min-h-screen w-full flex-col items-center overflow-clip pt-32 pb-16 md:pt-40 md:pb-24"
     >
       {/* Night ambiance, back to front: a drifting aurora, the starfield on
           top of it, a screen-like lavender glow, and a grid floor so the
