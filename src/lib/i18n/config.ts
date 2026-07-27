@@ -33,10 +33,16 @@ export function isFrenchTag(tag: string): boolean {
 
 /**
  * Pick a language from an Accept-Language header, honouring quality values so
- * `en;q=0.9,fr;q=1.0` resolves to French. Defaults to English.
+ * `en;q=0.9,fr;q=1.0` resolves to French.
+ *
+ * Defaults to FRENCH. This is a search-visibility decision, not a preference:
+ * a crawler usually sends no Accept-Language at all, so the old English
+ * default meant Googlebot indexed the English copy at `/` and the entire
+ * French site — which is the product's primary market, right down to the
+ * app's own CFBundleDevelopmentRegion — was invisible to French search.
  */
 export function languageFromAcceptHeader(header: string | null | undefined): Language {
-  if (!header) return 'en'
+  if (!header) return 'fr'
 
   const preferred = header
     .split(',')
@@ -57,7 +63,7 @@ export function languageFromAcceptHeader(header: string | null | undefined): Lan
     if (tag.trim().toLowerCase().startsWith('en')) return 'en'
   }
 
-  return 'en'
+  return 'fr'
 }
 
 /** The cookie wins when present; otherwise fall back to the browser's header. */

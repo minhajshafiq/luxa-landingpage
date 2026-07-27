@@ -6,10 +6,6 @@
     "faq": "FAQ",
     "downloadApp": "Télécharger"
   },
-  "proof": {
-    "reviews": "avis",
-    "appStore": "Voir sur l'App Store"
-  },
   "meta": {
     "title": "Application budget 50/30/20 et suivi d'abonnements | Luxa",
     "description": "Luxa range chaque euro dans un pocket, retrouve tes abonnements et te dit ce qui reste. Sans connexion bancaire, sans tableur.",
@@ -19,7 +15,6 @@
     "notFoundCta": "Retour à l'accueil"
   },
   "hero": {
-    "badge": "Disponible sur iOS · Android en bêta",
     "title": "Tu paies 1 276 € d'abonnements par mois.",
     "titleHighlight": "Tu en connais trois.",
     "subtitle": "Luxa lit ton relevé, retrouve tout ce qui se prélève en silence, et range le reste de ton budget. Sans connexion bancaire.",
@@ -140,10 +135,6 @@
     "body": "Aucune connexion à ta banque, aucun identifiant, aucune revente de données. Tu importes ce que tu veux, quand tu veux, et tout reste chiffré sur une infrastructure européenne."
   },
   "disperse": {
-    "eyebrow": "Le vrai problème",
-    "title": "Ton argent ne disparaît pas.",
-    "titleHighlight": "Il se disperse.",
-    "lead": "Un café par-ci, un abonnement par-là, trois courses en ligne, une facture qui tombe… À la fin du mois, rien de grave n'est arrivé — et pourtant, impossible de dire où tout est parti.",
     "chips": [
       {
         "label": "Café",
@@ -177,114 +168,16 @@
         "label": "Loyer",
         "amount": "−980 €"
       }
-    ],
-    "pockets": [
-      {
-        "name": "Besoins",
-        "target": "50 %"
-      },
-      {
-        "name": "Envies",
-        "target": "30 %"
-      },
-      {
-        "name": "Épargne",
-        "target": "20 %"
-      }
-    ],
-    "after": {
-      "title": "Luxa range. Toi, tu respires.",
-      "lead": "Chaque dépense trouve sa place. Le désordre devient une image que tu peux lire d'un coup d'œil."
-    }
-  },
-  "pockets": {
-    "eyebrow": "Les pockets",
-    "title": "Donne une place à chaque euro.",
-    "lead": "Loyer, courses, sorties, projets : chaque pocket a son budget. Tu vois ce qui reste, ce qui déborde, et ce que tu peux te permettre — sans tableur, sans calcul mental.",
-    "bullets": [
-      {
-        "title": "La méthode 50/30/20, prête à l'emploi",
-        "description": "Besoins, envies, épargne. Un cadre simple qui structure ton mois dès le premier jour — et que tu peux ajuster librement."
-      },
-      {
-        "title": "Des budgets qui vivent en temps réel",
-        "description": "Chaque pocket se remplit au fil de tes dépenses. Tu sens le mois avancer au lieu de le subir."
-      },
-      {
-        "title": "Un reste-à-dépenser toujours visible",
-        "description": "La seule question qui compte — « je peux ? » — a enfin une réponse claire, à tout moment."
-      }
-    ],
-    "callout": {
-      "label": "Reste à dépenser",
-      "value": "62,96 €"
-    }
-  },
-  "stella": {
-    "eyebrow": "Stella",
-    "title": "Une petite étoile qui veille sur ton budget.",
-    "lead": "Stella n'est pas un chatbot froid. Elle regarde ton mois, remarque ce qui change, et te le dit simplement — sans jargon, sans jugement.",
-    "insights": [
-      {
-        "title": "Les restos montent de 18 % cette semaine",
-        "description": "Rien de grave — mais autant le savoir maintenant qu'au 28 du mois."
-      },
-      {
-        "title": "3 abonnements se renouvellent avant vendredi",
-        "description": "Netflix, Spotify et ta salle de sport. Environ 49 € à prévoir."
-      },
-      {
-        "title": "Ton épargne atteint 21 % ce mois-ci",
-        "description": "Ton meilleur mois depuis janvier. Continue comme ça."
-      }
-    ],
-    "weekly": {
-      "title": "Chaque dimanche, ta semaine en clair",
-      "description": "Un résumé doux : ce qui est entré, ce qui est sorti, et comment ça se compare à la semaine dernière."
-    }
+    ]
   },
   "subs": {
-    "eyebrow": "Abonnements",
     "title": "Repère ce qui te prélève en silence.",
-    "lead": "Streaming, salle de sport, box internet, loyer… Luxa regroupe tout ce qui revient chaque mois et t'en montre le vrai total. Certains mois, c'est une révélation.",
     "totalLabel": "Le vrai total, chaque mois",
     "total": "−1 276 €",
     "perMonth": "/ mois",
     "note": "Avec Luxa Plus, Stella te prévient avant chaque prélèvement."
   },
-  "benefits": {
-    "eyebrow": "Au quotidien",
-    "title": "Pensée pour la vraie vie, pas pour les tableurs.",
-    "subtitle": "Tout ce qu'il faut pour garder un mois lisible — rien de plus.",
-    "items": [
-      {
-        "tag": "3 sec",
-        "title": "Ajouter une dépense prend trois secondes",
-        "description": "Montant, catégorie, c'est rangé. Assez rapide pour le faire dans la file du supermarché."
-      },
-      {
-        "tag": "PDF",
-        "title": "Importe tes relevés, Luxa les lit pour toi",
-        "description": "Un relevé bancaire en PDF, et tes transactions sont extraites, vérifiées et classées."
-      },
-      {
-        "tag": "Jour / jour",
-        "title": "Revois ton mois jour par jour",
-        "description": "Un calendrier de tes dépenses pour retrouver n'importe quel achat — et voir tes habitudes se dessiner."
-      },
-      {
-        "tag": "Tendances",
-        "title": "Comprends tes habitudes avant qu'elles posent problème",
-        "description": "Catégories, tendances, moyennes : tu vois ce qui monte pendant qu'il est encore temps d'ajuster."
-      }
-    ]
-  },
   "difference": {
-    "eyebrow": "La différence",
-    "title": "Ta banque montre des lignes.",
-    "titleHighlight": "Luxa te dit ce qu'elles racontent.",
-    "bankTitle": "Ton relevé",
-    "luxaTitle": "Avec Luxa",
     "rows": [
       {
         "bank": "PRLV SEPA NETFLIX.COM 13,49 €",
@@ -306,13 +199,9 @@
         "luxa": "Réparti : 50 % besoins · 30 % envies · 20 % épargne",
         "tone": "primary"
       }
-    ],
-    "punch": "Les chiffres, tu les avais déjà. Ce qui manquait, c'était le sens."
+    ]
   },
   "privacy": {
-    "eyebrow": "Confiance",
-    "title": "Ton budget ne regarde que toi.",
-    "lead": "Luxa est pensée pour être un espace intime, pas un produit publicitaire.",
     "bullets": [
       {
         "title": "Sans connexion bancaire obligatoire",
@@ -329,7 +218,6 @@
     ]
   },
   "pricing": {
-    "eyebrow": "Tarifs",
     "title": "Commence gratuitement.",
     "titleHighlight": "Passe à Luxa Plus.",
     "subtitle": "L'essentiel est gratuit, pour toujours. Luxa Plus ajoute une aide active : Stella au complet, des projections, et des rappels avant chaque prélèvement.",
@@ -364,7 +252,6 @@
     }
   },
   "faq": {
-    "eyebrow": "FAQ",
     "title": "Les questions qu'on nous pose vraiment",
     "subtitle": "Une autre question ? Écris-nous, on répond vite.",
     "items": [

@@ -4,7 +4,7 @@ import { Plus_Jakarta_Sans, Bricolage_Grotesque, Geist_Mono } from "next/font/go
 import { LoaderProvider } from "@/components/loader-provider";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { LANGUAGE_COOKIE, resolveLanguage, type Language } from "@/lib/i18n/config";
-import { siteConfig, APP_STORE_URL } from "@/constants/site";
+import { siteConfig, APP_STORE_URL, socialLinks } from "@/constants/site";
 import en from "@/locales/en.json";
 import fr from "@/locales/fr.json";
 import "./globals.css";
@@ -25,6 +25,7 @@ const geistMono = Geist_Mono({
 });
 
 const meta = { en: en.meta, fr: fr.meta };
+const locales = { en, fr };
 
 /**
  * Resolve the visitor's language before anything renders: the cookie set by
@@ -56,17 +57,29 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(siteConfig.url),
     title: copy.title,
     description: copy.description,
-    keywords: [
-      "budget app",
-      "application budget",
-      "personal finance",
-      "budget pockets",
-      "50/30/20 method",
-      "subscriptions tracker",
-      "expense tracker",
-      "Stella",
-      "Luxa",
-    ],
+    // Google ignores this tag, but Bing and several app directories still read
+    // it. French first, because that is the market the page now serves.
+    keywords:
+      language === "fr"
+        ? [
+            "application budget",
+            "gérer son budget",
+            "méthode 50/30/20",
+            "suivi des abonnements",
+            "budget sans connexion bancaire",
+            "application finances personnelles",
+            "suivi des dépenses",
+            "Luxa",
+          ]
+        : [
+            "budget app",
+            "50/30/20 method",
+            "subscription tracker",
+            "expense tracker",
+            "personal finance app",
+            "budgeting without bank connection",
+            "Luxa",
+          ],
     authors: [{ name: "Luxa Team" }],
     creator: "Luxa",
     applicationName: siteConfig.name,
@@ -106,32 +119,71 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 /**
- * Tells Google this is an iOS app with a free tier, which is what surfaces the
- * price and platform in the results rather than a plain blue link.
+ * Three graphs, one script tag.
+ *
+ * SoftwareApplication surfaces the price and platform in results instead of a
+ * plain blue link. FAQPage is the one real rich-result opportunity on the page
+ * — six genuine questions with genuine answers, already marked up as an
+ * accordion — and it was not declared. Organization ties the social profiles to
+ * the brand so they can be attributed.
+ *
+ * Everything is read from the locales, so the graph is always in the language
+ * the page actually rendered in.
  */
 function StructuredData({ language }: { language: Language }) {
   const copy = meta[language];
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: siteConfig.name,
-    description: copy.description,
-    applicationCategory: "FinanceApplication",
-    operatingSystem: "iOS",
-    url: siteConfig.url,
-    installUrl: APP_STORE_URL,
-    inLanguage: language,
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "EUR",
+  const faqs = (locales[language].faq?.items ?? []) as Array<{
+    question: string;
+    answer: string;
+  }>;
+
+  const graph = [
+    {
+      "@type": "SoftwareApplication",
+      "@id": `${siteConfig.url}#app`,
+      name: siteConfig.name,
+      description: copy.description,
+      applicationCategory: "FinanceApplication",
+      operatingSystem: "iOS, Android",
+      url: siteConfig.url,
+      installUrl: APP_STORE_URL,
+      inLanguage: language,
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "EUR",
+      },
     },
-  };
+    {
+      "@type": "Organization",
+      "@id": `${siteConfig.url}#org`,
+      name: siteConfig.name,
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/icon.png`,
+      sameAs: socialLinks.map((link) => link.href),
+    },
+    ...(faqs.length
+      ? [
+          {
+            "@type": "FAQPage",
+            "@id": `${siteConfig.url}#faq`,
+            inLanguage: language,
+            mainEntity: faqs.map((item) => ({
+              "@type": "Question",
+              name: item.question,
+              acceptedAnswer: { "@type": "Answer", text: item.answer },
+            })),
+          },
+        ]
+      : []),
+  ];
 
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({ "@context": "https://schema.org", "@graph": graph }),
+      }}
     />
   );
 }
