@@ -31,10 +31,22 @@
       "private": "Tes données restent à toi"
     },
     "chips": [
-      { "label": "Loyer", "amount": "−980 €" },
-      { "label": "Spotify", "amount": "−10,99 €" },
-      { "label": "Courses", "amount": "−64,20 €" },
-      { "label": "Salaire", "amount": "+2 480 €" }
+      {
+        "label": "Loyer",
+        "amount": "−980 €"
+      },
+      {
+        "label": "Spotify",
+        "amount": "−10,99 €"
+      },
+      {
+        "label": "Courses",
+        "amount": "−64,20 €"
+      },
+      {
+        "label": "Salaire",
+        "amount": "+2 480 €"
+      }
     ],
     "insightChip": {
       "label": "Stella a remarqué",
@@ -55,15 +67,26 @@
       "body": "Luxa le découpe en trois : ce que tu dois payer, ce qui te fait plaisir, ce que tu gardes. C'est la méthode 50/30/20 — et tu changes les proportions quand tu veux.",
       "note": "Ton loyer tombe le 5. J'ai gardé 980 € dans Besoins.",
       "slices": [
-        {"name": "Besoins", "detail": "Loyer, courses, transports, factures."},
-        {"name": "Envies", "detail": "Restos, sorties, abonnements."},
-        {"name": "Épargne", "detail": "Projets, imprévus."}
+        {
+          "name": "Besoins",
+          "detail": "Loyer, courses, transports, factures."
+        },
+        {
+          "name": "Envies",
+          "detail": "Restos, sorties, abonnements."
+        },
+        {
+          "name": "Épargne",
+          "detail": "Projets, imprévus."
+        }
       ]
     },
     "d03": {
       "stamp": "03 juil.",
       "amount": "4 pages",
       "tag": "relevé lu",
+      "file": "releve-juillet.pdf",
+      "reading": "opérations lues",
       "title": "Tu déposes ton relevé PDF. Luxa le lit.",
       "body": "Pas de connexion bancaire, aucun identifiant à donner. Tu exportes ton relevé depuis ta banque, tu le déposes ici, et chaque ligne est classée en quelques secondes.",
       "note": "128 opérations lues. J'en ai classé 124 toute seule."
@@ -122,19 +145,52 @@
     "titleHighlight": "Il se disperse.",
     "lead": "Un café par-ci, un abonnement par-là, trois courses en ligne, une facture qui tombe… À la fin du mois, rien de grave n'est arrivé — et pourtant, impossible de dire où tout est parti.",
     "chips": [
-      { "label": "Café", "amount": "−2,80 €" },
-      { "label": "Uber Eats", "amount": "−18,90 €" },
-      { "label": "Netflix", "amount": "−13,49 €" },
-      { "label": "Pharmacie", "amount": "−12,30 €" },
-      { "label": "Amazon", "amount": "−27,99 €" },
-      { "label": "Essence", "amount": "−58,00 €" },
-      { "label": "Zara", "amount": "−49,90 €" },
-      { "label": "Loyer", "amount": "−980 €" }
+      {
+        "label": "Café",
+        "amount": "−2,80 €"
+      },
+      {
+        "label": "Uber Eats",
+        "amount": "−18,90 €"
+      },
+      {
+        "label": "Netflix",
+        "amount": "−13,49 €"
+      },
+      {
+        "label": "Pharmacie",
+        "amount": "−12,30 €"
+      },
+      {
+        "label": "Amazon",
+        "amount": "−27,99 €"
+      },
+      {
+        "label": "Essence",
+        "amount": "−58,00 €"
+      },
+      {
+        "label": "Zara",
+        "amount": "−49,90 €"
+      },
+      {
+        "label": "Loyer",
+        "amount": "−980 €"
+      }
     ],
     "pockets": [
-      { "name": "Besoins", "target": "50 %" },
-      { "name": "Envies", "target": "30 %" },
-      { "name": "Épargne", "target": "20 %" }
+      {
+        "name": "Besoins",
+        "target": "50 %"
+      },
+      {
+        "name": "Envies",
+        "target": "30 %"
+      },
+      {
+        "name": "Épargne",
+        "target": "20 %"
+      }
     ],
     "after": {
       "title": "Luxa range. Toi, tu respires.",

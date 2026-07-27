@@ -31,10 +31,22 @@
       "private": "Your data stays yours"
     },
     "chips": [
-      { "label": "Rent", "amount": "−€980" },
-      { "label": "Spotify", "amount": "−€10.99" },
-      { "label": "Groceries", "amount": "−€64.20" },
-      { "label": "Salary", "amount": "+€2,480" }
+      {
+        "label": "Rent",
+        "amount": "−€980"
+      },
+      {
+        "label": "Spotify",
+        "amount": "−€10.99"
+      },
+      {
+        "label": "Groceries",
+        "amount": "−€64.20"
+      },
+      {
+        "label": "Salary",
+        "amount": "+€2,480"
+      }
     ],
     "insightChip": {
       "label": "Stella noticed",
@@ -55,15 +67,26 @@
       "body": "Luxa splits it three ways: what you owe, what you enjoy, what you keep. That's the 50/30/20 method — and you can move the proportions whenever you like.",
       "note": "Rent goes out on the 5th. I've held 980 € in Needs.",
       "slices": [
-        {"name": "Needs", "detail": "Rent, groceries, transport, bills."},
-        {"name": "Wants", "detail": "Eating out, going out, subscriptions."},
-        {"name": "Savings", "detail": "Projects, the unexpected."}
+        {
+          "name": "Needs",
+          "detail": "Rent, groceries, transport, bills."
+        },
+        {
+          "name": "Wants",
+          "detail": "Eating out, going out, subscriptions."
+        },
+        {
+          "name": "Savings",
+          "detail": "Projects, the unexpected."
+        }
       ]
     },
     "d03": {
       "stamp": "Jul 03",
       "amount": "4 pages",
       "tag": "statement read",
+      "file": "statement-july.pdf",
+      "reading": "transactions read",
       "title": "You drop in your PDF statement. Luxa reads it.",
       "body": "No bank connection, no credentials to hand over. Export your statement from your bank, drop it here, and every line is sorted in seconds.",
       "note": "128 transactions read. I sorted 124 on my own."
@@ -122,19 +145,52 @@
     "titleHighlight": "It scatters.",
     "lead": "A coffee here, a subscription there, three online orders, a bill that lands… By the end of the month nothing dramatic happened — and yet you can't say where it all went.",
     "chips": [
-      { "label": "Coffee", "amount": "−€2.80" },
-      { "label": "Uber Eats", "amount": "−€18.90" },
-      { "label": "Netflix", "amount": "−€13.49" },
-      { "label": "Pharmacy", "amount": "−€12.30" },
-      { "label": "Amazon", "amount": "−€27.99" },
-      { "label": "Fuel", "amount": "−€58.00" },
-      { "label": "Zara", "amount": "−€49.90" },
-      { "label": "Rent", "amount": "−€980" }
+      {
+        "label": "Coffee",
+        "amount": "−€2.80"
+      },
+      {
+        "label": "Uber Eats",
+        "amount": "−€18.90"
+      },
+      {
+        "label": "Netflix",
+        "amount": "−€13.49"
+      },
+      {
+        "label": "Pharmacy",
+        "amount": "−€12.30"
+      },
+      {
+        "label": "Amazon",
+        "amount": "−€27.99"
+      },
+      {
+        "label": "Fuel",
+        "amount": "−€58.00"
+      },
+      {
+        "label": "Zara",
+        "amount": "−€49.90"
+      },
+      {
+        "label": "Rent",
+        "amount": "−€980"
+      }
     ],
     "pockets": [
-      { "name": "Needs", "target": "50%" },
-      { "name": "Wants", "target": "30%" },
-      { "name": "Savings", "target": "20%" }
+      {
+        "name": "Needs",
+        "target": "50%"
+      },
+      {
+        "name": "Wants",
+        "target": "30%"
+      },
+      {
+        "name": "Savings",
+        "target": "20%"
+      }
     ],
     "after": {
       "title": "Luxa sorts. You breathe.",
