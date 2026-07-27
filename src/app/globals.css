@@ -1072,10 +1072,12 @@ html {
 .stmt-amount[data-tone='in'] { color: hsl(var(--epargne)); }
 .stmt-amount[data-tone='neutral'] { color: hsl(var(--primary)); }
 .stmt-tag {
-  font-size: 9.5px;
+  /* 9.5px at 0.55 alpha measured 3.21:1 — under AA. The gutter is the page's
+     declared skim path, so it has to be readable, not just decorative. */
+  font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: hsl(var(--muted-foreground) / 0.55);
+  color: hsl(var(--muted-foreground) / 0.85);
   margin-top: 10px;
 }
 
@@ -1109,7 +1111,11 @@ html {
 /* Jour 17 — l'inversion. La marge prend toute la page : la voix de Stella
    devient le contenu au lieu de le commenter. Seule fois où la structure se
    retourne, donc elle porte du sens. */
-.stmt-entry--voice .stmt-gutter { opacity: 0.55; }
+/* Day 17 used to dim its whole gutter to 0.55, which compounded with the tag
+   alpha and took it to 1.67:1 — a seventh of the skim path unreadable by
+   design. The inversion is carried by the blockquote, not by hiding the
+   gutter. */
+.stmt-entry--voice .stmt-gutter { opacity: 0.85; }
 .stmt-entry--voice blockquote {
   border-left: 2px solid hsl(var(--stella));
   padding-left: clamp(18px, 3vw, 34px);
@@ -1170,14 +1176,19 @@ html {
 /* Une nappe lilas qui dérive lentement derrière tout le relevé. Assez
    faible pour ne jamais concurrencer le texte, assez large pour que le
    noir cesse d'être plat. */
+/* Translate only — no scale. Animating scale on a blur(110px) layer makes
+   Chrome re-rasterise the gaussian every frame, which is the whole frame
+   budget on a mid-range phone. Translation is a compositor transform and
+   costs nothing. Desktop only for the same reason. */
 @keyframes luxa-drift {
-  0%   { transform: translate3d(-7%, 2%, 0) scale(1); }
-  50%  { transform: translate3d(7%, -5%, 0) scale(1.18); }
-  100% { transform: translate3d(-7%, 2%, 0) scale(1); }
+  0%   { transform: translate3d(-7%, 2%, 0); }
+  50%  { transform: translate3d(7%, -5%, 0); }
+  100% { transform: translate3d(-7%, 2%, 0); }
 }
-.luxa-drift {
-  will-change: transform;
-  animation: luxa-drift 34s ease-in-out infinite;
+@media (min-width: 1024px) {
+  .luxa-drift {
+    animation: luxa-drift 34s ease-in-out infinite;
+  }
 }
 
 /* Une impulsion qui descend la colonne vertébrale, comme un signal dans une

@@ -108,11 +108,11 @@ export function Pricing() {
 
   return (
     <Section id="pricing" tone="primary" divider>
-      <h2 className="max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
+      <h2 data-animate="lead" className="max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
         {t('pricing.title') as string}{' '}
         <span className="text-primary">{t('pricing.titleHighlight') as string}</span>
       </h2>
-      <p className="mt-5 max-w-[58ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
+      <p data-animate="lead" className="mt-5 max-w-[58ch] text-[15.5px] leading-relaxed text-muted-foreground md:text-base">
         {t('pricing.subtitle') as string}
       </p>
 

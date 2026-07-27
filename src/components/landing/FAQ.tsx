@@ -21,7 +21,7 @@ export function FAQ() {
           <StellaMascot mood="thinking" size="md" floating />
         </div>
 
-        <h2 className="mt-6 max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
+        <h2 data-animate="lead" className="mt-6 max-w-[18ch] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.08] tracking-[-0.04em] text-foreground text-balance">
           {t('faq.title') as string}
         </h2>
 

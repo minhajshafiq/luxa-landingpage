@@ -34,7 +34,10 @@ export function ScrollAnimations() {
     const els = gsap.utils
       .toArray<HTMLElement>('[data-animate]')
       .filter((el) => !el.dataset.animateDone)
-    if (!els.length) return
+    // NOTE: no early return on an empty list. After a language toggle every
+    // element already carries `animateDone`, and bailing here skipped the
+    // hash-listener registration below while the previous cleanup had already
+    // torn the old listeners down — anchors silently lost their re-aim.
 
     // Hide only once JavaScript is active. The CSS default stays visible so
     // content can never remain blank if an observer is delayed or unavailable.

@@ -128,7 +128,7 @@
       "stamp": "31 juil.",
       "amount": "+471,89",
       "tag": "lisible",
-      "title": "Fin du mois. Pour la première fois, tu sais où il est passé.",
+      "title": "Le mois est lu. Tu sais enfin où il est passé.",
       "body": "Pas de tableur, pas de rappel à noter, pas de culpabilité. Juste un mois que tu peux lire."
     }
   },
@@ -431,5 +431,16 @@
     "disclaimer": "En t'inscrivant, tu acceptes de recevoir des emails de Luxa au sujet de la bêta Android. Désinscription possible à tout moment.",
     "errorNetwork": "Connexion impossible. Vérifie ta connexion internet.",
     "errorGeneric": "Une erreur est survenue. Réessaie."
+  },
+  "stellaAlt": {
+    "happy": "Stella, la petite étoile de Luxa, qui fête ça",
+    "budgeting": "Stella serrant un sac d’économies",
+    "thinking": "Stella qui s’interroge, entourée de points d’interrogation",
+    "reading": "Stella qui lit un relevé bancaire à la loupe",
+    "surprised": "Stella stupéfaite par le total des abonnements",
+    "sleepy": "Stella endormie sur un croissant de lune, apaisée",
+    "love": "Stella qui serre un cœur dans ses bras",
+    "angry": "Stella qui boude devant un pocket dépassé",
+    "sad": "Stella triste après un mois en désordre"
   }
 }

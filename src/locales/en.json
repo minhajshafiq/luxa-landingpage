@@ -128,7 +128,7 @@
       "stamp": "Jul 31",
       "amount": "+471.89",
       "tag": "readable",
-      "title": "End of the month. For once, you know where it went.",
+      "title": "The month is read. You finally know where it went.",
       "body": "No spreadsheet, no reminder to set, no guilt. Just a month you can read."
     }
   },
@@ -431,5 +431,16 @@
     "disclaimer": "By signing up, you agree to receive emails from Luxa about the Android beta. You can unsubscribe at any time.",
     "errorNetwork": "Could not connect. Check your internet connection.",
     "errorGeneric": "Something went wrong. Please try again."
+  },
+  "stellaAlt": {
+    "happy": "Stella, the little star of Luxa, celebrating",
+    "budgeting": "Stella holding a bag of savings",
+    "thinking": "Stella wondering, surrounded by question marks",
+    "reading": "Stella reading a bank statement with a magnifier",
+    "surprised": "Stella surprised by the total of subscriptions",
+    "sleepy": "Stella asleep on a crescent moon, at peace",
+    "love": "Stella hugging a heart",
+    "angry": "Stella pouting at an over-budget pocket",
+    "sad": "Stella sad about a messy month"
   }
 }

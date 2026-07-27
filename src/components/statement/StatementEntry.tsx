@@ -32,14 +32,18 @@ interface StatementEntryProps {
  * « 4 pages » compte sur 4, « +18 % » sur 18, « −1 276,00 » sur 1276.
  */
 function parseAmount(raw: string) {
-  const match = raw.match(/^(\D*?)([\d][\d\s  .,]*)(.*)$/)
+  // A space inside a number is a thousands separator; a space before anything
+  // else introduces a unit. That distinction is the whole job: a naive
+  // `[\d\s]+` group ate the space in "4 pages" and rendered "0pages" for the
+  // full 0.9s tween, while a lazy group cut "3 305,00" at the first digit.
+  // Checking the RESOLVED value catches neither, because onComplete restores
+  // the authored string.
+  const match = raw.match(/^(\D*?)(\d+(?:[\s\u00a0\u202f]\d{3}|[.,]\d+)*)(.*)$/)
   if (!match) return null
 
   const [, prefix, digits, suffix] = match
   const decimals = /[.,](\d+)$/.exec(digits)?.[1].length ?? 0
-  const value = Number(
-    digits.replace(/[\s  ]/g, '').replace(',', '.')
-  )
+  const value = Number(digits.replace(/[\s\u00a0\u202f]/g, '').replace(',', '.'))
   if (!Number.isFinite(value)) return null
 
   return { prefix, suffix, value, decimals }

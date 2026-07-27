@@ -120,14 +120,9 @@ export function Hero() {
           const { desktop } = context.conditions as { desktop: boolean; mobile: boolean }
           const chipsEls = gsap.utils.toArray<HTMLElement>('.hero-chip')
 
-          // --- Ambient -------------------------------------------------------
-          gsap.to('.hero-glow', {
-            opacity: 0.9,
-            duration: 5,
-            ease: EASE.sine,
-            yoyo: true,
-            repeat: -1,
-          })
+          // Ambient breathing is CSS (.animate-glow-breathe on the elements
+          // themselves): an infinite GSAP tween keeps the ticker running at
+          // 60fps for the entire session, thousands of pixels past the hero.
 
           // --- Scroll --------------------------------------------------------
           if (desktop) {
@@ -228,31 +223,23 @@ export function Hero() {
           phone reads as standing somewhere rather than floating in soup. */}
       <div className="luxa-aurora pointer-events-none absolute -top-[34%] left-1/2 h-[620px] w-[120%] -translate-x-1/2 opacity-25 md:opacity-30" />
       <div className="starfield pointer-events-none absolute inset-0 opacity-70" />
-      <div className="hero-glow glow-primary pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 blur-[60px] opacity-60" />
-      <div className="hero-glow glow-stella pointer-events-none absolute top-1/2 -right-32 h-96 w-96 blur-3xl opacity-40" />
+      <div className="hero-glow animate-glow-breathe glow-primary pointer-events-none absolute -top-40 left-1/2 h-[560px] w-[900px] -translate-x-1/2 blur-[60px] opacity-60" />
+      <div className="hero-glow animate-glow-breathe-slow glow-stella pointer-events-none absolute top-1/2 -right-32 h-96 w-96 blur-3xl opacity-40" />
       <div className="luxa-horizon pointer-events-none absolute inset-x-0 bottom-0 h-[420px] opacity-70" />
 
       <Container className="relative z-10">
         <div ref={contentRef} className="mx-auto max-w-4xl text-center">
-          {/* Availability + rating, one badge instead of two side by side */}
-          <p className="luxa-hairline hero-lead inline-flex items-center gap-2 rounded-full bg-card/60 px-3.5 py-1.5 font-mono text-[10px] tracking-[0.12em] md:px-4 md:text-xs md:tracking-[0.18em] uppercase text-muted-foreground backdrop-blur-xl">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-epargne/60" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-epargne shadow-[0_0_10px_hsl(var(--epargne))]" />
-            </span>
-            {t('hero.badge') as string}
-            {SHOW_RATING && (
-              <>
-                <span className="text-border">·</span>
-                <RatingBadge bare />
-              </>
-            )}
-          </p>
+          {/* No availability pill here. A rounded badge with a pulsing green
+              dot is the single most-cloned landing-page element of the last
+              few years, and this one was redundant on top: the App Store badge
+              below already says iOS and the Play badge says Android. The beta
+              caveat moved onto the Android button, which is where someone
+              actually needs it. */}
 
           {/* Headline */}
           <h1
             ref={titleRef}
-            className="mt-7 mx-auto max-w-[20ch] font-display text-[clamp(2.4rem,6.4vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-foreground [text-shadow:0_0_60px_hsl(var(--primary)/0.25)]"
+            className="mx-auto max-w-[20ch] font-display text-[clamp(2.4rem,6.4vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.05em] text-foreground [text-shadow:0_0_60px_hsl(var(--primary)/0.25)]"
           >
             {titleWords.map((word, index) => (
               <span key={`title-${index}`}>
@@ -282,20 +269,30 @@ export function Hero() {
               downloadLabel={t('hero.ctaDownload') as string}
               androidLabel={t('hero.ctaAndroidBeta') as string}
             />
-            {/* Trust line */}
-            <p className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-xs md:text-sm text-muted-foreground/80">
+            {/* The three claims, set in the statement's own voice: mono,
+                uppercase, wide-tracked, separated by the middot the app itself
+                uses ("70% used · 30 days left"). The ✦ that used to sit here
+                was SectionHeading's ornament — that component is gone and its
+                decoration went with it. */}
+            <p className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/75 md:text-[11px]">
               <span>{t('hero.trust.free') as string}</span>
-              <span aria-hidden="true" className="text-stella">✦</span>
+              <span aria-hidden="true" className="text-muted-foreground/35">·</span>
               <span>{t('hero.trust.noBank') as string}</span>
-              <span aria-hidden="true" className="text-stella">✦</span>
+              <span aria-hidden="true" className="text-muted-foreground/35">·</span>
               <span>{t('hero.trust.private') as string}</span>
+              {SHOW_RATING && (
+                <>
+                  <span aria-hidden="true" className="text-muted-foreground/35">·</span>
+                  <RatingBadge bare />
+                </>
+              )}
             </p>
           </div>
         </div>
 
         {/* Product stage: one phone glowing in the night, transactions orbiting */}
         <div ref={stageRef} className="relative mx-auto mt-10 max-w-5xl md:mt-14">
-          <div className="hero-glow glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[440px] w-[720px] -translate-x-1/2 -translate-y-1/2 blur-[70px] opacity-70" />
+          <div className="hero-glow animate-glow-breathe glow-primary pointer-events-none absolute left-1/2 top-1/2 h-[440px] w-[720px] -translate-x-1/2 -translate-y-1/2 blur-[70px] opacity-70" />
 
           {/* Orbiting transaction chips (desktop) */}
           {Array.isArray(chips) &&
