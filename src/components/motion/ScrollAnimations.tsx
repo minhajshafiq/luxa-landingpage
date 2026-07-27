@@ -120,7 +120,24 @@ export function ScrollAnimations() {
     }, 1600)
 
     let hashFrame: number | null = null
-    let hashCorrectionTimer: number | null = null
+    let hashResizeObserver: ResizeObserver | null = null
+    let hashResizeStopTimer: number | null = null
+    let hashResizeDebounceTimer: number | null = null
+
+    const stopHashResizeObserver = () => {
+      if (hashResizeObserver !== null) {
+        hashResizeObserver.disconnect()
+        hashResizeObserver = null
+      }
+      if (hashResizeStopTimer !== null) {
+        window.clearTimeout(hashResizeStopTimer)
+        hashResizeStopTimer = null
+      }
+      if (hashResizeDebounceTimer !== null) {
+        window.clearTimeout(hashResizeDebounceTimer)
+        hashResizeDebounceTimer = null
+      }
+    }
 
     // Pinned sections add spacers after the browser's native anchor jump.
     // Re-run the jump once those spacers are measured so section titles do
@@ -134,34 +151,50 @@ export function ScrollAnimations() {
 
       ScrollTrigger.refresh()
       if (hashFrame !== null) window.cancelAnimationFrame(hashFrame)
-      if (hashCorrectionTimer !== null) {
-        window.clearTimeout(hashCorrectionTimer)
-        hashCorrectionTimer = null
-      }
+      stopHashResizeObserver()
       hashFrame = window.requestAnimationFrame(() => {
         // `scroll-padding-top: 6rem` (globals.css) means a correctly-landed
         // target sits 96px from the top. The smooth scroll here can run
         // several hundred ms, and a scroll-triggered choreography further
         // down the page (e.g. a pinned section collapsing once scrolled
-        // past) can change the document height while the browser is still
-        // mid-flight to its originally committed destination — landing the
-        // jump way past the target. Re-aim instead of trusting one call.
+        // past, sometimes seconds after landing) can change the document
+        // height after the browser has already committed to — or arrived
+        // at — its destination. Re-aiming on a fixed timed schedule can't
+        // know when that choreography actually finishes, so watch for the
+        // layout shift itself instead of guessing at delays.
         const LANDING = 96
         const TOLERANCE = 24
-        const MAX_PASSES = 3
+        const MAX_CORRECTIONS = 4
+        const OBSERVE_WINDOW_MS = 5000
+        // A single collapsing tween fires ResizeObserver on nearly every
+        // animation frame (~16ms apart) for its whole duration — reacting
+        // to each one individually would burn through MAX_CORRECTIONS
+        // before the tween even finishes. Debounce so one continuous
+        // layout shift counts as one correction, made once it settles.
+        const RESIZE_DEBOUNCE_MS = 150
 
-        const aim = (pass: number) => {
-          target.scrollIntoView({ block: 'start', behavior: pass === 0 ? 'smooth' : 'auto' })
-          if (pass >= MAX_PASSES) return
-          hashCorrectionTimer = window.setTimeout(
-            () => {
-              hashCorrectionTimer = null
-              if (Math.abs(target.getBoundingClientRect().top - LANDING) > TOLERANCE) aim(pass + 1)
-            },
-            pass === 0 ? 700 : 250
-          )
-        }
-        aim(0)
+        target.scrollIntoView({ block: 'start', behavior: 'smooth' })
+
+        let corrections = 0
+        hashResizeObserver = new ResizeObserver(() => {
+          if (hashResizeDebounceTimer !== null) window.clearTimeout(hashResizeDebounceTimer)
+          hashResizeDebounceTimer = window.setTimeout(() => {
+            hashResizeDebounceTimer = null
+            if (corrections >= MAX_CORRECTIONS) {
+              stopHashResizeObserver()
+              return
+            }
+            if (Math.abs(target.getBoundingClientRect().top - LANDING) > TOLERANCE) {
+              corrections += 1
+              // Never smooth here — a visible re-scroll after the fact reads
+              // as a glitch. Snap silently back to the landing position.
+              target.scrollIntoView({ block: 'start', behavior: 'auto' })
+            }
+          }, RESIZE_DEBOUNCE_MS)
+        })
+        hashResizeObserver.observe(document.body)
+
+        hashResizeStopTimer = window.setTimeout(stopHashResizeObserver, OBSERVE_WINDOW_MS)
       })
     }
 
@@ -184,7 +217,7 @@ export function ScrollAnimations() {
       window.clearTimeout(revealFallbackTimer)
       window.clearTimeout(hashTimer)
       if (hashFrame !== null) window.cancelAnimationFrame(hashFrame)
-      if (hashCorrectionTimer !== null) window.clearTimeout(hashCorrectionTimer)
+      stopHashResizeObserver()
       window.removeEventListener(LUXA_LOADER_COMPLETE_EVENT, handleLoaderDone)
       window.removeEventListener('hashchange', handleHashChange)
     }
