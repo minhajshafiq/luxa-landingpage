@@ -59,7 +59,7 @@ export default async function OpengraphImage() {
             maxWidth: '900px',
           }}
         >
-          Tu paies 1 276 € d'abonnements par mois.
+          {`Tu paies 1 276 € d'abonnements par mois.`}
         </div>
 
         <div style={{ display: 'flex', gap: '18px', marginTop: '52px' }}>
