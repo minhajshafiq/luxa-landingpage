@@ -7,7 +7,7 @@ export const APP_STORE_URL =
 export const siteConfig = {
   name: "Luxa",
   description: "Votre coach budget personnel pour un mois plus clair",
-  url: "https://luxa.app",
+  url: "https://getluxa.app",
   links: {
     tiktok: "https://www.tiktok.com/@luxaapp",
     instagram: "https://www.instagram.com/getluxa/",
