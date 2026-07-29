@@ -90,6 +90,9 @@ export async function generateMetadata(): Promise<Metadata> {
     alternates: {
       canonical: "/",
     },
+    verification: {
+      google: "yibUybKotCl1-owYPdNcgOFrGikIPJE0bRH7DA6AsL8",
+    },
     openGraph: {
       type: "website",
       locale: language === "fr" ? "fr_FR" : "en_US",
