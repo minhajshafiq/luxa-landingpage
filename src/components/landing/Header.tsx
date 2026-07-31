@@ -8,7 +8,8 @@ import { LanguageToggle } from '@/components/design-system/LanguageToggle'
 import { AnimatedButton } from '@/components/design-system/AnimatedButton'
 import { LogoText } from '@/components/ui/logo'
 import { AppleLogo } from '@/components/ui/apple-logo'
-import { APP_STORE_URL } from '@/constants/site'
+import { PlayStoreLogo } from '@/components/ui/play-store-logo'
+import { APP_STORE_URL, PLAY_STORE_URL } from '@/constants/site'
 import { cn } from '@/lib/utils'
 import { useTranslation } from '@/lib/i18n/useTranslation'
 
@@ -70,31 +71,51 @@ export function Header() {
         </nav>
 
         {/* Desktop CTA + Language */}
-        <div className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-1.5">
           <LanguageToggle />
           <AnimatedButton
             asChild
             size="sm"
-            className="luxa-cta rounded-full text-primary-foreground font-semibold px-5 cursor-pointer"
+            className="luxa-cta rounded-full text-primary-foreground font-semibold px-3.5 cursor-pointer"
           >
-            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer">
+            <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" title="App Store">
               <AppleLogo className="mr-1.5 h-4 w-4" />
-              {t('nav.downloadApp') as string}
+              App Store
+            </a>
+          </AnimatedButton>
+          <AnimatedButton
+            asChild
+            size="sm"
+            className="luxa-cta rounded-full text-primary-foreground font-semibold px-3.5 cursor-pointer"
+          >
+            <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" title="Google Play">
+              <PlayStoreLogo className="mr-1.5 h-4 w-4" />
+              Google Play
             </a>
           </AnimatedButton>
         </div>
 
-        {/* Mobile: always-visible CTA (was hidden behind the menu) + menu toggle */}
-        <div className="flex items-center gap-2 md:hidden">
+        {/* Mobile: always-visible CTAs + menu toggle */}
+        <div className="flex items-center gap-1.5 md:hidden">
           <motion.a
             whileTap={{ scale: 0.95 }}
             href={APP_STORE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label={t('nav.downloadApp') as string}
-            className="luxa-cta flex h-10 w-10 items-center justify-center rounded-full text-primary-foreground cursor-pointer"
+            aria-label="App Store"
+            className="luxa-cta flex h-9 w-9 items-center justify-center rounded-full text-primary-foreground cursor-pointer"
           >
             <AppleLogo className="h-4 w-4" />
+          </motion.a>
+          <motion.a
+            whileTap={{ scale: 0.95 }}
+            href={PLAY_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google Play"
+            className="luxa-cta flex h-9 w-9 items-center justify-center rounded-full text-primary-foreground cursor-pointer"
+          >
+            <PlayStoreLogo className="h-4 w-4" />
           </motion.a>
 
           <motion.button
@@ -175,16 +196,28 @@ export function Header() {
                 <div className="flex justify-center gap-3">
                   <LanguageToggle />
                 </div>
-                <AnimatedButton
-                  asChild
-                  size="default"
-                  className="luxa-cta w-full rounded-tile text-primary-foreground font-semibold cursor-pointer"
-                >
-                  <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
-                    <AppleLogo className="mr-1.5 h-4 w-4" />
-                    {t('nav.downloadApp') as string}
-                  </a>
-                </AnimatedButton>
+                <div className="grid grid-cols-2 gap-2">
+                  <AnimatedButton
+                    asChild
+                    size="default"
+                    className="luxa-cta w-full rounded-tile text-primary-foreground font-semibold cursor-pointer"
+                  >
+                    <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
+                      <AppleLogo className="mr-1.5 h-4 w-4" />
+                      App Store
+                    </a>
+                  </AnimatedButton>
+                  <AnimatedButton
+                    asChild
+                    size="default"
+                    className="luxa-cta w-full rounded-tile text-primary-foreground font-semibold cursor-pointer"
+                  >
+                    <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" onClick={() => setIsMenuOpen(false)}>
+                      <PlayStoreLogo className="mr-1.5 h-4 w-4" />
+                      Google Play
+                    </a>
+                  </AnimatedButton>
+                </div>
               </motion.div>
             </nav>
           </motion.div>

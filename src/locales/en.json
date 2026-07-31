@@ -19,7 +19,7 @@
     "titleHighlight": "You can name three.",
     "subtitle": "Luxa reads your statement, finds everything that quietly bills you, and files the rest of your budget. No bank connection.",
     "ctaDownload": "Download on the App Store",
-    "ctaAndroidBeta": "Android · join the beta",
+    "ctaAndroidBeta": "Get it on Google Play",
     "trust": {
       "free": "Free to start",
       "noBank": "No bank connection",
@@ -277,7 +277,7 @@
       },
       {
         "question": "Is Luxa available on Android?",
-        "answer": "Luxa is on iOS today. Android is on the way — join the beta and we'll tell you the moment it opens."
+        "answer": "Yes! Luxa is available on both Android (Google Play Store) and iOS (App Store)."
       },
       {
         "question": "What does Luxa Plus give me?",
@@ -289,7 +289,7 @@
     "title": "Your money can feel calm again.",
     "subtitle": "Download Luxa and start your first readable month. Stella is waiting.",
     "ctaDownload": "Download on the App Store",
-    "ctaAndroidBeta": "Android · join the beta",
+    "ctaAndroidBeta": "Get it on Google Play",
     "micro": "Free to start · No bank connection"
   },
   "footer": {

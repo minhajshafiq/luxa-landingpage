@@ -4,7 +4,7 @@ import { Plus_Jakarta_Sans, Bricolage_Grotesque, Geist_Mono } from "next/font/go
 import { LoaderProvider } from "@/components/loader-provider";
 import { LanguageProvider } from "@/lib/i18n/LanguageContext";
 import { LANGUAGE_COOKIE, resolveLanguage, type Language } from "@/lib/i18n/config";
-import { siteConfig, APP_STORE_URL, socialLinks } from "@/constants/site";
+import { siteConfig, APP_STORE_URL, PLAY_STORE_URL, socialLinks } from "@/constants/site";
 import en from "@/locales/en.json";
 import fr from "@/locales/fr.json";
 import "./globals.css";
@@ -149,7 +149,7 @@ function StructuredData({ language }: { language: Language }) {
       applicationCategory: "FinanceApplication",
       operatingSystem: "iOS, Android",
       url: siteConfig.url,
-      installUrl: APP_STORE_URL,
+      installUrl: [APP_STORE_URL, PLAY_STORE_URL],
       inLanguage: language,
       offers: {
         "@type": "Offer",

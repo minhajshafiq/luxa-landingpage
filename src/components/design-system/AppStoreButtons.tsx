@@ -2,8 +2,7 @@
 
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { WaitlistForm } from '@/components/design-system/WaitlistForm'
-import { APP_STORE_URL } from '@/constants/site'
+import { APP_STORE_URL, PLAY_STORE_URL } from '@/constants/site'
 import { buttonSpring } from '@/lib/animations'
 import { cn } from '@/lib/utils'
 
@@ -40,25 +39,24 @@ export function AppStoreButtons({
         />
       </motion.a>
 
-      {/* The real Google Play badge — opens the beta waitlist since Android
-          isn't live on the Play Store yet. */}
-      <WaitlistForm>
-        <motion.button
-          type="button"
-          {...buttonSpring}
-          aria-label={androidLabel}
-          className="flex h-12 w-auto cursor-pointer items-center rounded-tile md:h-14"
-        >
-          <Image
-            src="/GetItOnGooglePlay_Badge_Web_color_English.svg"
-            alt={androidLabel}
-            width={162}
-            height={48}
-            className="block h-full w-auto object-contain"
-            style={{ width: 'auto', height: '100%' }}
-          />
-        </motion.button>
-      </WaitlistForm>
+      {/* The real Google Play badge — links directly to Play Store */}
+      <motion.a
+        {...buttonSpring}
+        href={PLAY_STORE_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={androidLabel}
+        className="flex h-12 w-auto cursor-pointer items-center rounded-tile md:h-14"
+      >
+        <Image
+          src="/GetItOnGooglePlay_Badge_Web_color_English.svg"
+          alt={androidLabel}
+          width={162}
+          height={48}
+          className="block h-full w-auto object-contain"
+          style={{ width: 'auto', height: '100%' }}
+        />
+      </motion.a>
     </div>
   )
 }

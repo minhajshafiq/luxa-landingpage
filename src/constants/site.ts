@@ -4,6 +4,10 @@ import { SocialLink } from "@/types"
 export const APP_STORE_URL =
   "https://apps.apple.com/us/app/luxa-budget-expense-tracker/id6778473614"
 
+/** Live Google Play Store listing — primary Android install destination. */
+export const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.minhajshafiq.luxa"
+
 export const siteConfig = {
   name: "Luxa",
   description: "Votre coach budget personnel pour un mois plus clair",
